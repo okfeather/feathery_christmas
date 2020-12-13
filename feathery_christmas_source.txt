@@ -43,7 +43,7 @@ locations {
    walls_s: location "";
    walls_se: location "";
    walls_see: location "";
-   walls_win: location "You have arrived at the end! Congratulation!";
+   walls_win: location "You arrived at the end! Congratulations!";
 }
 
 ######################################
@@ -183,15 +183,15 @@ on_describe {
    : if (is_at "walls_win" ) {
       : if (day_spend_walls_enigma == 6) {
             # should only show "Retry" phrase when object has not been won
-            : print "You did it in shortest time possible, you win fresh bread! \n\nRetry it taking the most slowly to get consolation (=loser) prize.";
+            : print "You did it in the shortest time possible, you win fresh bread! \n\nRetry it taking the slowest path to get a consolation (=loser) prize.";
       }
       : else_if (day_spend_walls_enigma == 10) {
             # should only show "Retry" phrase when object has not been won
-            : print "You did it in longest time possible, you win stale bread!\n(and you kept your life YAY!)\n\nRetry it taking the less time possible when you want.";
+            : print "You did it in the longest time possible, you win stale bread!\n(and you kept your life YAY!)\n\nRetry it taking the least time possible whenever you want.";
       }
       : else {
             # should only show "Retry" phrase when object has not been won
-            : print "You spend too much time and won NOTHING!\n(but you kept your life YAY!)\n\nRetry it taking even more time or taking the less possible time!";
+            : print "You spent too much time and won NOTHING!\n(but you kept your life YAY!)\n\nRetry it taking even more time or taking the least possible time!";
       }
       : press_any_key ;
       : goto "nicobar_park";
