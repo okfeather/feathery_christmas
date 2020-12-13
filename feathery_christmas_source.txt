@@ -21,11 +21,23 @@ integers {
 
 locations {
 
+   santa_cellar : location "This is Santa's cellar, where you can find different potions to keep him cheerful and full of energy." ;
+
    nicobar_park : location "You are in Nicobar Park." ;
+
+   south_park : location "You are in the South of Nicobar Park." ;
 
    coocoo_cafe : location "You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof." ;
 
    montauk_beach : location "Montauk is the place where lovers like to meet." ;
+
+   pigeon_fountain : location "You are in the Pigeon Fountain." ;
+
+   bookshop : location "You are at the book shop." ;
+
+   church : location "You are in front of the church." ;
+
+   church_tower : location "You are in the church's tower." ;
 
    robin_room : location "You are in Robin's bedroom, checking that Larry's friend Columbia safely delivered Robin's present." ;
 
@@ -53,8 +65,15 @@ locations {
 connections {
 
    from, direction, to = [
+   santa_cellar, southeast, nicobar_park,
    nicobar_park, north, montauk_beach,
    nicobar_park, west, coocoo_cafe,
+   nicobar_park, south, south_park,
+   coocoo_cafe, south, bookshop,
+   bookshop, east, south_park,
+   nicobar_park, northeast, pigeon_fountain,
+   south_park, south, church,
+   church, south, church_tower,
    montauk_beach, north, robin_room,
    nicobar_park, east, pigeon_route,
 
