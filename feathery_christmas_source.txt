@@ -205,107 +205,24 @@ on_describe {
 
 on_command {
 
-   : match "look bin; examine bin; check bin"  {
+   : match "get bag; pick bag"  {
       : if (is_at "coocoo_cafe") {
-         : print "There is sometimes a loaf of bread inside the bin." ;
+         : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
       }
-   }
-
-   : match "look pigeons; look roof; look pigeon"  {
-      : if (is_at "coocoo_cafe") {
-         : print "You see pigeons eating and flying with colorful doggy bags. It's like a very busy restaurant." ;
-      }
-   }
-
-   : match "look cafe; look coocoo"  {
-      : if (is_at "coocoo_cafe") {
-         : print "The Coocoo Cafe is exceptionally closed." ;
-      }
-   }
-
-   : match "look pigeon; look pigeons"  {
       : if (is_at "nicobar_park") {
-         : print "The pigeon looks happy and busy." ;
-      }
-      : if (is_at "montauk_beach") {
-         : print "Pigeons are flying, exercising and eating. Very healthy." ;
+         : print "The pigeon is very high in the sky, and you cannot fly without a reindeer." ;
       }
    }
 
-   : match "look park; look yourself; talk yourself"  {
-      : if (is_at "nicobar_park") {
-         : print "You are alone, there is nothing to do here and it's raining." ;
-      }
-   }
-
-   : match "look children"  {
-      : if (is_at "nicobar_park") {
-         : print "You are the only child here." ;
-      }
-   }
-
-   : match "look present"  {
-      : if (is_at "nicobar_park") {
-         : print "There are no presents here." ;
-      }
-   }
-
-   : match "look lovers"  {
-      : if (is_at "nicobar_park") {
-         : print "You are alone here." ;
-      }
-      : if (is_at "montauk_beach") {
-         : print "You see pigeons making a heart shape in the sky." ;
-      }
-   }
-
-   : match "look montauk; look beach"  {
+   : match "examine beach"  {
       : if (is_at "montauk_beach") {
          : print "The beach is quiet today." ;
       }
    }
 
-   : match "pick pigeon; get pigeon; take pigeon; pick meal; get meal; take meal; pick bag; get bag; take bag; talk pigeon"  {
-      : if (is_at "nicobar_park") {
-         : print "The pigeon is very high in the sky, and you cannot fly without a reindeer." ;
-      }
+   : match "check bin; examine bin"  {
       : if (is_at "coocoo_cafe") {
-         : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
-      }
-   }
-
-   : match "look book; read book"  {
-      : if (is_at "nicobar_park") {
-         : print "Inside it says \'Pigeons love carrying heavy objects, but need energy to do so.\'" ;
-      }
-   }
-
-   : match "pick larry; get larry; take larry; pick pigeon; get pigeon; take pigeon"  {
-      : if (is_at "montauk_beach") {
-         : print "Pigeons are not pocket monsters, you cannot just catch them." ;
-      }
-   }
-
-   : match "pick book; get book; take book"  {
-      : if (is_at "nicobar_park" && has_not_created "pigeon_book") {
-        : print "You take the book" ;
-        : pocket "pigeon_book";
-      }
-   }
-
-   : match "examine larry; talk larry; talk pigeon"  {
-      : if (is_present "larry") {
-         : clear_screen;
-         : print "\"Can't you see we are all hungry?\", says Larry." ;
-         : press_any_key ;
-         : redescribe;
-      }
-   }
-
-   : match "pick bread; get bread; take bread"  {
-      : if (is_at "coocoo_cafe" && has_not_created "bread") {
-        : print "You take a big loaf of bread from the bin." ;
-        : pocket "bread";
+         : print "There is sometimes a loaf of bread inside the bin." ;
       }
    }
 
@@ -316,6 +233,137 @@ on_command {
          : swap o1 = "larry"  o2 = "helping_larry" ;
          : swap o1 = "intro"  o2 = "after_intro" ;
          : swap o1 = "flying_pigeon"  o2 = "new_pigeon" ;
+      }
+   }
+
+   : match "get bread; pick bread"  {
+      : if (is_at "coocoo_cafe" && has_not_created "bread") {
+        : print "You take a big loaf of bread from the bin." ;
+        : pocket "bread";
+      }
+   }
+
+   : match "examine book; read book"  {
+      : if (is_at "nicobar_park") {
+         : print "Inside it says \'Pigeons love carrying heavy objects, but need energy to do so.\'" ;
+      }
+   }
+
+   : match "get book; pick book"  {
+      : if (is_at "nicobar_park" && has_not_created "pigeon_book") {
+        : print "You take the book" ;
+        : pocket "pigeon_book";
+      }
+   }
+
+   : match "examine cafe"  {
+      : if (is_at "coocoo_cafe") {
+         : print "The Coocoo Cafe is exceptionally closed." ;
+      }
+   }
+
+   : match "examine children"  {
+      : if (is_at "nicobar_park") {
+         : print "You are the only child here." ;
+      }
+   }
+
+   : match "examine coocoo"  {
+      : if (is_at "coocoo_cafe") {
+         : print "The Coocoo Cafe is exceptionally closed." ;
+      }
+   }
+
+   : match "get larry; pick larry"  {
+      : if (is_at "montauk_beach") {
+         : print "Pigeons are not pocket monsters, you cannot just catch them." ;
+      }
+   }
+
+   : match "examine larry; talk larry"  {
+      : if (is_present "larry") {
+         : clear_screen;
+         : print "\"Can't you see we are all hungry?\", says Larry." ;
+         : press_any_key ;
+         : redescribe;
+      }
+   }
+
+   : match "examine lovers"  {
+      : if (is_at "montauk_beach") {
+         : print "You see pigeons making a heart shape in the sky." ;
+      }
+      : if (is_at "nicobar_park") {
+         : print "You are alone here." ;
+      }
+   }
+
+   : match "get meal; pick meal"  {
+      : if (is_at "coocoo_cafe") {
+         : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
+      }
+      : if (is_at "nicobar_park") {
+         : print "The pigeon is very high in the sky, and you cannot fly without a reindeer." ;
+      }
+   }
+
+   : match "examine montauk"  {
+      : if (is_at "montauk_beach") {
+         : print "The beach is quiet today." ;
+      }
+   }
+
+   : match "examine park"  {
+      : if (is_at "nicobar_park") {
+         : print "You are alone, there is nothing to do here and it's raining." ;
+      }
+   }
+
+   : match "examine pigeon; examine pigeons"  {
+      : if (is_at "coocoo_cafe") {
+         : print "You see pigeons eating and flying with colorful doggy bags. It's like a very busy restaurant." ;
+      }
+      : if (is_at "montauk_beach") {
+         : print "Pigeons are flying, exercising and eating. Very healthy." ;
+      }
+      : if (is_at "nicobar_park") {
+         : print "The pigeon looks happy and busy." ;
+      }
+   }
+
+   : match "get pigeon; pick pigeon; talk pigeon"  {
+      : if (is_at "coocoo_cafe") {
+         : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
+      }
+      : if (is_at "montauk_beach") {
+         : print "Pigeons are not pocket monsters, you cannot just catch them." ;
+      }
+      : if (is_at "nicobar_park") {
+         : print "The pigeon is very high in the sky, and you cannot fly without a reindeer." ;
+      }
+      : if (is_present "larry") {
+         : clear_screen;
+         : print "\"Can't you see we are all hungry?\", says Larry." ;
+         : press_any_key ;
+         : redescribe;
+      }
+   }
+
+   : match "examine present"  {
+      : if (is_at "nicobar_park") {
+         : print "There are no presents here." ;
+      }
+   }
+
+   : match "examine roof"  {
+      : if (is_at "coocoo_cafe") {
+         : print "You see pigeons eating and flying with colorful doggy bags. It's like a very busy restaurant." ;
+      }
+   }
+
+   : match "look yourself; talk yourself"  {
+      : if (is_at "nicobar_park") {
+         : print "You are alone, there is nothing to do here and it's raining." ;
       }
    }
 
