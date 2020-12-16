@@ -27,7 +27,9 @@ locations {
 
    south_park : location "You are in the South of Nicobar Park." ;
 
-   coocoo_cafe : location "You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof." ;
+   coocoo_cafe : location "You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof. Enter inside!" ;
+   
+   coocoo_inside : location "You are inside the Coocoo Cafe. There are no customers." ;
 
    montauk_beach : location "Montauk is the place where lovers like to meet." ;
 
@@ -70,6 +72,7 @@ connections {
    nicobar_park, west, coocoo_cafe,
    nicobar_park, south, south_park,
    coocoo_cafe, south, bookshop,
+   coocoo_cafe, enter, coocoo_inside, 
    bookshop, east, south_park,
    nicobar_park, northeast, pigeon_fountain,
    south_park, south, church,
@@ -105,6 +108,8 @@ connections {
 
 objects {
 
+grateful_waitress : scenery "The Coocoo Cafe team is grateful for your help. You got rid of all extra cookies and croissants...  But where?" ;
+
 intro : scenery "yourself crying and knowing that all children will think they were bad this year and didn't deserve a present" at = "nicobar_park" ;
 
 after_intro : scenery "the pigeons following Larry to distribute all the presents" ;
@@ -124,6 +129,8 @@ new_pigeon : scenery "a pigeon singing even though its beak is carrying a dumbbe
 robin : scenery "Robin is happily screaming 'I can't wait to play Call Of Beauty!'" at = "robin_room" ;
 
 helping_larry : scenery "Larry who will now motivate the whole pigeon troop to deliver all presents." ;
+
+waitress : scenery "a waitress from Coocoo Cafe. She looks very tired." at = "coocoo_inside" ;
 
 }
 
@@ -256,7 +263,7 @@ on_command {
    }
 
    : match "get bread; pick bread"  {
-      : if (is_at "coocoo_cafe" && has_not_created "bread") {
+      : if (is_at "coocoo_cafe" && has_not_created "bread" && is_exists "grateful_waitress") {
         : print "You take a big loaf of bread from the bin." ;
         : pocket "bread";
       }
@@ -274,10 +281,18 @@ on_command {
         : pocket "pigeon_book";
       }
    }
+   
+   : match "clean cafe; tidy cafe"  {
+      : if (is_present "waitress") {
+         : print "You are helping the Coocoo Cafe team.";
+         : swap o1 = "waitress"  o2 = "grateful_waitress" ;
+         ;
+      }
+   }
 
    : match "examine cafe"  {
       : if (is_at "coocoo_cafe") {
-         : print "The Coocoo Cafe is exceptionally closed." ;
+         : print "The Coocoo Cafe is about to close, but there is so much left to do!" ;
       }
    }
 
@@ -289,7 +304,15 @@ on_command {
 
    : match "examine coocoo"  {
       : if (is_at "coocoo_cafe") {
-         : print "The Coocoo Cafe is exceptionally closed." ;
+         : print "The Coocoo Cafe is about to close, but there is so much left to do!" ;
+      }
+   }
+   
+   : match "clean coocoo; tidy coocoo"  {
+      : if (is_present "waitress") {
+         : print "You are helping the Coocoo Cafe team.";
+         : swap o1 = "waitress"  o2 = "grateful_waitress" ;
+         ;
       }
    }
 
@@ -377,6 +400,14 @@ on_command {
    : match "examine roof"  {
       : if (is_at "coocoo_cafe") {
          : print "You see pigeons eating and flying with colorful doggy bags. It's like a very busy restaurant." ;
+      }
+   }
+   
+   : match "help waitress"  {
+      : if (is_present "waitress") {
+         : print "You are helping the Coocoo Cafe team.";
+         : swap o1 = "waitress"  o2 = "grateful_waitress" ;
+         ;
       }
    }
 
