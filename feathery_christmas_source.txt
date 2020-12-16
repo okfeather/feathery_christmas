@@ -109,29 +109,29 @@ connections {
 
 objects {
 
-grateful_waitress : scenery "The Coocoo Cafe team is grateful for your help. You got rid of all extra cookies and croissants...  But where?" ;
+bin : scenery "a beautiful Art Deco bin." at = "coocoo_cafe";
+
+bread : object "a generous loaf of bread";
 
 intro : scenery "yourself crying and knowing that all children will think they were bad this year and didn't deserve a present" at = "nicobar_park" ;
 
 after_intro : scenery "the pigeons following Larry to distribute all the presents" ;
 
-pigeon_book : object "a book \'Pigeons love bread\'" at = "nicobar_park" ;
-
 larry : scenery "Larry, the leader of the pack of pigeons." at = "montauk_beach";
 
-bin : scenery "a beautiful Art Deco bin." at = "coocoo_cafe";
-
-bread : object "a generous loaf of bread";
+helping_larry : scenery "Larry who will now motivate the whole pigeon troop to deliver all presents." ;
 
 flying_pigeon : scenery "a pigeon singing even though its beak is carrying a Sappy Meal bag: \' lovers meet in Montauk Beach, lalala \'" at = "nicobar_park";
 
 new_pigeon : scenery "a pigeon singing even though its beak is carrying a dumbbell: \'Best carriers meet in Montauk Beach, lalala \'";
 
+pigeon_book : object "a book \'Pigeons love bread\'" at = "nicobar_park" ;
+
 robin : scenery "Robin is happily screaming 'I can't wait to play Call Of Beauty!'" at = "robin_room" ;
 
-helping_larry : scenery "Larry who will now motivate the whole pigeon troop to deliver all presents." ;
-
 waitress : scenery "a waitress from Coocoo Cafe. She looks very tired." at = "coocoo_inside" ;
+
+grateful_waitress : scenery "The Coocoo Cafe team is grateful for your help. You got rid of all extra cookies and croissants...  But where?" ;
 
 }
 
