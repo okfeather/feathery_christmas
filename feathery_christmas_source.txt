@@ -21,11 +21,11 @@ integers {
 
 locations {
 
-   santa_cellar : location "This is Santa's cellar, where you can find different potions to keep him cheerful and full of energy." ;
+   bookshop : location "You are at the book shop." ;
 
-   nicobar_park : location "You are in Nicobar Park." ;
+   church : location "You are in front of the church." ;
 
-   south_park : location "You are in the South of Nicobar Park." ;
+   church_tower : location "You are in the church's tower." ;
 
    coocoo_cafe : location "You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof. Enter inside!" ;
    
@@ -33,17 +33,18 @@ locations {
 
    montauk_beach : location "Montauk is the place where lovers like to meet." ;
 
+   nicobar_park : location "You are in Nicobar Park." ;
+
    pigeon_fountain : location "You are in the Pigeon Fountain." ;
 
-   bookshop : location "You are at the book shop." ;
-
-   church : location "You are in front of the church." ;
-
-   church_tower : location "You are in the church's tower." ;
+   pigeon_route : location "You are in the Life or Bread labyrinth game.\n\nMove once a day and get the bread before a week to survive or this tomb will be your tomb!" ;
 
    robin_room : location "You are in Robin's bedroom, checking that Larry's friend Columbia safely delivered Robin's present." ;
 
-   pigeon_route : location "You are in the Life or Bread labyrinth game.\n\nMove once a day and get the bread before a week to survive or this tomb will be your tomb!" ;
+   santa_cellar : location "This is Santa's cellar, where you can find different potions to keep him cheerful and full of energy." ;
+
+   south_park : location "You are in the South of Nicobar Park." ;
+
    walls_n: location "";
    walls_ns: location "";
    walls_nse: location "";
