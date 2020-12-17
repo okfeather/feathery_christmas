@@ -7,7 +7,7 @@ loading_screen = loading_screen
 // autorediscribe if locations/objects changes
 redescribe = auto_beta
 
-start_at = nicobar_park
+start_at = santa_cellar
 
 ######################################
 #  Variables                         #
@@ -25,7 +25,7 @@ locations {
 
    bookshop : location "You are at the book shop." ;
 
-   church : location "You are in front of the church." ;
+   church : location "You are in front of the church. You can access the tower if you enter." ;
 
    church_tower : location "You are in the church's tower." ;
 
@@ -79,7 +79,7 @@ connections {
    bookshop, east, south_park,
    nicobar_park, northeast, pigeon_fountain,
    south_park, south, church,
-   church, south, church_tower,
+   church, enter, church_tower,
    montauk_beach, north, robin_room,
    nicobar_park, east, pigeon_route,
 
@@ -111,27 +111,41 @@ connections {
 
 objects {
 
-bin : scenery "a beautiful Art Deco bin." at = "coocoo_cafe";
+bin : scenery "a beautiful Art Deco bin" at = "coocoo_cafe";
 
-bread : object "a generous loaf of bread";
+bread : object "a generous loaf of bread and other goodies";
+
+coin : object "a coal coin" at = "montauk_beach" ;
+
+dictionary : object "a Korean-English dictionary" ;
 
 intro : scenery "yourself crying and knowing that all children will think they were bad this year and didn't deserve a present" at = "nicobar_park" ;
 
 after_intro : scenery "the pigeons following Larry to distribute all the presents" ;
 
-larry : scenery "Larry, the leader of the pack of pigeons." at = "montauk_beach";
+larry : scenery "Larry, the leader of the pack of pigeons" at = "montauk_beach";
 
-helping_larry : scenery "Larry who will now motivate the whole pigeon troop to deliver all presents." ;
+helping_larry : scenery "Larry who will now motivate the whole pigeon troop to deliver all presents" ;
 
 flying_pigeon : scenery "a pigeon singing even though its beak is carrying a Sappy Meal bag: \' lovers meet in Montauk Beach, lalala \'" at = "nicobar_park";
 
 new_pigeon : scenery "a pigeon singing even though its beak is carrying a dumbbell: \'Best carriers meet in Montauk Beach, lalala \'";
 
+absent_pigeon : scenery "no birdy no cry (where could they all be?)" at = "church_tower" ;
+
+gang_pigeon : scenery "the biggest group of pigeons you've ever seen in your entire life is gathered here" ;
+
 pigeon_book : object "a book \'Pigeons love bread\'" at = "nicobar_park" ;
 
 robin : scenery "Robin is happily screaming 'I can't wait to play Call Of Beauty!'" at = "robin_room" ;
 
-waitress : scenery "a waitress from Coocoo Cafe. She looks very tired." at = "coocoo_inside" ;
+tourist : scenery "another tourist" at = "church_tower";
+
+unpaid_tourguide : scenery "the tour guide for the Church Tower" at = "church"  ;
+
+friendly_tourguide : scenery "the tour guide for the Church Tower" ;
+
+waitress : scenery "a waitress from Coocoo Cafe. She looks very tired" at = "coocoo_inside" ;
 
 grateful_waitress : scenery "The Coocoo Cafe team is grateful for your help. You got rid of all extra cookies and croissants...  But where?" ;
 
@@ -151,6 +165,14 @@ barriers {
 
    }
 
+   block_tourguide : block {
+
+      location = church_tower
+      message  = The path is blocked the tour guide
+      block_when_exists = unpaid_tourguide
+
+   }
+
 }
 
 ######################################
@@ -162,7 +184,7 @@ on_startup {
    : play_music sound="music_sleepy";
    : print "Type VERB NOUN with the keyboard to advance in the game." ;
    : print "e.g. EXAMINE PIGEON to take a closer look at a PIGEON." ;
-   : print "GET BREAD (or TAKE BREAD) to take BREAD and add it to your inventory." ;
+   : print "GET BREAD to take BREAD and add it to your inventory." ;
    : press_any_key ;
    : print "To travel, type NORTH, EAST, SOUTH, WEST (or N, E, S, W)" ;
    : press_any_key ;
@@ -181,6 +203,11 @@ on_startup {
 ######################################
 
 on_describe {
+
+   : if (is_present "unpaid_tourguide") {
+      : print "The guide says, \"The entrance fee is 1 coal coin.\"." ;
+   }
+
    : if (is_present "larry") {
       : print "Larry says, \"I'm glad you met me in Montauk. I hope you've not come empty-handed.\"." ;
    }
@@ -240,7 +267,7 @@ on_describe {
 
 on_command {
 
-   : match "get bag; pick bag"  {
+   : match "get bag; pick bag; take bag"  {
       : if (is_at "coocoo_cafe") {
          : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
       }
@@ -263,7 +290,7 @@ on_command {
 
    : match "give bread"  {
       : if (is_present "larry" && is_carried "bread") {
-         : print "Larry takes the loaf of bread and says. \"Alright, we'll help you distribute the presents. Let's go!\" ";
+         : print "Larry takes the loaf of bread and says. \"Alright, we'll help you distribute the presents. Let's gather the troops at the Church Tower!\" ";
          : destroy "bread" ;
          : swap o1 = "larry"  o2 = "helping_larry" ;
          : swap o1 = "intro"  o2 = "after_intro" ;
@@ -273,9 +300,9 @@ on_command {
       }
    }
 
-   : match "get bread; pick bread"  {
+   : match "get bread; pick bread; take bread"  {
       : if (is_at "coocoo_cafe" && has_not_created "bread" && is_exists "grateful_waitress") {
-        : print "You take a big loaf of bread from the bin." ;
+        : print "You take the loaf of bread and other delicacies from the bin." ;
         : pocket "bread";
       }
    }
@@ -286,7 +313,7 @@ on_command {
       }
    }
 
-   : match "get book; pick book"  {
+   : match "get book; pick book; take book"  {
       : if (is_at "nicobar_park" && has_not_created "pigeon_book") {
         : print "You take the book" ;
         : pocket "pigeon_book";
@@ -313,6 +340,27 @@ on_command {
       }
    }
 
+   : match "examine coal; examine coin"  {
+      : if (is_at "montauk_beach") {
+         : print "This coin could be useful." ;
+      }
+   }
+
+   : match "get coal; pick coal; take coal; get coin; pick coin; take coin"  {
+      : if (is_at "montauk_beach" && has_not_created "coin") {
+        : print "You take the coal coin. People throw anything away these days." ;
+        : pocket "coin";
+      }
+   }
+
+   : match "give coin; give coal"  {
+      : if (is_present "unpaid_tourguide" && is_carried "coin") {
+         : print "The tour guide gladly takes the coin and says \"Great, let's visit the Church Tower! Please come in!\" ";
+         : destroy "coin" ;
+         : swap o1 = "unpaid_tourguide"  o2 = "friendly_tourguide" ;
+      }
+   }
+
    : match "examine coocoo"  {
       : if (is_at "coocoo_cafe") {
          : print "The Coocoo Cafe is about to close, but there is so much left to do!" ;
@@ -327,7 +375,7 @@ on_command {
       }
    }
 
-   : match "get larry; pick larry"  {
+   : match "get larry; pick larry; take larry"  {
       : if (is_at "montauk_beach") {
          : print "Pigeons are not pocket monsters, you cannot just catch them." ;
       }
@@ -351,7 +399,7 @@ on_command {
       }
    }
 
-   : match "get meal; pick meal"  {
+   : match "get meal; pick meal; take meal"  {
       : if (is_at "coocoo_cafe") {
          : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
       }
@@ -384,7 +432,7 @@ on_command {
       }
    }
 
-   : match "get pigeon; pick pigeon; talk pigeon"  {
+   : match "get pigeon; pick pigeon; take pigeon; talk pigeon"  {
       : if (is_at "coocoo_cafe") {
          : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
       }
@@ -413,7 +461,27 @@ on_command {
          : print "You see pigeons eating and flying with colorful doggy bags. It's like a very busy restaurant." ;
       }
    }
-   
+
+   : match "examine tourist; talk tourist; examine visitor; talk visitor"  {
+      : if (is_present "tourist") {
+         : clear_screen;
+         : print "\"안녕하세요! 나는 비둘기를 위해 여기에 왔습니다!\", says the cheerful tourist." ;
+         : press_any_key ;
+         : redescribe;
+      }
+   }
+
+   : match "translate tourist; talk english"  {
+      : if (is_present "tourist") {
+         : clear_screen;
+         : print "\"Oh you don't speak Korean? Dear me! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. Please take it.\", says the cheerful tourist, handing you a Korean-English dictionary." ;
+         : press_any_key ;
+         : create "dictionary" ;
+         : pocket "dictionary" ;
+         : redescribe;
+      }
+   }
+
    : match "help waitress"  {
       : if (is_present "waitress") {
          : print "You are helping the Coocoo Cafe team.";
