@@ -293,7 +293,7 @@ on_command {
    }
 
    : match "give bread"  {
-      : if (is_present "larry" && is_carried "bread") {
+      : if (is_present "larry" && is_carried "bread" && is_carried "pigeon_bookreal") {
          : print "Larry takes the loaf of bread and says. \"Alright, we'll help you distribute the presents. Let's gather the troops at the Church Tower!\" ";
          : destroy "bread" ;
          : swap o1 = "larry"  o2 = "helping_larry" ;
@@ -388,6 +388,15 @@ on_command {
          : destroy "dictionary" ;
          : create "pigeon_bookreal" ;
          : pocket "pigeon_bookreal" ;
+      }
+   }
+
+: match "examine guide; talk guide; examine tour; talk tour; examine tourguide; talk tourguide"  {
+      : if (is_present "unpaid_tourguide") {
+         : clear_screen;
+         : print "\"No coin? Go home\", says the poetic tourguide." ;
+         : press_any_key ;
+         : redescribe;
       }
    }
 
@@ -512,6 +521,15 @@ on_command {
          : print "You are helping the Coocoo Cafe team.";
          : swap o1 = "waitress"  o2 = "grateful_waitress" ;
          ;
+      }
+   }
+
+: match "examine waitress; talk waitress"  {
+      : if (is_present "waitress") {
+         : clear_screen;
+         : print "\"There is so much work!!!! Please help me\", says the desperate waitress." ;
+         : press_any_key ;
+         : redescribe;
       }
    }
 
