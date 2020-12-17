@@ -113,6 +113,8 @@ objects {
 
 bin : scenery "a beautiful Art Deco bin" at = "coocoo_cafe";
 
+bookshop_owner : scenery "the bookshop owner" at = "bookshop";
+
 bread : object "a generous loaf of bread and other goodies";
 
 coin : object "a coal coin" at = "montauk_beach" ;
@@ -136,6 +138,8 @@ absent_pigeon : scenery "no birdy no cry (where could they all be?)" at = "churc
 gang_pigeon : scenery "the biggest group of pigeons you've ever seen in your entire life is gathered here" ;
 
 pigeon_book : object "a book \'Pigeons love bread\'" at = "nicobar_park" ;
+
+pigeon_bookreal : object "the real bible about pigeons \'Lovey Dovey Pigeons\'" ;
 
 robin : scenery "Robin is happily screaming 'I can't wait to play Call Of Beauty!'" at = "robin_room" ;
 
@@ -308,8 +312,11 @@ on_command {
    }
 
    : match "examine book; read book"  {
-      : if (is_at "nicobar_park") {
+      : if (is_at "nicobar_park" && is_exists "pigeon_book") {
          : print "Inside it says \'Pigeons love carrying heavy objects, but need energy to do so.\'" ;
+      }
+      : if (is_exists "pigeon_bookreal") {
+         : print "Inside it says \'A pigeon can fly up to 143 kilometers per hour. Just ask for Caballero.\'" ;
       }
    }
 
@@ -319,7 +326,7 @@ on_command {
         : pocket "pigeon_book";
       }
    }
-   
+
    : match "clean cafe; tidy cafe"  {
       : if (is_present "waitress") {
          : print "You are helping the Coocoo Cafe team.";
@@ -375,6 +382,15 @@ on_command {
       }
    }
 
+   : match "give dictionary"  {
+      : if (is_present "bookshop_owner" && is_carried "dictionary") {
+         : print "The bookshop owner takes the dictionary: \"Thank you, I thought I would never be able to communicate with my daughter ever again. Here is a token of my gratitude.\". She gives you a book. ";
+         : destroy "dictionary" ;
+         : create "pigeon_bookreal" ;
+         : pocket "pigeon_bookreal" ;
+      }
+   }
+
    : match "get larry; pick larry; take larry"  {
       : if (is_at "montauk_beach") {
          : print "Pigeons are not pocket monsters, you cannot just catch them." ;
@@ -411,6 +427,15 @@ on_command {
    : match "examine montauk"  {
       : if (is_at "montauk_beach") {
          : print "The beach is quiet today." ;
+      }
+   }
+
+   : match "examine owner; talk owner; examine vendor; talk vendor"  {
+      : if (is_present "bookshop_owner") {
+         : clear_screen;
+         : print "\"Please help me!!! My daughter sent me several letters but I cannot read them! Here is the last one: '비둘기 집에 음식을 두면 비둘기가 옵니다'\", says the bookshop owner." ;
+         : press_any_key ;
+         : redescribe;
       }
    }
 
@@ -471,7 +496,7 @@ on_command {
       }
    }
 
-   : match "translate tourist; talk english"  {
+   : match "translate tourist; talk english; translate english"  {
       : if (is_present "tourist") {
          : clear_screen;
          : print "\"Oh you don't speak Korean? Dear me! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. Please take it.\", says the cheerful tourist, handing you a Korean-English dictionary." ;
