@@ -27,7 +27,7 @@ locations {
 
    church : location "You are in front of the church. You can access the tower if you enter." ;
 
-   church_tower : location "You are in the church's tower." ;
+   church_tower : location "You are in the church's tower. Rumor has it that a secret bell combination will result in all nearby pigeons being reunited here. Enter RING NUMBER (e.g. RING 0) to try calling pigeons." ;
 
    coocoo_cafe : location "You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof. Enter inside!" ;
    
@@ -129,6 +129,8 @@ larry : scenery "Larry, the leader of the pack of pigeons" at = "montauk_beach";
 
 helping_larry : scenery "Larry who will now motivate the whole pigeon troop to deliver all presents" ;
 
+morehelping_larry : scenery "Larry" ;
+
 flying_pigeon : scenery "a pigeon singing even though its beak is carrying a Sappy Meal bag: \' lovers meet in Montauk Beach, lalala \'" at = "nicobar_park";
 
 new_pigeon : scenery "a pigeon singing even though its beak is carrying a dumbbell: \'Best carriers meet in Montauk Beach, lalala \'";
@@ -166,6 +168,14 @@ barriers {
       location = robin_room
       message  = The path is blocked by Larry
       block_when_exists = larry
+
+   }
+
+   block_helpinglarry : block {
+
+      location = robin_room
+      message  = The path is blocked
+      block_when_exists = helping_larry
 
    }
 
@@ -271,6 +281,12 @@ on_describe {
 
 on_command {
 
+   : match "ring 143"  {
+      : if (is_at "church_tower") {
+         : swap o1 = "absent_pigeon"  o2 = "gang_pigeon" ;
+      }
+   }
+
    : match "get bag; pick bag; take bag"  {
       : if (is_at "coocoo_cafe") {
          : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
@@ -293,14 +309,13 @@ on_command {
    }
 
    : match "give bread"  {
-      : if (is_present "larry" && is_carried "bread" && is_carried "pigeon_bookreal") {
+      : if (is_present "larry" && is_carried "bread" ) {
          : print "Larry takes the loaf of bread and says. \"Alright, we'll help you distribute the presents. Let's gather the troops at the Church Tower!\" ";
          : destroy "bread" ;
          : swap o1 = "larry"  o2 = "helping_larry" ;
          : swap o1 = "intro"  o2 = "after_intro" ;
          : swap o1 = "flying_pigeon"  o2 = "new_pigeon" ;
          : set_graphic graphic = "montauk_beach_nopigeon"  target = "montauk_beach" ;
-
       }
    }
 
@@ -311,7 +326,7 @@ on_command {
       }
    }
 
-   : match "examine book; read book"  {
+   : match "examine book; read book; use book"  {
       : if (is_at "nicobar_park" && is_exists "pigeon_book") {
          : print "Inside it says \'Pigeons love carrying heavy objects, but need energy to do so.\'" ;
       }
@@ -382,10 +397,9 @@ on_command {
       }
    }
 
-   : match "give dictionary"  {
-      : if (is_present "bookshop_owner" && is_carried "dictionary") {
-         : print "The bookshop owner takes the dictionary: \"Thank you, I thought I would never be able to communicate with my daughter ever again. Here is a token of my gratitude.\". She gives you a book. ";
-         : destroy "dictionary" ;
+   : match "use dictionary; read dictionary"  {
+      : if (is_present "tourist" && is_carried "dictionary") {
+         : print "The tourist laughs \"Oh you don't speak Korean? Dear me! You should have said so! I was meditating over this book. Oh, I have an English version as well. Please take it.\". He gives you the book. ";
          : create "pigeon_bookreal" ;
          : pocket "pigeon_bookreal" ;
       }
@@ -410,6 +424,13 @@ on_command {
       : if (is_present "larry") {
          : clear_screen;
          : print "\"Can't you see we are all hungry?\", says Larry." ;
+         : press_any_key ;
+         : redescribe;
+      }
+      : if (is_present "helping_larry") {
+         : clear_screen;
+         : print "\"We will help you. Go to the Church Tower and ring the correct combination. Hint: us pigeons will need to be as fast as possible.\", says Larry." ;
+         : swap o1 = "helping_larry"  o2 = "morehelping_larry" ;
          : press_any_key ;
          : redescribe;
       }
@@ -442,9 +463,26 @@ on_command {
    : match "examine owner; talk owner; examine vendor; talk vendor"  {
       : if (is_present "bookshop_owner") {
          : clear_screen;
-         : print "\"Please help me!!! My daughter sent me several letters but I cannot read them! Here is the last one: '비둘기 집에 음식을 두면 비둘기가 옵니다'\", says the bookshop owner." ;
+         : print "\"안녕하세요! \", says the bookshop owner. Maybe you will need an English version." ;
          : press_any_key ;
          : redescribe;
+      }
+   }
+
+   : match "translate owner; talk english; translate english"  {
+      : if (is_present "bookshop_owner") {
+         : clear_screen;
+         : print "\"Oh you don't speak Korean? Dear me! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. I strongly recommend it to you, but we only accept books as currency." ;
+         : press_any_key ;
+         : redescribe;
+      }
+   }
+
+   : match "give book"  {
+      : if (is_present "bookshop_owner") {
+            : destroy "pigeon_book" ;
+            : create "dictionary" ;
+            : pocket "dictionary" ;
       }
    }
 
@@ -499,19 +537,8 @@ on_command {
    : match "examine tourist; talk tourist; examine visitor; talk visitor"  {
       : if (is_present "tourist") {
          : clear_screen;
-         : print "\"안녕하세요! 나는 비둘기를 위해 여기에 왔습니다!\", says the cheerful tourist." ;
+         : print "\"나는 비둘기를 위해 여기에 왔습니다! '비둘기 집에 음식을 두면 비둘기가 옵니다'\", says the cheerful tourist. Maybe you will need another item to have a fruitful conversation." ;
          : press_any_key ;
-         : redescribe;
-      }
-   }
-
-   : match "translate tourist; talk english; translate english"  {
-      : if (is_present "tourist") {
-         : clear_screen;
-         : print "\"Oh you don't speak Korean? Dear me! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. Please take it.\", says the cheerful tourist, handing you a Korean-English dictionary." ;
-         : press_any_key ;
-         : create "dictionary" ;
-         : pocket "dictionary" ;
          : redescribe;
       }
    }
