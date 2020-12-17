@@ -289,7 +289,7 @@ on_command {
       }
    }
 
-   : match "get bag; pick bag; take bag"  {
+   : match "get bag; take bag"  {
       : if (is_at "coocoo_cafe") {
          : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
       }
@@ -321,7 +321,7 @@ on_command {
       }
    }
 
-   : match "get bread; pick bread; take bread"  {
+   : match "get bread; take bread"  {
       : if (is_at "coocoo_cafe" && has_not_created "bread" && is_exists "grateful_waitress") {
         : print "You take the loaf of bread and other delicacies from the bin." ;
         : pocket "bread";
@@ -340,7 +340,7 @@ on_command {
       }
    }
 
-   : match "get book; pick book; take book"  {
+   : match "get book; take book"  {
       : if (is_at "nicobar_park" && has_not_created "pigeon_book") {
         : print "You take the book" ;
         : pocket "pigeon_book";
@@ -380,7 +380,7 @@ on_command {
       }
    }
 
-   : match "get coal; pick coal; take coal; get coin; pick coin; take coin"  {
+   : match "get coal; take coal; get coin; take coin"  {
       : if (is_at "montauk_beach" && has_not_created "coin") {
         : print "You take the coal coin. People throw anything away these days." ;
         : pocket "coin";
@@ -430,7 +430,7 @@ on_command {
       }
    }
 
-   : match "get larry; pick larry; take larry"  {
+   : match "get larry; take larry"  {
       : if (is_at "montauk_beach") {
          : print "Pigeons are not pocket monsters, you cannot just catch them." ;
       }
@@ -464,7 +464,7 @@ on_command {
       }
    }
 
-   : match "get meal; pick meal; take meal"  {
+   : match "get meal; take meal"  {
       : if (is_at "coocoo_cafe") {
          : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
       }
@@ -536,7 +536,7 @@ on_command {
       }
    }
 
-   : match "get pigeon; pick pigeon; take pigeon; talk pigeon"  {
+   : match "get pigeon; take pigeon; talk pigeon"  {
       : if (is_at "coocoo_cafe") {
          : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
       }
