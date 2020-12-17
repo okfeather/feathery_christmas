@@ -127,7 +127,7 @@ after_intro : scenery "the pigeons following Larry to distribute all the present
 
 larry : scenery "Larry, the leader of the pack of pigeons" at = "montauk_beach";
 
-helping_larry : scenery "Larry who will now motivate the whole pigeon troop to deliver all presents" ;
+helping_larry : scenery "Larry flying (but is it going away or coming back?)" ;
 
 morehelping_larry : scenery "Larry" ;
 
@@ -145,7 +145,9 @@ pigeon_bookreal : object "the real bible about pigeons \'Lovey Dovey Pigeons\'" 
 
 robin : scenery "Robin is happily screaming 'I can't wait to play Call Of Beauty!'" at = "robin_room" ;
 
-tourist : scenery "another tourist" at = "church_tower";
+tourist : scenery "a tourist" at = "church_tower";
+
+happy_tourist : scenery "a tourist" ;
 
 unpaid_tourguide : scenery "the tour guide for the Church Tower" at = "church"  ;
 
@@ -219,7 +221,7 @@ on_startup {
 on_describe {
 
    : if (is_present "unpaid_tourguide") {
-      : print "The guide says, \"The entrance fee is 1 coal coin.\"." ;
+      : print "The guide says, \"The entrance fee per day is 1 coal coin.\"." ;
    }
 
    : if (is_present "larry") {
@@ -327,11 +329,14 @@ on_command {
    }
 
    : match "examine book; read book; use book"  {
-      : if (is_at "nicobar_park" && is_exists "pigeon_book") {
+      : if (is_at "nicobar_park" && is_carried "pigeon_book") {
          : print "Inside it says \'Pigeons love carrying heavy objects, but need energy to do so.\'" ;
       }
-      : if (is_exists "pigeon_bookreal") {
+      : if (is_carried "pigeon_bookreal") {
          : print "Inside it says \'A pigeon can fly up to 143 kilometers per hour. Just ask for Caballero.\'" ;
+      }
+      : if (is_at "bookshop" && is_carried "pigeon_book") {
+         : print "Who would want to read such a tiny book anyway?" ;
       }
    }
 
@@ -359,6 +364,13 @@ on_command {
    : match "examine children"  {
       : if (is_at "nicobar_park") {
          : print "You are the only child here." ;
+      }
+   }
+
+
+   : match "examine church"  {
+      : if (is_at "church") {
+         : print "This church looks like it's from the Victorian era." ;
       }
    }
 
@@ -402,6 +414,7 @@ on_command {
          : print "The tourist laughs \"Oh you don't speak Korean? Dear me! You should have said so! I was meditating over this book. Oh, I have an English version as well. Please take it.\". He gives you the book. ";
          : create "pigeon_bookreal" ;
          : pocket "pigeon_bookreal" ;
+         : swap o1 = "tourist"  o2 = "happy_tourist" ;
       }
    }
 
@@ -411,6 +424,9 @@ on_command {
          : print "\"No coin? Go home\", says the poetic tourguide." ;
          : press_any_key ;
          : redescribe;
+      }
+      : if (is_present "friendly_tourguide") {
+         : print "\"Welcome! Come in!\", says the happy tourguide." ;
       }
    }
 
@@ -427,9 +443,12 @@ on_command {
          : press_any_key ;
          : redescribe;
       }
-      : if (is_present "helping_larry") {
+      : if (is_present "helping_larry" && is_exists "absent_pigeon") {
+         : print "Larry has gone to organize everything." ;
+      }
+      : if (is_present "helping_larry" && is_exists "gang_pigeon") {
          : clear_screen;
-         : print "\"We will help you. Go to the Church Tower and ring the correct combination. Hint: us pigeons will need to be as fast as possible.\", says Larry." ;
+         : print "\"Okay, everything should go well now. We're almost done.\", says Larry." ;
          : swap o1 = "helping_larry"  o2 = "morehelping_larry" ;
          : press_any_key ;
          : redescribe;
@@ -463,26 +482,36 @@ on_command {
    : match "examine owner; talk owner; examine vendor; talk vendor"  {
       : if (is_present "bookshop_owner") {
          : clear_screen;
-         : print "\"안녕하세요! \", says the bookshop owner. Maybe you will need an English version." ;
+         : print "\"안녕하세요! \", says the bookshop owner. Maybe you will need to translate to English." ;
          : press_any_key ;
          : redescribe;
       }
    }
 
-   : match "translate owner; talk english; translate english"  {
+   : match "translate owner; talk english; translate english; translate _"  {
       : if (is_present "bookshop_owner") {
          : clear_screen;
-         : print "\"Oh you don't speak Korean? Dear me! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. I strongly recommend it to you, but we only accept books as currency." ;
+         : print "\"Oh you don't speak Korean? Dear me! Everyone needs a Korean-English dictionary in their life. You can get one by exchanging with another book.\"" ;
          : press_any_key ;
          : redescribe;
       }
    }
 
-   : match "give book"  {
-      : if (is_present "bookshop_owner") {
+   : match "give book; exchange book"  {
+      : if (is_present "bookshop_owner" && is_carried "pigeon_book") {
+            : print "\"Thank you! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. It will open a new world to you.\" You get a Korean-English dictionary." ;
             : destroy "pigeon_book" ;
             : create "dictionary" ;
             : pocket "dictionary" ;
+      }
+      : if (is_present "bookshop_owner" && is_carried "pigeon_bookreal") {
+            : print "\"This book has a Not For Sale Specimen stamp on it. Sorry, we cannot take it.\" " ;
+      }
+   }
+
+   : match "give dictionary; exchange dictionary"  {
+         : if (is_present "bookshop_owner" && is_carried "dictionary") {
+            : print "\"We do not accept returns.\" " ;
       }
    }
 
@@ -501,6 +530,9 @@ on_command {
       }
       : if (is_at "nicobar_park") {
          : print "The pigeon looks happy and busy." ;
+      }
+      : if (is_at "church_tower") {
+         : print "The pigeons are getting ready for a big mission." ;
       }
    }
 
@@ -522,9 +554,21 @@ on_command {
       }
    }
 
+   : match "examine potion; examine potions; get potion; get potions; examine cellar"  {
+      : if (is_at "santa_cellar") {
+         : print "These potions are only for Santa, giving him strength for Christmas day." ;
+      }
+   }
+
    : match "examine present"  {
       : if (is_at "nicobar_park") {
          : print "There are no presents here." ;
+      }
+   }
+
+   : match "examine reindeer; examine reindeers"  {
+      : if (is_at "santa_cellar") {
+         : print "It seems that Santa's potions only work on Santa. The reindeers are all incapable of moving!" ;
       }
    }
 
@@ -534,12 +578,21 @@ on_command {
       }
    }
 
+   : match "examine shop"  {
+      : if (is_at "bookshop") {
+         : print "This is an exchange only bookshop. Books are the currency." ;
+      }
+   }
+
    : match "examine tourist; talk tourist; examine visitor; talk visitor"  {
       : if (is_present "tourist") {
          : clear_screen;
-         : print "\"나는 비둘기를 위해 여기에 왔습니다! '비둘기 집에 음식을 두면 비둘기가 옵니다'\", says the cheerful tourist. Maybe you will need another item to have a fruitful conversation." ;
+         : print "\"나는 비둘기를 위해 여기에 왔습니다! '비둘기 집에 음식을 두면 비둘기가 옵니다'\", says the cheerful tourist. Maybe you will need to use another item to have a fruitful conversation." ;
          : press_any_key ;
          : redescribe;
+      }
+      : if (is_present "happy_tourist") {
+         : print "\"It doesn't matter what people call you unless they call you pigeon pie and eat you up.\", says the happy tourist." ;
       }
    }
 
