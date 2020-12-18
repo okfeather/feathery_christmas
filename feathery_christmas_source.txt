@@ -323,7 +323,10 @@ on_command {
    : match "ring 143"  {
       : if (is_at "church_tower") {
          : play_music sound="music_bells";
+         : print "\"Okay, everything should go well now. We're almost done. We will now continue from Montauk Beach\", says Larry." ;
          : swap o1 = "absent_pigeon"  o2 = "gang_pigeon" ;
+         : swap o1 = "helping_larry"  o2 = "morehelping_larry" ;
+         
       }
    }
 
@@ -487,10 +490,6 @@ on_command {
       }
       : if (is_present "helping_larry" && is_exists "absent_pigeon") {
          : print "Larry has gone to organize everything." ;
-      }
-      : if (is_present "helping_larry" && is_exists "gang_pigeon") {
-         : print "\"Okay, everything should go well now. We're almost done.\", says Larry." ;
-         : swap o1 = "helping_larry"  o2 = "morehelping_larry" ;
       }
    }
 
