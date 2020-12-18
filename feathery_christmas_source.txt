@@ -39,7 +39,7 @@ locations {
 
    pigeon_fountain : location "You are in the Pigeon Fountain." ;
 
-   pigeon_route : location "You are in the Life or Bread labyrinth game.\n\nMove once a day and get the bread before a week to survive or this tomb will be your tomb!" ;
+   pigeon_route : location "Pigeons are going to give gifts to all children!\n\nFind the shortest path to get there before Christmas! Wind push you and make you save distance!" ;
 
    robin_room : location "You are in Robin's bedroom, checking that Larry's friend Columbia safely delivered Robin's present." ;
 
@@ -80,8 +80,8 @@ connections {
    nicobar_park, northeast, pigeon_fountain,
    south_park, south, church,
    church, enter, church_tower,
-   montauk_beach, north, robin_room,
-   nicobar_park, east, pigeon_route,
+   montauk_beach, north_oneway, pigeon_route,
+   pigeon_route, east_oneway, montauk_beach,
 
    pigeon_route, north_oneway, walls_n,
    walls_n, south_oneway, walls_ns,
@@ -167,7 +167,7 @@ barriers {
 
    block_larry : block {
 
-      location = robin_room
+      location = pigeon_route
       message  = The path is blocked by Larry
       block_when_exists = larry
 
@@ -175,7 +175,7 @@ barriers {
 
    block_helpinglarry : block {
 
-      location = robin_room
+      location = pigeon_route
       message  = The path is blocked
       block_when_exists = helping_larry
 
@@ -276,21 +276,22 @@ on_describe {
        : add var = "day_spend_walls_enigma" value = "2" ;
    }
    : if (is_at "walls_win" ) {
-      : if (day_spend_walls_enigma == 6) {
+      : if (day_spend_walls_enigma <= 6) {
             # should only show "Retry" phrase when object has not been won
             : print "You did it in the shortest time possible, you win fresh bread! \n\nRetry it taking the slowest path to get a consolation (=loser) prize.";
+            : goto "robin_room";
       }
-      : else_if (day_spend_walls_enigma == 10) {
-            # should only show "Retry" phrase when object has not been won
-            : print "You did it in the longest time possible, you win stale bread!\n(and you kept your life YAY!)\n\nRetry it taking the least time possible whenever you want.";
-      }
+      ##: else_if (day_spend_walls_enigma == 10) {
+      ##      # should only show "Retry" phrase when object has not been won
+      ##      : print "You did it in the longest time possible, you win stale bread!\n(and you kept your life YAY!)\n\nRetry it taking the least time possible whenever you want.";
+      ##      : goto "montauk_beach";
+      ##}
       : else {
             # should only show "Retry" phrase when object has not been won
-            : print "You spent too much time and won NOTHING!\n(but you kept your life YAY!)\n\nRetry it taking even more time or taking the least possible time!";
+            : print "Getting to the end was too long, TRY AGAIN!\n(it was just a simulation so Christmas is still ON, YAY!)\n\nRetry it taking taking even less move to save CHRISTMAS!";
+            : goto "montauk_beach";
       }
-      : press_any_key ;
-      : goto "nicobar_park";
-      : stop_music;
+      : press_any_key;
       : redescribe;
    }
 }
