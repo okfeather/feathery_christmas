@@ -214,7 +214,6 @@ barriers {
 
 on_startup {
 
-   : play_music sound="music_sleepy";
    : print "Type VERB NOUN with the keyboard to advance in the game." ;
    : print "e.g. EXAMINE PIGEON to take a closer look at a PIGEON." ;
    : print "GET BREAD to take BREAD and add it to your inventory." ;
@@ -254,6 +253,9 @@ on_describe {
       : clear_screen;
       : stop_music;
       : win_game ;
+   }
+   : if (is_at "santa_cellar") {
+       : play_music sound="music_sleepy";
    }
    : if (is_at "nicobar_park") {
        : stop_music;
