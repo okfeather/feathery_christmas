@@ -37,8 +37,6 @@ locations {
 
    nicobar_park : location "You are in Nicobar Park." ;
 
-   pigeon_fountain : location "You are in the Pigeon Fountain." ;
-
    pigeon_route : location "Pigeons are going to give gifts to all children!\n\nFind the shortest path to get there before Christmas! Wind push you and make you save distance!" ;
 
    robin_room : location "You are in Robin's bedroom, checking that Larry's friend Columbia safely delivered Robin's present." ;
@@ -77,7 +75,6 @@ connections {
    coocoo_cafe, south, bookshop,
    coocoo_cafe, enter, coocoo_inside, 
    bookshop, east, south_park,
-   nicobar_park, northeast, pigeon_fountain,
    south_park, south, church,
    church, enter, church_tower,
    montauk_beach, north_oneway, pigeon_route,
