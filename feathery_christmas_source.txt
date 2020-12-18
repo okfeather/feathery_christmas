@@ -70,7 +70,7 @@ locations {
 connections {
 
    from, direction, to = [
-   santa_cellar, southeast, nicobar_park,
+   santa_cellar, leave_oneway, nicobar_park,
    nicobar_park, north, montauk_beach,
    nicobar_park, west, coocoo_cafe,
    nicobar_park, south, south_park,
