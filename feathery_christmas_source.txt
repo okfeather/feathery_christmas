@@ -1,7 +1,24 @@
+## TODO
+# lying pigeon puzzle
+# graphic layer for labyrinth to avoid too much images files
+# see if png can be better compressed (color/...)
+# images for inside church, santa cellar, labyrinth
+# beach have image with pigeon
 
 ######################################
 #  Adventuron                        #
 ######################################
+
+game_information {
+   game_name                    = Feathery Christmas
+   game_version                 = 0.0.1
+   game_shortname               = Feathery Xmas
+   written_by                   = OK Feather
+   uuid                         = b9293521-1ddf-48d0-9798-705e902858f9
+   year_of_release              = 2020
+   #copyright_message            = YOUR COPYRIGHT MESSAGE
+   short_synopsis               = Help Father Christmas deliver gifts without reindeers and save Christmas!
+}
 
 loading_screen = loading_screen
 // autorediscribe if locations/objects changes
@@ -329,7 +346,6 @@ on_command {
          : print "\"Okay, everything should go well now. We're almost done. We will now continue from Montauk Beach\", says Larry." ;
          : swap o1 = "absent_pigeon"  o2 = "gang_pigeon" ;
          : swap o1 = "helping_larry"  o2 = "morehelping_larry" ;
-         
       }
    }
 
