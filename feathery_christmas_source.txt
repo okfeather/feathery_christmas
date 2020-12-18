@@ -128,7 +128,9 @@ helping_larry : scenery "Larry flying (but is it going away or coming back?)" ;
 
 morehelping_larry : scenery "Larry" ;
 
-nicobar_woman : scenery "a woman thinking by herself" at = "south_park"  ;
+nicobar_woman1 : scenery "a woman thinking by herself" at = "south_park"  ;
+
+nicobar_woman2 : scenery "a woman thinking by herself" at = "south_park"  ;
 
 flying_pigeon : scenery "a pigeon singing even though its beak is carrying a Sappy Meal bag: \' lovers meet in Montauk Beach, lalala \'" at = "nicobar_park";
 
@@ -481,20 +483,14 @@ on_command {
 
    : match "examine larry; talk larry"  {
       : if (is_present "larry") {
-         : clear_screen;
          : print "\"Can't you see we are all hungry?\", says Larry." ;
-         : press_any_key ;
-         : redescribe;
       }
       : if (is_present "helping_larry" && is_exists "absent_pigeon") {
          : print "Larry has gone to organize everything." ;
       }
       : if (is_present "helping_larry" && is_exists "gang_pigeon") {
-         : clear_screen;
          : print "\"Okay, everything should go well now. We're almost done.\", says Larry." ;
          : swap o1 = "helping_larry"  o2 = "morehelping_larry" ;
-         : press_any_key ;
-         : redescribe;
       }
    }
 
@@ -524,10 +520,7 @@ on_command {
 
    : match "examine owner; talk owner; examine vendor; talk vendor; talk _"  {
       : if (is_present "bookshop_owner") {
-         : clear_screen;
          : print "\"안녕하세요! \", says the bookshop owner. Maybe you will need to translate to English." ;
-         : press_any_key ;
-         : redescribe;
       }
    }
 
@@ -647,10 +640,7 @@ on_command {
 
    : match "examine tourist; talk tourist; examine visitor; talk visitor"  {
       : if (is_present "tourist") {
-         : clear_screen;
          : print "\"나는 비둘기를 위해 여기에 왔습니다! '비둘기 집에 음식을 두면 비둘기가 옵니다'\", says the cheerful tourist. Maybe you will need to use another item to have a fruitful conversation." ;
-         : press_any_key ;
-         : redescribe;
       }
       : if (is_present "happy_tourist") {
          : print "\"It doesn't matter what people call you unless they call you pigeon pie and eat you up.\", says the happy tourist." ;
@@ -673,18 +663,22 @@ on_command {
 
    : match "examine waitress; talk waitress"  {
       : if (is_present "waitress") {
-         : clear_screen;
          : print "\"There is so much work!!!! Please help me\", says the desperate waitress." ;
-         : press_any_key ;
-         : redescribe;
       }
    }
 
    : match "talk _"  {
-      : if (is_present "nicobar_woman") {
-         : print "\"Have you visited the church? It is famous for its ellacombe apparatus, a mechanism that allows one person to ring all the bells. NO??? Here, have a ticket to visit.\", says the woman.";
+      : if (is_present "nicobar_woman1" && !is_carried "church_ticket") {
+         : clear_screen;
+         : print "\"Have you visited the church? It is famous for its ellacombe apparatus, a mechanism that allows one person to ring all the bells. I see you don't have a ticket! Here, have one to visit.\", says the woman.";
          : create "church_ticket" ;
          : pocket "church_ticket" ;
+         : swap o1 = "nicobar_woman1"  o2 = "nicobar_woman2" ;
+         : press_any_key ;
+         : redescribe;
+      }
+      : if (is_present "nicobar_woman2") {
+         : print "\"I know this church by heart!\", says the woman.";
       }
    }
 
