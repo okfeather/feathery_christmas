@@ -30,7 +30,7 @@ locations {
    church_tower : location "You are in the church's tower. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited here. Enter RING NUMBER (e.g. RING 0) to try calling pigeons." ;
 
    coocoo_cafe : location "You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof. Enter inside!" ;
-   
+
    coocoo_inside : location "You are inside the Coocoo Cafe. There are no customers." ;
 
    montauk_beach : location "Montauk is the place where lovers like to meet." ;
@@ -285,7 +285,8 @@ on_describe {
    : if (is_at "walls_win" ) {
       : if (day_spend_walls_enigma <= 6) {
             # should only show "Retry" phrase when object has not been won
-            : print "You did it in the shortest time possible, you win fresh bread! \n\nRetry it taking the slowest path to get a consolation (=loser) prize.";
+            : print "You did it in the shortest time possible, you win fresh bread!";
+            #\n\nRetry it taking the slowest path to get a consolation (=loser) prize.";
             : goto "robin_room";
       }
       ##: else_if (day_spend_walls_enigma == 10) {
