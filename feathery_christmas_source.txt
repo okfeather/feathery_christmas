@@ -27,7 +27,7 @@ locations {
 
    church : location "You are in front of the church. You can access the tower if you enter." ;
 
-   church_tower : location "You are in the church's tower. Rumor has it that a secret bell combination will result in all nearby pigeons being reunited here. Enter RING NUMBER (e.g. RING 0) to try calling pigeons." ;
+   church_tower : location "You are in the church's tower. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited here. Enter RING NUMBER (e.g. RING 0) to try calling pigeons." ;
 
    coocoo_cafe : location "You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof. Enter inside!" ;
    
@@ -191,6 +191,14 @@ barriers {
 
    }
 
+   block_church : block {
+
+      location = church
+      message  = The road is currently covered in snow, you cannot access it.
+      block_when_exists = larry
+
+   }
+
 }
 
 ######################################
@@ -334,7 +342,7 @@ on_command {
 
    : match "give bread"  {
       : if (is_present "larry" && is_carried "bread" ) {
-         : print "Larry takes the loaf of bread and says. \"Alright, we'll help you distribute the presents. Let's gather the troops at the Church Tower!\" ";
+         : print "Larry takes the loaf of bread and says. \"Alright, we'll help you distribute the presents! We will need to go to the church tower, gather the troops there with a secret code.\" ";
          : destroy "bread" ;
          : swap o1 = "larry"  o2 = "helping_larry" ;
          : swap o1 = "intro"  o2 = "after_intro" ;
