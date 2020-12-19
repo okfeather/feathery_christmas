@@ -1,5 +1,5 @@
 ## TODO
-# lying pigeon puzzle
+# alternative lying pigeon puzzle? (easier one if lost?)
 # graphic layer for labyrinth to avoid too much images files
 # see if png can be better compressed (color/...)
 # images for inside church, santa cellar, labyrinth
@@ -34,8 +34,16 @@ start_at = santa_cellar
 #  Variables                         #
 ######################################
 
+booleans {
+   has_food_fight : boolean "false";
+}
+
 integers {
    day_spend_walls_enigma : integer "0";
+}
+
+strings {
+   answer_logic : string "";
 }
 
 ######################################
@@ -262,7 +270,7 @@ on_describe {
       : print "The guide says, \"Do you have an entrance ticket? Only those with a ticket can access.\"." ;
    }
 
-   : if (is_present "larry") {
+   : if (is_present "larry" && !has_food_fight) {
       : print "Larry says, \"I'm glad you met me in Montauk. I hope you've not come empty-handed.\"." ;
    }
 
@@ -298,7 +306,31 @@ on_describe {
        : play_music sound="music_church";
    }
    : if (is_at "montauk_beach" ) {
-       : play_music sound="music_beach";
+       : if (has_food_fight) {
+           : print "Whomp! Coo! Coocoo! Coo! *combat sounds*\n";
+           : print "One of the pigeon did not get any bread!! Two are liars!\n";
+           : add_choice "Andrew: Charlie got bread" {
+               : print "Sorry, Andrew was the wrong choice :(";
+           }
+           : add_choice "Barbara: Darla and me got bread" {
+               : print "Sorry, Barbara was the wrong choice :(";
+           }
+           : add_choice "Charlie: I didn't get bread" {
+               : print "You won, well done!";
+               : swap o1 = "larry"  o2 = "helping_larry" ;
+               : set_false "has_food_fight";
+           }
+           : add_choice "Darla: Erik didn't get bread" {
+               : print "Sorry, Darla was the wrong choice :(";
+           }
+           : add_choice "Erik: Andrew and Darla got bread" {
+               : print "Sorry, Eric was the wrong choice :(";
+           }
+           : choose "Who didn't get any bread?";
+       }
+       : else {
+           : play_music sound="music_beach";
+       }
    }
    : if (is_at "pigeon_route" ) {
        : play_music sound="music_labyrinth";
@@ -376,13 +408,16 @@ on_command {
 
    : match "give bread"  {
       : if (is_present "larry" && is_carried "bread" ) {
-         : print "Larry takes the loaf of bread and says. \"Alright, we'll help you distribute the presents! We will need to go to the church tower, gather the troops there with a secret code.\" ";
+         : print "Larry takes the loaf of bread and says. \"Let's share the bread with all my friends!\" ";
+         : set_true "has_food_fight";
          : destroy "bread" ;
-         : swap o1 = "larry"  o2 = "helping_larry" ;
          : swap o1 = "a_yourself1"  o2 = "a_yourself2" ;
          : swap o1 = "flying_pigeon"  o2 = "new_pigeon" ;
+         : press_any_key;
+         : redescribe;
       }
    }
+   #: print "Larry takes the loaf of bread and says. \"Alright, we'll help you distribute the presents! We will need to go to the church tower, gather the troops there with a secret code.\" ";
 
    : match "get bread; take bread"  {
       : if (is_at "coocoo_cafe" && has_not_created "bread" && is_exists "grateful_waitress") {
