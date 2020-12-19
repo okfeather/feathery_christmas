@@ -437,6 +437,48 @@ on_describe {
 
 on_command {
 
+   : match "cheat labyrinth" {
+     : goto "labyrinth_start";
+     : redescribe;
+   }
+
+   : match "cheat tower" {
+     : goto "church_tower";
+     : redescribe;
+   }
+
+   : match "cheat church" {
+     : goto "church";
+     : redescribe;
+   }
+
+   : match "cheat cellar" {
+     : goto "church";
+     : redescribe;
+   }
+
+   : match "cheat cafe" {
+     : goto "coocoo_inside";
+     : redescribe;
+   }
+
+   : match "cheat bread" {
+     : pocket "bread";
+     : print "you got bread!";
+   }
+
+   : match "cheat ticket" {
+     : create "church_ticket" ;
+     : pocket "church_ticket" ;
+     : print "you got bread!";
+   }
+
+   : match "cheat dictionary" {
+     : create "dictionary" ;
+     : pocket "dictionary" ;
+     : print "you got dictionary!";
+   }
+
    : match "ring 143"  {
       : if (is_at "church_tower") {
          : stop_music;
