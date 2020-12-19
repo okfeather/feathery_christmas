@@ -636,7 +636,7 @@ on_command {
       }
    }
 
-   : match "examine cookie; examine cookies; examine bread"  {
+   : match "examine cookie; examine cookies; examine bread; take bread"  {
       : if (is_at "coocoo_inside") {
          : print "The cafe doesn't take any orders." ;
       }
