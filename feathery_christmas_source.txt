@@ -960,6 +960,37 @@ on_command {
        }
      }
    }
+
+   : match "examine -"  {
+      : if (is_at "bookshop") {
+         : print "So many books!" ;
+      }
+      : if (is_at "church") {
+         : print "A church in Norman style, the architecture is captivating." ;
+      }
+      : if (is_at "church_tower") {
+         : print "You remember the ellacombe apparatus, and the place for important missions." ;
+      }
+      : if (is_at "coocoo_cafe") {
+         : print "You see pigeons eating and flying with colorful doggy bags. It's like a very busy restaurant." ;
+      }
+      : if (is_at "coocoo_inside") {
+         : print "The interior of the Coocoo Cafe is very cosy." ;
+      }
+      : if (is_at "montauk_beach") {
+         : print "Montauk Beach is popular this season of the year for winter surfing, and is known as a romantic place." ;
+      }
+      : if (is_at "nicobar_park") {
+         : print "The Nicobar Park is the ideal refuge from the noisy streets of the city." ;
+      }
+      : if (is_at "santa_cellar") {
+         : print "You've never seen your cellar so crowded, and your bottles so empty." ;
+      }
+      : if (is_at "south_park") {
+         : print "A quiet part of the park, in warmer months you can hear the water flowing from the pigeon fountain. There is a beautiful view on the church." ;
+      }
+   }
+   
 }
 
 assets {
