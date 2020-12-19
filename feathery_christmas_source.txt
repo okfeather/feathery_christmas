@@ -70,11 +70,11 @@ locations {
 
    nicobar_park : location "You are in Nicobar Park." ;
 
-   labyrinth_start : location "Pigeons are going to give gifts to all children!\n\nFind the shortest path to get there before Christmas! Wind push you and make you save distance!" ;
+   labyrinth_start : location "Pigeons are going to give gifts to all children!\nThey just need you to help organize the delivery.\nFind the shortest path to get there before Christmas! Wind push you and make you save distance!" ;
 
    robin_room : location "You are in Robin's bedroom, checking that Larry's friend Columbia safely delivered Robin's present." ;
 
-   santa_cellar : location "This is Santa's cellar, where you can normally find different potions to stay cheerful and full of energy." ;
+   santa_cellar : location "This is Santa's cellar, where you can normally find different potions to stay cheerful and full of energy. You see the reindeers drank a lot, but they don't seem full of energy." ;
 
    south_park : location "You are in the South of Nicobar Park." ;
 
@@ -192,7 +192,7 @@ pigeon_book : object "a book \'Pigeons love bread\'" at = "nicobar_park" ;
 
 pigeon_bookreal : object "the real bible about pigeons \'Lovey Dovey Pigeons\'" ;
 
-robin : scenery "Robin is happily screaming 'I can't wait to play Call Of Beauty!'" at = "robin_room" ;
+robin : scenery "Robin is happily screaming 'I can't wait to play Call Of Beauty!' With your help, the pigeons could deliver the gifts to all children." at = "robin_room" ;
 
 tourist : scenery "a tourist" at = "church_tower";
 
