@@ -355,10 +355,10 @@ on_describe {
    : if (is_at "santa_cellar") {
        : play_music sound="music_sleepy";
        : press_any_key ;
-       : print "Christmas is coming tonight, everyone cannot wait to open presents. While you are organizing the distribution, all your reindeer suddenly become unable to move." ;
-       : print "How will you find a way to send all presents in time for the big day?" ;
+       : print "Christmas is coming tonight, everyone cannot wait to open presents." ;
+       : print "With this setback, how will you find a way to send all presents in time for the big day?" ;
        : press_any_key ;
-       : print "Let's go look for a way to save Christmas!" ;
+       : print "Let's find a way to save Christmas!" ;
        : print "Try some commands, e.g. EXAMINE REINDEER, GET POTION, TALK RUDOLPH. If you are stuck, type HELP." ;
        : press_any_key ;
    }
