@@ -32,7 +32,7 @@ vocabulary {
    : noun      / aliases = [guide, tour, tourguide]
    : noun      / aliases = [owner, vendor]
    : noun      / aliases = [pigeon, bird, pigeonds, birds]
-   : noun      / aliases = [potion, potions]
+   : noun      / aliases = [potion, potions, beverage, beverages, drink, drinks]
    : noun      / aliases = [reindeer, reindeers]
    : noun      / aliases = [tourist, visitor]
    : noun      / aliases = [yourself, santa, myself, me]
@@ -85,7 +85,7 @@ locations {
 
    robin_room : location "You are in Robin's bedroom, checking that Larry's friend Columbia safely delivered Robin's present." ;
 
-   santa_cellar : location "This is Santa's cellar, where you can normally find different potions to stay cheerful and full of energy. You see the reindeers drank a lot, but they don't seem full of energy." ;
+   santa_cellar : location "This is Santa's cellar, where you can normally find different potions to stay cheerful and full of energy. You remember having told the reindeers of these drinks' benefits, so that's probably why they drank a lot. However, they don't seem full of energy." ;
 
    south_park : location "You are in the South of Nicobar Park." ;
 
@@ -359,6 +359,7 @@ on_describe {
        : print "How will you find a way to send all presents in time for the big day?" ;
        : press_any_key ;
        : print "Let's go look for a way to save Christmas!" ;
+       : print "Try some commands, e.g. EXAMINE REINDEER, GET POTION, TALK RUDOLPH. If you are stuck, type HELP." ;
        : press_any_key ;
    }
    : if (is_at "nicobar_park") {
@@ -807,9 +808,9 @@ on_command {
       }
    }
 
-   : match "examine potion; get potion; examine cellar; examine drinks"  {
+   : match "examine potion; get potion; examine cellar; examine drinks; examine beverage"  {
       : if (is_at "santa_cellar") {
-         : print "These potions are only for Santa, giving strength for Christmas day." ;
+         : print "These potions give strength for Christmas day. You already had a drink earlier today, so now you should focus on delivering the presents." ;
       }
    }
 
@@ -819,9 +820,15 @@ on_command {
       }
    }
 
-   : match "examine reindeer"  {
+   : match "examine reindeer; examine rudolph"  {
       : if (is_at "santa_cellar") {
-         : print "It seems that Santa's potions only work on Santa. The reindeers are all incapable of moving!" ;
+         : print "It seems that Santa's potions only work on Santa. The reindeers are all incapable of moving! At least they don't look too unhappy." ;
+      }
+   }
+
+   : match "talk _"  {
+      : if (is_at "santa_cellar") {
+         : print "All the reindeers are smiling with their eyes closed, not too responsive though. Even Rudolph, who usually is unstoppable." ;
       }
    }
 
