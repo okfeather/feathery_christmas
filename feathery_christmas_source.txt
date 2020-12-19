@@ -276,7 +276,7 @@ on_startup {
    : collection_push { collection = "labyrinth_dir" content -> ("se") };
    : collection_push { collection = "labyrinth_dir" content -> ("see") };
    : collection_push { collection = "labyrinth_dir" content -> ("win") };
-   
+
    : collection_iterate "labyrinth_dir" {
        : set_graphic {
          graphic -> ("labyrinth")
@@ -284,6 +284,7 @@ on_startup {
        }
    }
 
+   : play_music sound="music_intro";
    : print "Type VERB NOUN with the keyboard to advance in the game." ;
    : print "e.g. EXAMINE PIGEON to take a closer look at a PIGEON." ;
    : print "GET BREAD to take BREAD and add it to your inventory." ;
@@ -292,11 +293,7 @@ on_startup {
    : press_any_key ;
    : print "To check your inventory, type INVENTORY (or I, POCKETS)" ;
    : press_any_key ;
-   : play_music sound="music_intro";
-   : print "Christmas is coming tonight, everyone cannot wait to open presents. While you are organizing the distribution, all your reindeer suddenly become unable to move." ;
-   : print "How will you find a way to send all presents in time for the big day?" ;
-   : print "Press any key to continue." ;
-
+   : print "To stop music, type SOUND OFF (SOUND ON to enable music)" ;
    : press_any_key ;
 
 }
@@ -327,6 +324,9 @@ on_describe {
    }
    : if (is_at "santa_cellar") {
        : play_music sound="music_sleepy";
+       : press_any_key ;
+       : print "Christmas is coming tonight, everyone cannot wait to open presents. While you are organizing the distribution, all your reindeer suddenly become unable to move." ;
+       : print "How will you find a way to send all presents in time for the big day?" ;
    }
    : if (is_at "nicobar_park") {
        : stop_music;
@@ -351,31 +351,36 @@ on_describe {
            : print "Whomp! Coo! Coocoo! Coo! *combat sounds*\n";
            : print "One of the pigeon did not get any bread!! Two are liars!\n";
            : add_choice "Andrew: Charlie got bread" {
-               : print "Sorry, Andrew was the wrong choice :(";
+               : print "Sorry, Andrew was the wrong choice : it would mean Charlie, Darla and Eric lied but there is only 2 lyers :(";
                : press_any_key;
                : redescribe;
            }
            : add_choice "Barbara: Darla and me got bread" {
-               : print "Sorry, Barbara was the wrong choice :(";
+               : print "Sorry, Barbara was the wrong choice : it would mean she, Charlie and Erik lied but there is only 2 lyers :(";
                : press_any_key;
                : redescribe;
            }
            : add_choice "Charlie: I didn't get bread" {
-               : print "You won, well done!";
+               : print "You won, well done! (Andrew and Darla were lying)";
+               : press_any_key;
                : swap o1 = "larry"  o2 = "helping_larry" ;
                : set_false "has_food_fight";
+               : redescribe;
            }
            : add_choice "Darla: Erik didn't get bread" {
-               : print "Sorry, Darla was the wrong choice :(";
+               : print "Sorry, Darla was the wrong choice : it would mean she, Barbara and Charlie lied but there is only 2 lyers :(";
                : press_any_key;
                : redescribe;
            }
            : add_choice "Erik: Andrew and Darla got bread" {
-               : print "Sorry, Eric was the wrong choice :(";
+               : print "Sorry, Eric was the wrong choice : it would mean only Charlie lied but there is 2 lyers :(";
                : press_any_key;
                : redescribe;
            }
            : choose "Who didn't get any bread?";
+       }
+       : if (is_exists "helping_larry") {
+           : print "Larry said \"We will need to go to the church tower, gather the troops there with a secret code.\" ";
        }
        : else {
            : play_music sound="music_beach";
@@ -404,15 +409,9 @@ on_describe {
    : if (is_at "labyrinth_win" ) {
       : if (day_spend_labyrinth_enigma <= 6) {
             # should only show "Retry" phrase when object has not been won
-            : print "You did it in the shortest time possible, you win fresh bread!";
-            #\n\nRetry it taking the slowest path to get a consolation (=loser) prize.";
+            : print "You did it in the shortest time possible, you saved Christmas!";
             : goto "robin_room";
       }
-      ##: else_if (day_spend_labyrinth_enigma == 10) {
-      ##      # should only show "Retry" phrase when object has not been won
-      ##      : print "You did it in the longest time possible, you win stale bread!\n(and you kept your life YAY!)\n\nRetry it taking the least time possible whenever you want.";
-      ##      : goto "montauk_beach";
-      ##}
       : else {
             # should only show "Retry" phrase when object has not been won
             : print "Getting to the end was too long, TRY AGAIN!\n(it was just a simulation so Christmas is still ON, YAY!)\n\nRetry it taking taking even less move to save CHRISTMAS!";
@@ -471,7 +470,6 @@ on_command {
          : redescribe;
       }
    }
-   #: print "Larry takes the loaf of bread and says. \"Alright, we'll help you distribute the presents! We will need to go to the church tower, gather the troops there with a secret code.\" ";
 
    : match "get bread; take bread"  {
       : if (is_at "coocoo_cafe" && has_not_created "bread" && is_exists "grateful_waitress") {
@@ -565,7 +563,7 @@ on_command {
       }
    }
 
-   : match "use dictionary; read dictionary"  {
+   : match "use dictionary; read dictionary; translate tourist; translate _"  {
       : if (is_present "tourist" && is_carried "dictionary") {
          : print "The tourist laughs \"Oh you don't speak Korean? Dear me! You should have said so! I was meditating over this book. Oh, I have an English version as well. Please take it.\". He gives you the book. ";
          : create "pigeon_bookreal" ;
