@@ -670,6 +670,12 @@ on_command {
       }
    }
 
+   : match "examine fountain"  {
+      : if (is_at "south_park") {
+         : print "Discreet but well-thought-out, this fountain makes the delight of thirsty pigeons and overheated travellers." ;
+      }
+   }
+
    : match "examine guide; talk _"  {
       : if (is_present "unpaid_tourguide") {
          : clear_screen;
