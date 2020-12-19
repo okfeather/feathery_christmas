@@ -27,7 +27,7 @@ start_at = santa_cellar
 
 vocabulary {
    : verb / aliases = [examine, check, regarde]
-   : noun      / aliases = [bread, croissant, croissants, pain]
+   : noun      / aliases = [bread, croissant, croissants, pain, cookie]
    : noun      / aliases = [cafe, coocoo]
    : noun      / aliases = [guide, tour, tourguide]
    : noun      / aliases = [owner, vendor]
