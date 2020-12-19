@@ -805,6 +805,10 @@ on_command {
       : if (is_at "church_tower" && is_exists "absent_pigeon") {
          : print "How can you gather all pigeons here?" ;
       }
+      : else {
+         : print "Roses are red, Violets are blue, Pigeons fly in the sky, And so should you." ;
+      }
+
    }
 
    : match "get pigeon; talk pigeon"  {
