@@ -742,7 +742,7 @@ on_command {
       }
    }
 
-   : match "examine shop"  {
+   : match "examine shop; examine bookshop; examine store"  {
       : if (is_at "bookshop") {
          : print "This is an exchange only bookshop. Books are the currency." ;
       }
