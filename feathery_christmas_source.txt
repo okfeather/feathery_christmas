@@ -203,7 +203,7 @@ friendly_tourguide : scenery "the tour guide for the Church Tower" ;
 
 waitress : scenery "a waitress from Coocoo Cafe. She looks very tired" at = "coocoo_inside" ;
 
-grateful_waitress : scenery "The Coocoo Cafe team is grateful for your help. You got rid of all extra cookies and croissants...  But where?" ;
+grateful_waitress : scenery "The Coocoo Cafe team is grateful for your help. You got rid of all extra bread, cookies and croissants...  But where? The store is closing you should get out." ;
 
 }
 
@@ -348,6 +348,9 @@ on_describe {
    : if (is_at "church" ) {
        : stop_music;
    }
+   : if (is_at "south_park" ) {
+       : stop_music;
+   }
    : if (is_at "church_tower" ) {
        : play_music sound="music_church";
    }
@@ -469,7 +472,7 @@ on_command {
       }
    }
 
-   : match "give bread"  {
+   : match "give bread; give croissant; give croissants;"  {
       : if (is_present "larry" && is_carried "bread" ) {
          : print "Larry takes the loaf of bread and says. \"Let's share the bread with all my friends!\" ";
          : set_true "has_food_fight";
@@ -481,7 +484,7 @@ on_command {
       }
    }
 
-   : match "get bread; take bread"  {
+   : match "get bread; take bread; take croissant; get croissant; take croissants; get croissants"  {
       : if (is_at "coocoo_cafe" && is_exists "full_bin") {
         : print "You take the loaf of bread and other delicacies from the bin." ;
         : swap o1 = "full_bin"  o2 = "bin" ;
@@ -539,7 +542,7 @@ on_command {
       }
    }
 
-   : match "examine cookie; examine croissant"  {
+   : match "examine cookie; examine croissant; examine croissants; examine cookies; examine bread"  {
       : if (is_at "coocoo_inside") {
          : print "The cafe doesn't take any orders." ;
       }
