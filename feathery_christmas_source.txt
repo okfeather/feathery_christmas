@@ -167,6 +167,8 @@ church_ticket : object "a ticket to visit the church" ;
 
 dictionary : object "a Korean-English dictionary" ;
 
+full_bin : scenery "a beautiful Art Deco bin that seems too full";
+
 larry : scenery "Larry, the leader of the pack of pigeons" at = "montauk_beach";
 
 helping_larry : scenery "Larry flying (but is it going away or coming back?)" ;
@@ -458,7 +460,12 @@ on_command {
 
    : match "check bin; examine bin"  {
       : if (is_at "coocoo_cafe") {
-         : print "There is sometimes a loaf of bread inside the bin." ;
+         : if (is_exists "full_bin") {
+             : print "There is a perfect loaf of bread inside. Maybe someone is hungry and you should get it?";
+         }
+         : else {
+             : print "There is sometimes a loaf of bread inside the bin but not currently." ;
+         }
       }
    }
 
@@ -475,8 +482,9 @@ on_command {
    }
 
    : match "get bread; take bread"  {
-      : if (is_at "coocoo_cafe" && has_not_created "bread" && is_exists "grateful_waitress") {
+      : if (is_at "coocoo_cafe" && is_exists "full_bin") {
         : print "You take the loaf of bread and other delicacies from the bin." ;
+        : swap o1 = "full_bin"  o2 = "bin" ;
         : pocket "bread";
       }
    }
@@ -503,14 +511,6 @@ on_command {
       : if (is_at "nicobar_park" && has_not_created "pigeon_book") {
         : print "You take the book" ;
         : pocket "pigeon_book";
-      }
-   }
-
-   : match "clean cafe; tidy cafe"  {
-      : if (is_present "waitress") {
-         : print "You are helping the Coocoo Cafe team.";
-         : swap o1 = "waitress"  o2 = "grateful_waitress" ;
-         ;
       }
    }
 
@@ -558,13 +558,6 @@ on_command {
       }
    }
 
-   : match "clean coocoo; tidy coocoo"  {
-      : if (is_present "waitress") {
-         : print "You are helping the Coocoo Cafe team.";
-         : swap o1 = "waitress"  o2 = "grateful_waitress" ;
-         ;
-      }
-   }
 
    : match "use dictionary; read dictionary; translate _; look dictionary"  {
       : if (is_present "tourist") {
@@ -774,11 +767,11 @@ on_command {
       }
    }
 
-   : match "help waitress; help coocoo; help cafe"  {
+   : match "help waitress; help coocoo; help cafe; clean cafe; tidy cafe; clean coocoo; tidy coocoo"  {
       : if (is_present "waitress") {
          : print "You are helping the Coocoo Cafe team.";
          : swap o1 = "waitress"  o2 = "grateful_waitress" ;
-         ;
+         : swap o1 = "bin"  o2 = "full_bin" ;
       }
    }
 
