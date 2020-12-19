@@ -143,6 +143,20 @@ connections {
    labyrinth_nsesn, leave_oneway, montauk_beach,
    labyrinth_nsesnn, leave_oneway, montauk_beach,
    labyrinth_nsenee, leave_oneway, montauk_beach
+
+   labyrinth_n, enter_oneway, labyrinth_start,
+   labyrinth_ns, enter_oneway, labyrinth_start,
+   labyrinth_nse, enter_oneway, labyrinth_start,
+   labyrinth_nsen, enter_oneway, labyrinth_start,
+   labyrinth_nsene, enter_oneway, labyrinth_start,
+   labyrinth_nses, enter_oneway, labyrinth_start,
+   labyrinth_nss, enter_oneway, labyrinth_start,
+   labyrinth_s, enter_oneway, labyrinth_start,
+   labyrinth_se, enter_oneway, labyrinth_start,
+   labyrinth_see, enter_oneway, labyrinth_start,
+   labyrinth_nsesn, enter_oneway, labyrinth_start,
+   labyrinth_nsesnn, enter_oneway, labyrinth_start,
+   labyrinth_nsenee, enter_oneway, labyrinth_start
    ]
 
 }
@@ -183,6 +197,8 @@ flying_pigeon : scenery "a pigeon singing even though its beak is carrying a Sap
 
 new_pigeon : scenery "a pigeon singing even though its beak is carrying a dumbbell: \'Best carriers meet in Montauk Beach, lalala \'";
 
+tourist : scenery "a tourist" at = "church_tower";
+
 absent_pigeon : scenery "no birds" at = "church_tower" ;
 
 gang_pigeon : scenery "the biggest group of pigeons you've ever seen in your entire life is gathered here" ;
@@ -192,8 +208,6 @@ pigeon_book : object "a book \'Pigeons love bread\'" at = "nicobar_park" ;
 pigeon_bookreal : object "the real bible about pigeons \'Lovey Dovey Pigeons\'" ;
 
 robin : scenery "Robin is happily screaming 'I can't wait to play Call Of Beauty!' With your help, the pigeons could deliver the gifts to all children." at = "robin_room" ;
-
-tourist : scenery "a tourist" at = "church_tower";
 
 happy_tourist : scenery "a tourist" ;
 
@@ -400,7 +414,13 @@ on_describe {
        : set_integer var = "labyrinth_position_y"  value = "28" ;
        : play_music sound="music_labyrinth";
        : set_integer var = "day_spend_labyrinth_enigma" value = "6";
+       : update_graphic;
        : overlay "labyrinth_pigeon";
+   }
+   :else {
+       :if (in_labyrinth && !is_at "labyrinth_win") {
+           : print "Restart by entering ENTER";
+       }
    }
    : if (is_at "labyrinth_s" ) {
        : add var = "day_spend_labyrinth_enigma" value = "1" ;
@@ -447,13 +467,18 @@ on_command {
      : redescribe;
    }
 
+   : match "cheat start" {
+     : goto "nicobar_park";
+     : redescribe;
+   }
+
    : match "cheat church" {
      : goto "church";
      : redescribe;
    }
 
    : match "cheat cellar" {
-     : goto "church";
+     : goto "santa_cellar";
      : redescribe;
    }
 
@@ -608,7 +633,7 @@ on_command {
    : match "use dictionary; read dictionary; translate _; look dictionary"  {
       : if (is_present "tourist") {
          : if (is_carried "dictionary") {
-           : print "The tourist laughs \"Oh you don't speak Korean? Dear me! You should have said so! I was meditating over this book. Oh, I have an English version as well. Please take it.\". He gives you the book. ";
+           : print "The tourist laughs \"Oh you don't speak Korean? Dear me! You should have said so! I was meditating over this book. Oh, I have an English version as well. Please take it.\". She gives you the book. ";
            : create "pigeon_bookreal" ;
            : pocket "pigeon_bookreal" ;
            : swap o1 = "tourist"  o2 = "happy_tourist" ;
