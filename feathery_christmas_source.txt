@@ -67,7 +67,7 @@ strings {
 
 locations {
 
-   bookshop : location "You are at the book shop." ;
+   bookshop : location "You are at the book shop. Talk to the owner if you need a book." ;
 
    church : location "You are in front of the church. You can access the tower if you enter." ;
 
