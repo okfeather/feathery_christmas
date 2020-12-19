@@ -203,9 +203,9 @@ helping_larry : scenery "Larry flying (but is it going away or coming back?)" ;
 
 morehelping_larry : scenery "Larry" ;
 
-nicobar_woman1 : scenery "a woman thinking by herself" at = "south_park"  ;
+nicobar_man1 : scenery "a man thinking by himself" at = "south_park"  ;
 
-nicobar_woman2 : scenery "a woman thinking by herself" at = "south_park"  ;
+nicobar_man2 : scenery "a man thinking by himself" ;
 
 flying_pigeon : scenery "a pigeon singing even though its beak is carrying a Sappy Meal bag: \' lovers meet in Montauk Beach, lalala \'" at = "nicobar_park";
 
@@ -874,23 +874,23 @@ on_command {
    }
 
    : match "talk _"  {
-      : if (is_present "nicobar_woman1" && !is_carried "church_ticket") {
+      : if (is_present "nicobar_man1" && !is_carried "church_ticket") {
          : clear_screen;
-         : print "\"Have you visited the church? It is famous for its ellacombe apparatus, a mechanism that allows one person to ring all the bells. I see you don't have a ticket! Here, have one to visit.\", says the woman.";
+         : print "\"Have you visited the church? It is famous for its ellacombe apparatus, a mechanism that allows one person to ring all the bells. I see you don't have a ticket! Here, have one to visit.\", says the man.";
          : create "church_ticket" ;
          : pocket "church_ticket" ;
-         : swap o1 = "nicobar_woman1"  o2 = "nicobar_woman2" ;
+         : swap o1 = "nicobar_man1"  o2 = "nicobar_man2" ;
          : press_any_key ;
          : redescribe;
       }
-      : if (is_present "nicobar_woman2") {
-         : print "\"I know this church by heart!\", says the woman.";
+      : if (is_present "nicobar_man2") {
+         : print "\"I know this church by heart!\", says the man.";
       }
    }
 
-   : match "examine woman; look woman"  {
+   : match "examine man; look man"  {
       : if (is_at "south_park") {
-         : print "She is smiling and admiring the scenery.";
+         : print "He is smiling and admiring the scenery.";
       }
    }
 
