@@ -303,11 +303,13 @@ on_startup {
    : print "e.g. EXAMINE PIGEON to take a closer look at a PIGEON." ;
    : print "GET BREAD to take BREAD and add it to your inventory." ;
    : press_any_key ;
-   : print "To travel, type NORTH, EAST, SOUTH, WEST (or N, E, S, W)" ;
+   : print "To travel, type NORTH, EAST, SOUTH, WEST (or N, E, S, W), ENTER, EXIT" ;
    : press_any_key ;
    : print "To check your inventory, type INVENTORY (or I, POCKETS)" ;
    : press_any_key ;
    : print "To stop music, type SOUND OFF (SOUND ON to enable music)" ;
+   : press_any_key ;
+   : print "To see available commands at a location, type HELP" ;
    : press_any_key ;
 
 }
@@ -932,6 +934,7 @@ on_command {
        }
        : print "- Type 'ENTER' to try to enter a store or building";
        : print "- Type 'GIVE objectname' to give an object to someone";
+       : print "- Type 'SOUND OFF' to stop sounds and 'SOUND ON' to enable them";
        : print "- Type 'TALK' to talk to a person or pigeon";
        : if (is_at "bookshop" || is_at "church_tower") {
          : print "- Type 'TRANSLATE' to try to translate a person or pigeon speech";
