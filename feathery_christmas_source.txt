@@ -10,7 +10,7 @@
 
 game_information {
    game_name                    = Feathery Christmas
-   game_version                 = 0.0.1
+   game_version                 = 0.0.2
    game_shortname               = Feathery Xmas
    written_by                   = OK Feather
    uuid                         = b9293521-1ddf-48d0-9798-705e902858f9
@@ -728,7 +728,7 @@ on_command {
       }
    }
 
-   : match "talk -; translate owner; talk english; translate english; translate -; use dictionary; look dictionary; read dictionary"  {
+   : match "translate owner; talk english; translate english; translate -; use dictionary; look dictionary; read dictionary"  {
       : if (is_present "bookshop_owner") {
          : clear_screen;
          : if (is_carried "dictionary") {
