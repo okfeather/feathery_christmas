@@ -72,7 +72,7 @@ locations {
 
    church : location "You are in front of the church. You can access the tower upstairs if you enter." ;
 
-   church_inside : location "You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited here. Enter RING NUMBER (e.g. RING 0) to try calling pigeons." ;
+   church_inside : location "You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons." ;
 
    church_tower : location "You are in the church's tower." ;
 
