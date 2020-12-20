@@ -10,7 +10,7 @@
 
 game_information {
    game_name                    = Feathery Christmas
-   game_version                 = 0.0.7
+   game_version                 = 0.0.8
    game_shortname               = Feathery Xmas
    written_by                   = OK Feather
    uuid                         = b9293521-1ddf-48d0-9798-705e902858f9
@@ -848,7 +848,7 @@ on_command {
       : if (is_at "church_tower" && is_exists "absent_pigeon") {
          : print "How can you gather all pigeons here?" ;
       }
-      : else {
+      : if (is_at "bookshop" || is_at "church" || is_at "south_park" || is_at "church_inside" || is_at "coocoo_inside" || is_at "santa_cellar" || is_at "labyrinth_start" ) {
          : print "Roses are red, Violets are blue, Pigeons fly in the sky, And so should you." ;
       }
 
@@ -1080,6 +1080,9 @@ on_command {
       }
       : if (is_at "coocoo_inside") {
          : print "The interior of the Coocoo Cafe is very cosy." ;
+      }
+      : if (is_at "labyrinth_start") {
+         : print "Find the shortest path to deliver all presents!" ;
       }
       : if (is_at "montauk_beach") {
          : print "Montauk Beach is popular this season of the year for winter surfing, and is known as a romantic place." ;
