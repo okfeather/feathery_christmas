@@ -207,7 +207,7 @@ full_bin : scenery "a beautiful Art Deco bin that seems too full";
 
 larry : scenery "Larry, the leader of the pack of pigeons" at = "montauk_beach";
 
-helping_larry : scenery "Larry flying (but is it going away or coming back?)" ;
+helping_larry : scenery "Larry flying" ;
 
 morehelping_larry : scenery "Larry" ;
 
@@ -532,7 +532,7 @@ on_command {
    : match "cheat ticket" {
      : create "church_ticket" ;
      : pocket "church_ticket" ;
-     : print "you got bread!";
+     : print "you got a ticket!";
    }
 
    : match "cheat dictionary" {
@@ -572,6 +572,12 @@ on_command {
    : match "examine beach"  {
       : if (is_at "montauk_beach") {
          : print "The beach is quiet today." ;
+      }
+   }
+
+   : match "examine bell"  {
+      : if (is_at "church_tower") {
+         : print "These bells are used to make delightful songs." ;
       }
    }
 
@@ -710,7 +716,7 @@ on_command {
    : match "examine guide; talk _"  {
       : if (is_present "unpaid_tourguide") {
          : clear_screen;
-         : print "\"No ticket? No visit!\", says the poetic tour guide." ;
+         : print "\"No ticket? No visit!\", says the poetic tour guide. Can you give your ticket?" ;
          : press_any_key ;
          : redescribe;
       }
@@ -805,6 +811,12 @@ on_command {
    : match "examine dictionary"  {
          : if (is_exists "dictionary") {
             : print "\"A Korean-English dictionary.\" " ;
+      }
+   }
+
+   : match "examine logo"  {
+      : if (is_at "coocoo_inside") {
+         : print "The emblematic logo for the Coocoo Cafe. My bird and my coffee." ;
       }
    }
 
@@ -941,9 +953,24 @@ on_command {
       }
    }
 
+   : match "examine window; examine glass"  {
+      : if (is_at "coocoo_inside") {
+         : print "The view is beautiful." ;
+      }
+   }
+
    : match "examine church; examine tower"  {
       : if (is_at "church_tower") {
          : print "Some suggest this tower is a special place to organize secret missions." ;
+      }
+      : if (is_at "church_inside") {
+         : print "The tower is upstairs. Go up!" ;
+      }
+   }
+
+   : match "examine tower"  {
+      : if (is_at "church") {
+         : print "You need to enter the church then go upstairs to access the tower." ;
       }
    }
 
@@ -1095,6 +1122,11 @@ on_command {
       }
       : if (is_at "south_park") {
          : print "A quiet part of the park, in warmer months you can hear the water flowing from the pigeon fountain. There is a beautiful view on the church." ;
+      }
+   }
+   : match "examine tree; get tree; examine fir; get fir; examine pine; get pine"  {
+      : if (is_at "bookshop" || is_at "church" || is_at "coocoo_cafe" || is_at "coocoo_inside" || is_at "nicobar_park" || is_at "south_park" || is_at "labyrinth_start") {
+         : print "Trees got dressed up for Christmas." ;
       }
    }
 
