@@ -224,7 +224,7 @@ friendly_tourguide : scenery "the tour guide for the <church<#fee>> and its <tow
 
 waitress : scenery "a <waitress<#fee>> from <Coocoo<#fee>> <Cafe<#fee>>. She looks very tired" at = "coocoo_inside" ;
 
-grateful_waitress : scenery "The <Coocoo<#fee>> <Cafe<#fee>> team is grateful for your help. You got rid of all extra <bread<#fee>>, <cookies<#fee>> and <croissants<#fee>>...  But where? The store is closing, you should go outside." ;
+grateful_waitress : scenery "The <Coocoo<#fee>> <Cafe<#fee>> team is grateful for your help. You got rid of all extra <bread<#fee>>, <cookies<#fee>> and <croissants<#fee>>...  But where? The store is closing, you should go outside" ;
 
 }
 
@@ -275,7 +275,7 @@ barriers {
    block_church : block {
 
       location = church
-      message  = The road to the church is currently covered in snow. Someone is clearing it, but you cannot access it yet. 
+      message  = The road to the church is currently covered in snow. Someone is clearing it from afar, but you cannot access it yet.
       block_when_exists = larry
 
    }
@@ -523,7 +523,7 @@ on_command {
          : stop_music;
          : if (noun1_is "143") {
             : play_music sound="music_bells";
-            : print "\"Okay, everything should go well now. We're almost done. We will now continue from Montauk Beach\", says Larry." ;
+            : print "You hear lots of pigeon noises coming from upstairs. \"Okay, everything should go well now. We're almost done. We will now continue from Montauk Beach\", says Larry." ;
             : swap o1 = "absent_pigeon"  o2 = "gang_pigeon" ;
             : swap o1 = "helping_larry"  o2 = "morehelping_larry" ;
          }
@@ -539,12 +539,6 @@ on_command {
             : gosub "random_music";
             : print "Nothing has happened, this must not be the secret combination. The welcoming <tourist<#fee>> might have a clue. Also, such a disgraceful melody could never attract any <pigeon<#fee>>. Just sayin'";
          }
-      }
-   }
-
-   : match "examine beach"  {
-      : if (is_at "montauk_beach") {
-         : print "The <beach<#fee>> is quiet today." ;
       }
    }
 
@@ -639,10 +633,10 @@ on_command {
 
    : match "examine church"  {
       : if (is_at "church") {
-         : print "A <church<#fee>> in Norman style, the architecture is captivating. You need to <enter<#fdd>> to see the church closer." ;
+         : print "A <church<#fee>> in Norman style, the architecture is captivating. You can <enter<#fdd>> to visit." ;
       }
       : if (is_at "south_park") {
-         : print "You need to go <south<#fdd>> to see the <church<#fee>> closer. Someone is clearing it far away, but you cannot access it yet.";
+         : print "You need to go <south<#fdd>> to see the <church<#fee>> closer.";
       }
    }
 
@@ -919,7 +913,7 @@ on_command {
 
    : match "examine church; examine ellacombe; examine apparatus"  {
       : if (is_at "church_inside") {
-         : print "All you notice is the ellacombe <apparatus<#fee>>. You are able to <ring<#fee>> all the bells on your own." ;
+         : print "All you notice is the ellacombe <apparatus<#fee>>. You are able to <ring<#fee>> all the bells on your own, thanks to a simple number system." ;
       }
    }
 
