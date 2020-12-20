@@ -184,7 +184,7 @@ objects {
 
 a_yourself1 : scenery "yourself crying at the thought that all children will think they were bad this year and didn't deserve a present" at = "nicobar_park" ;
 
-a_yourself2 : scenery "some pigeons in the air" ;
+a_yourself2 : scenery "yourself having more hope" ;
 
 bin : scenery "a beautiful Art Deco bin" at = "coocoo_cafe";
 
@@ -210,7 +210,7 @@ nicobar_man2 : scenery "a man thinking by himself" ;
 
 flying_pigeon : scenery "a pigeon" at = "nicobar_park";
 
-new_pigeon : scenery "a pigeon";
+new_pigeon : scenery "another pigeon";
 
 tourist : scenery "a tourist" at = "church_tower";
 
@@ -725,6 +725,9 @@ on_command {
       : if (is_present "helping_larry" && is_exists "absent_pigeon") {
          : print "Larry has gone to organize everything." ;
       }
+      : if (is_present "morehelping_larry") {
+         : print "Are you ready to go north for the big delivery?" ;
+      }
    }
 
    : match "examine lovers"  {
@@ -857,6 +860,9 @@ on_command {
          : press_any_key ;
          : redescribe;
       }
+      : if (is_present "morehelping_larry" && is_at "montauk_beach") {
+         : print "\"Are you ready to find the shortest path to distribute everything?\", says Larry." ;
+      }
    }
 
    : match "examine potion; get potion; examine cellar"  {
@@ -928,6 +934,9 @@ on_command {
       : if (is_present "waitress") {
          : print "\"There is so much work!!!! Please help me\", says the desperate waitress." ;
       }
+      : if (is_present "grateful_waitress") {
+         : print "\"Thank you so much for your help! Now I can spend the rest of the night planning next year's development of the Coocoo Cafe. A more efficient team, more entertainers, more customers, that's my goal!\", says the ambitious waitress." ;
+      }
    }
 
    : match "talk _"  {
@@ -952,8 +961,11 @@ on_command {
    }
 
    : match "examine yourself; talk yourself"  {
-      : if (is_at "nicobar_park") {
+      : if (is_at "nicobar_park" && is_exists "a_yourself1") {
          : print "You are alone, there is nothing to do here and it's raining." ;
+      }
+      : if (is_at "nicobar_park" && is_exists "a_yourself2") {
+         : print "You are alone, there is nothing to do here but it's not raining anymore." ;
       }
       : if (is_at "santa_cellar") {
          : print "Almost all of your precious drinks have been emptied. The Pourpon, the Vallentines... all gone." ;
