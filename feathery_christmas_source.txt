@@ -732,7 +732,7 @@ on_command {
       }
    }
 
-   : match "examine larry; talk larry"  {
+   : match "examine larry; talk larry; talk -"  {
       : if (is_present "larry") {
          : print "\"Can't you see we are all hungry?\", says Larry." ;
       }
@@ -858,7 +858,7 @@ on_command {
       : if (is_at "church_tower" && is_exists "absent_pigeon") {
          : print "How can you gather all pigeons here?" ;
       }
-      : if (is_at "bookshop" || is_at "church" || is_at "south_park" || is_at "church_inside" || is_at "coocoo_inside" || is_at "santa_cellar" || is_at "labyrinth_start" ) {
+      : if (is_at "bookshop" || is_at "church" || is_at "south_park" || is_at "church_inside" || is_at "coocoo_inside" || is_at "santa_cellar" || in_labyrinth) {
          : print "Roses are red, Violets are blue, Pigeons fly in the sky, And so should you." ;
       }
 
@@ -980,7 +980,7 @@ on_command {
       }
    }
 
-   : match "examine waitress; talk waitress"  {
+   : match "examine waitress; talk waitress; talk -"  {
       : if (is_present "waitress") {
          : print "\"There is so much work!!!! Please help me\", says the desperate waitress." ;
       }
@@ -1106,7 +1106,7 @@ on_command {
       : if (is_at "coocoo_inside") {
          : print "The interior of the Coocoo Cafe is very cosy." ;
       }
-      : if (is_at "labyrinth_start") {
+      : if (in_labyrinth) {
          : print "Find the shortest path to deliver all presents!" ;
       }
       : if (is_at "montauk_beach") {
@@ -1123,7 +1123,7 @@ on_command {
       }
    }
    : match "examine tree; get tree; examine fir; get fir; examine pine; get pine"  {
-      : if (is_at "bookshop" || is_at "church" || is_at "coocoo_cafe" || is_at "coocoo_inside" || is_at "nicobar_park" || is_at "south_park" || is_at "labyrinth_start") {
+      : if (is_at "bookshop" || is_at "church" || is_at "coocoo_cafe" || is_at "coocoo_inside" || is_at "nicobar_park" || is_at "south_park" || in_labyrinth) {
          : print "Trees got dressed up for Christmas." ;
       }
    }
