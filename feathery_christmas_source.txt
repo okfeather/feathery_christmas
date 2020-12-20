@@ -631,6 +631,14 @@ on_command {
 
    : match "examine cafe"  {
       : if (is_at "coocoo_cafe") {
+         : if (is_exists "grateful_waitress") {
+            : if (is_exists "full_bin") {
+                : print "The Coocoo Cafe is closed, thanks for helping! I wonder where are the leftovers bread and croissants.";
+            }
+            : else {
+                : print "The Coocoo Cafe is closed, thanks for helping!";
+            }
+         }
          : print "The Coocoo Cafe is about to close, but there is so much left to do!" ;
       }
       : if (is_at "coocoo_inside" && has_not_created "grateful_waitress") {
