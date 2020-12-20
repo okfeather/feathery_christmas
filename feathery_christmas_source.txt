@@ -2,7 +2,6 @@
 # see if png can be better compressed (color/...)
 # image for start logo
 
-
 ######################################
 #  Adventuron                        #
 ######################################
@@ -35,6 +34,7 @@ vocabulary {
    : noun      / aliases = [reindeer, reindeers]
    : noun      / aliases = [tourist, visitor]
    : noun      / aliases = [yourself, santa, myself, me]
+   : noun      / aliases = [dictionary, dico, dic, dict]
 }
 
 ######################################
@@ -382,13 +382,11 @@ on_describe {
        : if (!is_exists "grateful_waitress") {
           : print "Enter inside!";
        }
+       : else_if (is_exists "full_bin") {
+            : print "The shop is closed! Where did the leftover bread and croissants go?";
+       }
        : else {
-          : if (is_exists "full_bin") {
-              : print "The shop is closed! Where did the leftover bread and croissants go?";
-          }
-          : else {
-              : print "The shop is closed!";
-          }
+            : print "The shop is closed!";
        }
        : stop_music;
    }
@@ -452,16 +450,14 @@ on_describe {
        : set_integer var = "day_spend_labyrinth_enigma" value = "0";
        : update_graphic;
    }
-   :else {
-       :if (in_labyrinth && !is_at "labyrinth_win") {
-           : if (day_spend_labyrinth_enigma < 2) {
-              : print "You have made your first move to get to the end, it's still so far away.";
-           }
-           : else {
-                : print "You have spent {day_spend_labyrinth_enigma} moves to get to the end but it's still so far away.";
-           }
-           : print "Restart by entering ENTER";
+   : else_if (in_labyrinth && !is_at "labyrinth_win") {
+       : if (day_spend_labyrinth_enigma < 2) {
+          : print "You have made your first move to get to the end, it's still so far away.";
        }
+       : else {
+            : print "You have spent {day_spend_labyrinth_enigma} moves to get to the end but it's still so far away.";
+       }
+       : print "Restart by entering ENTER";
    }
    : if (is_at "labyrinth_win" ) {
       : if (day_spend_labyrinth_enigma <= 6) {
@@ -492,68 +488,46 @@ on_describe {
 
 on_command {
 
-   : match "cheat lab" {
-     : goto "labyrinth_start";
-     : redescribe;
-   }
-
-   : match "cheat tower" {
-     : goto "church_inside";
-     : redescribe;
-   }
-
-   : match "cheat start" {
-     : goto "nicobar_park";
-     : redescribe;
-   }
-
-   : match "cheat church" {
-     : goto "church";
-     : redescribe;
-   }
-
-   : match "cheat cellar" {
-     : goto "santa_cellar";
-     : redescribe;
-   }
-
-   : match "cheat cafe" {
-     : goto "coocoo_inside";
-     : redescribe;
-   }
-
    : match "cheat bread" {
      : pocket "bread";
-     : print "you got bread!";
    }
 
    : match "cheat ticket" {
-     : create "church_ticket" ;
-     : pocket "church_ticket" ;
-     : print "you got a ticket!";
+     : create "church_ticket";
+     : pocket "church_ticket";
    }
 
    : match "cheat dictionary" {
-     : create "dictionary" ;
-     : pocket "dictionary" ;
-     : print "you got dictionary!";
+     : create "dictionary";
+     : pocket "dictionary";
+   }
+
+   : match "cheat *" {
+     : goto {(original "noun1")}
+     : if (current_location() == original "noun1") {
+        : redescribe;
+     }
+     : else_if (noun1_is "bread" || noun1_is "ticket" || noun1_is "dictionary") {
+        : print {("you got " + original "noun1" + "!")}
+     }
+     : else {
+        : print "Unknown verb - \"cheat\".";
+     }
    }
 
    : if (is_at "church_inside") {
       : match "ring *"  {
-         : if (original "noun1" == "143") {
+         : if (noun1_is "143") {
             : play_music sound="music_bells";
             : print "\"Okay, everything should go well now. We're almost done. We will now continue from Montauk Beach\", says Larry." ;
             : swap o1 = "absent_pigeon"  o2 = "gang_pigeon" ;
             : swap o1 = "helping_larry"  o2 = "morehelping_larry" ;
          }
+         : else_if (is_carried "pigeon_bookreal") {
+            : print "Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is recurring number in heavenly pigeon scriptures.";
+         }
          : else {
-            : if (is_carried "pigeon_bookreal") {
-               : print "Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is recurring number in heavenly pigeon scriptures.";
-            }
-            : else {
-               : print "Nothing has happened, this must not be the secret combination. The welcoming tourist might have a clue. Also, such a disgraceful melody could never attract any pigeon. Just sayin'";
-            }
+            : print "Nothing has happened, this must not be the secret combination. The welcoming tourist might have a clue. Also, such a disgraceful melody could never attract any pigeon. Just sayin'";
          }
       }
    }
