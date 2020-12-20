@@ -80,7 +80,7 @@ locations {
 
    coocoo_inside : location "You are inside the Coocoo Cafe. There are no customers." ;
 
-   delivery : location "Pigeons are delivering all the gifts with your optimized route!" ;
+   delivery : location "Before your eyes, you see all the pigeons dispatching the gifts before them. After a calm pause, they all start taking flight: in one instant, there are as many pigeons as stars in the sky; carrying their glittering gifts! All thanks to your optimized route!" ;
 
    montauk_beach : location "Montauk is the place where lovers like to meet." ;
 
