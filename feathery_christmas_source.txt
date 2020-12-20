@@ -25,16 +25,21 @@ start_at = santa_cellar
 vocabulary {
    : verb / aliases = [examine, check, regarde]
    : verb / aliases = [give, show]
-   : noun      / aliases = [bread, croissant, croissants, pain, cookie]
-   : noun      / aliases = [cafe, coocoo]
+   : noun      / aliases = [bread, croissant, pain, cookie, loaf]
+   : noun      / aliases = [cafe, coocoo, shop, restaurant]
    : noun      / aliases = [guide, tour, tourguide]
    : noun      / aliases = [owner, vendor]
-   : noun      / aliases = [pigeon, bird, pigeons, birds]
-   : noun      / aliases = [potion, potions, beverage, beverages, drink, drinks, barrel, barrels]
-   : noun      / aliases = [reindeer, reindeers]
+   : noun      / aliases = [pigeon, bird, dove]
+   : noun      / aliases = [potion, beverage, drink, barrel]
+   : noun      / aliases = [reindeer]
    : noun      / aliases = [tourist, visitor]
    : noun      / aliases = [yourself, santa, myself, me]
    : noun      / aliases = [dictionary, dico, dic, dict]
+   : noun      / aliases = [bin, compost, trashcan, garbage, trash]
+   : noun      / aliases = [bible, scripture]
+   : noun      / aliases = [book]
+   : noun      / aliases = [child, children, kid]
+   : noun      / aliases = [montauk, beach]
 }
 
 ######################################
@@ -68,29 +73,29 @@ strings {
 
 locations {
 
-   bookshop : location "You are at the book shop. Talk to the owner if you need a book." ;
+   bookshop : location "You are at the book shop. <Talk<#fee>> to the <owner<#fee>> if you need a <book<#fee>>." ;
 
-   church : location "You are in front of the church. You can access the tower upstairs if you enter." ;
+   church : location "You are in front of the <church<#fee>>. You can access the <tower<#fee>> upstairs if you <enter<#fee>>." ;
 
-   church_inside : location "You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons." ;
+   church_inside : location "You are inside the <church<#fee>>. You remember having heard that a secret bell combination would result in all nearby <pigeons<#fee>> being reunited at the <tower<#fee>>. Enter <RING<#fee>> NUMBER (e.g. <RING 0<#fee>>) to try calling <pigeons<#fee>>." ;
 
-   church_tower : location "You are in the church's tower." ;
+   church_tower : location "You are in the church's <tower<#fee>>." ;
 
-   coocoo_cafe : location "You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof." ;
+   coocoo_cafe : location "You are at the famous <Coocoo<#fee>> <Cafe<#fee>>, where there is always a variety of <pigeons<#fee>> on the <roof<#fee>>." ;
 
-   coocoo_inside : location "You are inside the Coocoo Cafe. There are no customers." ;
+   coocoo_inside : location "You are inside the <Coocoo<#fee>> <Cafe<#fee>>. There are no customers." ;
 
    delivery : location "Before your eyes, you see all the pigeons dispatching the gifts before them. After a calm pause, they all start taking flight: in one instant, there are as many pigeons as stars in the sky; carrying their glittering gifts! All thanks to your optimized route!" ;
 
-   montauk_beach : location "Montauk is the place where lovers like to meet." ;
+   montauk_beach : location "<Montauk<#fee>> is the place where <lovers<#fee>> like to meet." ;
 
    nicobar_park : location "You are in Nicobar Park." ;
 
-   labyrinth_start : location "Pigeons are going to give gifts to all children!\nThey just need you to help organize the delivery.\nFind the shortest path to get there before Christmas! May the wind push you and make you save distance!" ;
+   labyrinth_start : location "<Pigeons<#fee>> are going to give gifts to all children!\nThey just need you to help organize the delivery.\nFind the shortest path to get there before Christmas! May the wind push you and make you save distance!" ;
 
    room_tree : location "You are in front of a big Christmas tree, you see that Larry's friend Columbia safely delivered a lot of the presents." ;
 
-   santa_cellar : location "This is Santa's cellar, where you can normally find different potions to stay cheerful and full of energy. You remember having told the reindeer of these drinks' benefits, so that's probably why they've been drinking a lot. However, they don't seem full of energy. You decide to leave the cellar to get fresh air." ;
+   santa_cellar : location "This is <Santa<#fee>>'s <cellar<#fee>>, where you can normally find different <potions<#fee>> to stay cheerful and full of energy. You remember having told the <reindeer<#fee>> of these <drinks<#fee>>' benefits, so that's probably why they've been drinking a lot. However, they don't seem full of energy. You decide to leave the <cellar<#fee>> to get fresh air." ;
 
    south_park : location "You are in the South of Nicobar Park." ;
 
@@ -106,7 +111,7 @@ locations {
    labyrinth_nss: location "";
    labyrinth_s: location "";
    labyrinth_se: location "";
-   labyrinth_see: location "Hint: SOUTH SLOW SLOTH";
+   labyrinth_see: location "Hint: south slowed you like a sloth...";
    labyrinth_win: location "You arrived at the end! Congratulations!";
 }
 
@@ -187,57 +192,57 @@ connections {
 
 objects {
 
-a_yourself1 : scenery "yourself crying at the thought that all children will think they were bad this year and didn't deserve a present" at = "nicobar_park" ;
+a_yourself1 : scenery "<yourself<#fee>> crying at the thought that all <children<#fee>> will think they were bad this year and didn't deserve a <present<#fee>>" at = "nicobar_park" ;
 
-a_yourself2 : scenery "yourself having more hope" ;
+a_yourself2 : scenery "<yourself<#fee>> having more hope" ;
 
-bin : scenery "a beautiful Art Deco bin" at = "coocoo_cafe";
+bin : scenery "a beautiful Art Deco <bin<#fee>>" at = "coocoo_cafe";
 
-bookshop_owner : scenery "the bookshop owner" at = "bookshop";
+bookshop_owner : scenery "the <bookshop<#fee>> <owner<#fee>>" at = "bookshop";
 
-bread : object "a generous loaf of bread and other goodies";
+bread : object "a generous loaf of <bread<#fee>> and other goodies";
 
-church_ticket : object "a ticket to visit the church" ;
+church_ticket : object "a <ticket<#fee>> to visit the church" ;
 
-dictionary : object "a Korean-English dictionary" ;
+dictionary : object "a Korean-English <dictionary<#fee>>" ;
 
-full_bin : scenery "a beautiful Art Deco bin that seems too full";
+full_bin : scenery "a beautiful Art Deco <bin<#fee>> that seems too full";
 
-larry : scenery "Larry, the leader of the pack of pigeons" at = "montauk_beach";
+larry : scenery "<Larry<#fee>>, the leader of the pack of <pigeons<#fee>>" at = "montauk_beach";
 
-helping_larry : scenery "Larry flying" ;
+helping_larry : scenery "<Larry<#fee>> flying" ;
 
-morehelping_larry : scenery "Larry" ;
+morehelping_larry : scenery "<Larry<#fee>>" ;
 
-nicobar_man1 : scenery "a man thinking by himself" at = "south_park"  ;
+nicobar_man1 : scenery "a <man<#fee>> thinking by himself" at = "south_park"  ;
 
-nicobar_man2 : scenery "a man thinking by himself" ;
+nicobar_man2 : scenery "a <man<#fee>> thinking by himself" ;
 
-flying_pigeon : scenery "a pigeon" at = "nicobar_park";
+flying_pigeon : scenery "a <pigeon<#fee>>" at = "nicobar_park";
 
-new_pigeon : scenery "another pigeon";
+new_pigeon : scenery "another <pigeon<#fee>>";
 
-tourist : scenery "a tourist" at = "church_inside";
+tourist : scenery "a <tourist<#fee>>" at = "church_inside";
 
-absent_pigeon : scenery "no birds" at = "church_tower" ;
+absent_pigeon : scenery "no <birds<#fee>>" at = "church_tower" ;
 
-gang_pigeon : scenery "the biggest group of pigeons you've ever seen in your entire life is gathered here" ;
+gang_pigeon : scenery "the biggest group of <pigeons<#fee>> you've ever seen in your entire life is gathered here" ;
 
-pigeon_book : object "a book on the floor \'Pigeons love bread\'" at = "nicobar_park" ;
+pigeon_book : object "a <book<#fee>> on the floor \'Pigeons love bread\'" at = "nicobar_park" ;
 
 pigeon_bookreal : object "the real bible about pigeons \'Lovey Dovey Pigeons\'" ;
 
 robin : scenery "some kids, like Robin, are happily screaming 'I can't wait to play Call Of Beauty!' With your help, the pigeons could deliver the gifts to all children" at = "room_tree" ;
 
-happy_tourist : scenery "a tourist" ;
+happy_tourist : scenery "a <tourist<#fee>>" ;
 
-unpaid_tourguide : scenery "the tour guide for the church and its tower" at = "church" ;
+unpaid_tourguide : scenery "the <tour<#fee>> <guide<#fee>> for the <church<#fee>> and its <tower<#fee>>" at = "church" ;
 
-friendly_tourguide : scenery "the tour guide for the church and its tower" ;
+friendly_tourguide : scenery "the tour guide for the <church<#fee>> and its <tower<#fee>>" ;
 
-waitress : scenery "a waitress from Coocoo Cafe. She looks very tired" at = "coocoo_inside" ;
+waitress : scenery "a <waitress<#fee>> from <Coocoo<#fee>> <Cafe<#fee>>. She looks very tired" at = "coocoo_inside" ;
 
-grateful_waitress : scenery "The Coocoo Cafe team is grateful for your help. You got rid of all extra bread, cookies and croissants...  But where? The store is closing, could you go outside?" ;
+grateful_waitress : scenery "The <Coocoo<#fee>> <Cafe<#fee>> team is grateful for your help. You got rid of all extra <bread<#fee>>, <cookies<#fee>> and <croissants<#fee>>...  But where? The store is closing, could you go outside?" ;
 
 }
 
@@ -308,17 +313,17 @@ on_startup {
    }
 
    : play_music sound="music_intro";
-   : print "Type VERB NOUN with the keyboard to advance in the game." ;
-   : print "e.g. EXAMINE PIGEON to take a closer look at a PIGEON." ;
-   : print "GET BREAD to take BREAD and add it to your inventory." ;
+   : print "Type <VERB NOUN<#fee>> with the keyboard to advance in the game." ;
+   : print "e.g. <EXAMINE PIGEON<#fee>> to take a closer look at a PIGEON." ;
+   : print "<GET BREAD<#fee>> to take BREAD and add it to your inventory." ;
    : press_any_key ;
-   : print "To travel, type NORTH, EAST, SOUTH, WEST (or N, E, S, W), ENTER, EXIT, UP, DOWN" ;
+   : print "To travel, type <NORTH<#fee>>, <EAST<#fee>>, <SOUTH<#fee>>, <WEST<#fee>> (or <N<#fee>>, <E<#fee>>, <S<#fee>>, <W<#fee>>), <ENTER<#fee>>, <EXIT<#fee>>, <UP<#fee>>, <DOWN<#fee>>" ;
    : press_any_key ;
-   : print "To check your inventory, type INVENTORY (or I, POCKETS)" ;
+   : print "To check your inventory, type <INVENTORY<#fee>> (or <I<#fee>>, <POCKETS<#fee>>)" ;
    : press_any_key ;
-   : print "To stop music, type SOUND OFF (SOUND ON to enable music)" ;
+   : print "To stop music, type <SOUND OFF<#fee>> (<SOUND ON<#fee>> to enable music)" ;
    : press_any_key ;
-   : print "To see available commands at a location, type HELP" ;
+   : print "To see available commands at a location, type <HELP<#fee>>" ;
    : press_any_key ;
 
 }
@@ -343,11 +348,11 @@ subroutines {
 on_describe {
 
    : if (is_present "unpaid_tourguide") {
-      : print "The guide says, \"Do you have an entrance ticket? Only those with a ticket can access.\"." ;
+      : print "The <guide<#fee>> says, \"Do you have an entrance <ticket<#fee>>? Only those with a <ticket<#fee>> can access.\"." ;
    }
 
    : if (is_present "larry" && !has_food_fight) {
-      : print "Larry says, \"I'm glad you met me in Montauk. I hope you've not come empty-handed.\"." ;
+      : print "<Larry<#fee>> says, \"I'm glad you met me in <Montauk<#fee>>. I hope you've not come empty-handed.\"." ;
    }
 
    : if (is_at "room_tree" ) {
@@ -365,11 +370,11 @@ on_describe {
    : if (is_at "santa_cellar") {
        : play_music sound="music_cellar";
        : press_any_key ;
-       : print "Christmas is coming tonight, everyone cannot wait to open presents." ;
-       : print "With this setback, how will you find a way to send all presents in time for the big day?" ;
+       : print "Christmas is coming tonight, everyone cannot wait to open <presents<#fee>>." ;
+       : print "With this setback, how will you find a way to send all <presents<#fee>> in time for the big day?" ;
        : press_any_key ;
        : print "Let's find a way to save Christmas!" ;
-       : print "Try some commands, e.g. EXAMINE REINDEER, GET POTION, TALK RUDOLPH. If you are stuck, type HELP." ;
+       : print "Try some commands, e.g. <EXAMINE REINDEER<#fee>>, <GET POTION<#fee>>, <TALK RUDOLPH<#fee>>. If you are stuck, type <HELP<#fee>>." ;
        : press_any_key ;
    }
    : if (is_at "nicobar_park") {
@@ -380,13 +385,13 @@ on_describe {
    }
    : if (is_at "coocoo_cafe" ) {
        : if (!is_exists "grateful_waitress") {
-          : print "Enter inside!";
+          : print "<Enter<#fdd>> inside!";
        }
        : else_if (is_exists "full_bin") {
-            : print "The shop is closed! Where did the leftover bread and croissants go?";
+            : print "The <shop<#fee>> is closed! Where did the leftover <bread<#fee>> and <croissants<#fee>> go?";
        }
        : else {
-            : print "The shop is closed!";
+            : print "The <shop<#fee>> is closed!";
        }
        : stop_music;
    }
@@ -457,16 +462,14 @@ on_describe {
        : else {
             : print "You have spent {day_spend_labyrinth_enigma} moves to get to the end but it's still so far away.";
        }
-       : print "Restart by entering ENTER";
+       : print "Restart by entering <ENTER<#fdd>>";
    }
    : if (is_at "labyrinth_win" ) {
       : if (day_spend_labyrinth_enigma <= 6) {
-            # should only show "Retry" phrase when object has not been won
             : print "You did it in the shortest time possible, you saved Christmas!";
             : goto "delivery";
       }
       : else {
-            # should only show "Retry" phrase when object has not been won
             : print "Getting to the end was too long ({day_spend_labyrinth_enigma} moves), TRY AGAIN!\n(it was just a simulation so Christmas is still ON, YAY!)\n\nRetry it taking even less moves to save CHRISTMAS!";
             : goto "montauk_beach";
       }
@@ -524,49 +527,40 @@ on_command {
             : swap o1 = "helping_larry"  o2 = "morehelping_larry" ;
          }
          : else_if (is_carried "pigeon_bookreal") {
-            : print "Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is recurring number in heavenly pigeon scriptures.";
+            : print "Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is recurring number in heavenly pigeon <scriptures<#fee>>.";
          }
          : else {
-            : print "Nothing has happened, this must not be the secret combination. The welcoming tourist might have a clue. Also, such a disgraceful melody could never attract any pigeon. Just sayin'";
+            : print "Nothing has happened, this must not be the secret combination. The welcoming <tourist<#fee>> might have a clue. Also, such a disgraceful melody could never attract any <pigeon<#fee>>. Just sayin'";
          }
-      }
-   }
-
-   : match "get bag"  {
-      : if (is_at "coocoo_cafe") {
-         : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
-      }
-      : if (is_at "nicobar_park") {
-         : print "The pigeon is very high in the sky, and you cannot fly without a reindeer." ;
       }
    }
 
    : match "examine beach"  {
       : if (is_at "montauk_beach") {
-         : print "The beach is quiet today." ;
+         : print "The <beach<#fee>> is quiet today." ;
       }
    }
 
    : match "examine bell"  {
       : if (is_at "church_tower") {
-         : print "These bells are used to make delightful songs." ;
+         : print "These <bells<#fee>> are used to make delightful songs." ;
       }
    }
 
    : match "examine bin"  {
       : if (is_at "coocoo_cafe") {
          : if (is_exists "full_bin") {
-             : print "There is a perfect loaf of bread inside. Maybe someone is hungry and you should get it?";
+             : print "There is a perfect loaf of <bread<#fee>> inside. Maybe someone is hungry and you should <get<#fee>> it?";
          }
          : else {
-             : print "There is sometimes a loaf of bread inside the bin but not currently." ;
+             : print "There is sometimes a loaf of <bread<#fee>> inside the <bin<#fee>> but not currently." ;
          }
       }
    }
 
    : match "give bread"  {
       : if (is_present "larry" && is_carried "bread" ) {
-         : print "Larry takes the loaf of bread and says. \"Let's share the bread with all my friends!\" ";
+         : print "Larry takes the loaf of bread and says \"Let's share the bread with all my friends!\" ";
          : set_true "has_food_fight";
          : destroy "bread" ;
          : swap o1 = "a_yourself1"  o2 = "a_yourself2" ;
@@ -578,7 +572,7 @@ on_command {
 
    : match "get bread"  {
       : if (is_at "coocoo_cafe" && is_exists "full_bin") {
-        : print "You take the loaf of bread and other delicacies from the bin." ;
+        : print "You take the <loaf<#fee>> of <bread<#fee>> and other delicacies from the <bin<#fee>>." ;
         : swap o1 = "full_bin"  o2 = "bin" ;
         : pocket "bread";
       }
@@ -586,25 +580,25 @@ on_command {
 
    : match "examine book; read book; use book; examine bible; read bible; use bible"  {
       : if (is_at "nicobar_park" && !is_carried "pigeon_book") {
-         : print "Some books are more important than food. Like this book, maybe." ;
+         : print "Some <books<#fee>> are more important than food. Like this <book<#fee>>, maybe." ;
       }
       : if (is_at "nicobar_park" && is_carried "pigeon_book") {
-         : print "Inside it says \'Pigeons love carrying heavy objects, but need energy to do so.\'" ;
+         : print "Inside it says \'<Pigeons<#fee>> love carrying heavy objects, but need energy to do so.\'" ;
       }
       : if (is_carried "pigeon_bookreal") {
-         : print "Inside it says \'A pigeon can fly up to 143 kilometers per hour. Just ask for Caballero.\'" ;
+         : print "Inside it says \'A <pigeon<#fee>> can fly up to <143<#fee>> kilometers per hour. Just ask for Caballero.\'" ;
       }
       : if (is_at "bookshop" && !is_carried "pigeon_book") {
-         : print "There are so many books here." ;
+         : print "There are so many <books<#fee>> here." ;
       }
       : if (is_at "bookshop" && is_carried "pigeon_book") {
-         : print "Who would want to read such a tiny book anyway?" ;
+         : print "Who would want to read such a tiny <book<#fee>> anyway?" ;
       }
    }
 
    : match "get book"  {
       : if (is_at "nicobar_park" && has_not_created "pigeon_book") {
-        : print "You take the book" ;
+        : print "You take the <book<#fee>>" ;
         : pocket "pigeon_book";
       }
    }
@@ -613,41 +607,41 @@ on_command {
       : if (is_at "coocoo_cafe") {
          : if (is_exists "grateful_waitress") {
             : if (is_exists "full_bin") {
-                : print "The Coocoo Cafe is closed, thanks for helping! I wonder where are the leftover bread and croissants.";
+                : print "The <Coocoo<#fee>> <Cafe<#fee>> is closed, thanks for helping! I wonder where are the leftover <bread<#fee>> and <croissants<#fee>>.";
             }
             : else {
-                : print "The Coocoo Cafe is closed, thanks for helping!";
+                : print "The <Coocoo<#fee>> <Cafe<#fee>> is closed, thanks for helping!";
             }
          }
-         : print "The Coocoo Cafe is about to close, but there is so much left to do!" ;
+         : print "The <Coocoo<#fee>> <Cafe<#fee>> is about to close, but there is so much left to do!" ;
       }
       : if (is_at "coocoo_inside" && has_not_created "grateful_waitress") {
-         : print "Can you help the Coocoo Cafe with cleaning before they can celebrate Christmas?" ;
+         : print "Can you <help<#fee>> the <Coocoo<#fee>> <Cafe <#fee>>with <clean<#fee>>ing before they can celebrate Christmas?" ;
       }
       : if (is_at "coocoo_inside" && is_exists "grateful_waitress") {
-         : print "You have a lifetime pass to visit the cafe, even when it is closed." ;
+         : print "You have a lifetime pass to visit the <cafe<#fee>>, even when it is closed." ;
       }
    }
 
    : match "examine children"  {
       : if (is_at "nicobar_park") {
-         : print "You are the only child here." ;
+         : print "You are the only <child<#fee>> here." ;
       }
    }
 
 
    : match "examine church"  {
       : if (is_at "church") {
-         : print "A church in Norman style, the architecture is captivating. You need to go south to see the church closer." ;
+         : print "A <church<#fee>> in Norman style, the architecture is captivating. You need to <enter<#fdd>> to see the church closer." ;
       }
       : if (is_at "south_park") {
-         : print "You need to go south to see the church closer. Someone is clearing it far away, but you cannot access it yet.";
+         : print "You need to go <south<#fdd>> to see the <church<#fee>> closer. Someone is clearing it far away, but you cannot access it yet.";
       }
    }
 
    : match "examine bread"  {
       : if (is_at "coocoo_inside") {
-         : print "The cafe doesn't take any orders." ;
+         : print "The <cafe<#fee>> doesn't take any orders." ;
       }
    }
 
@@ -659,7 +653,7 @@ on_command {
 
    : match "give ticket"  {
       : if (is_present "unpaid_tourguide" && is_carried "church_ticket") {
-         : print "The tour guide gladly checks the ticket, gives it back to you and says \"Great, let's visit the church! Please come in! And don't lose the ticket!\" ";
+         : print "The <tour<#fee>> <guide<#fee>> gladly checks the <ticket<#fee>>, gives it back to you and says \"Great, let's visit the church! Please come in! And don't lose the <ticket<#fee>>!\" ";
          : swap o1 = "unpaid_tourguide"  o2 = "friendly_tourguide" ;
       }
    }
@@ -668,41 +662,41 @@ on_command {
    : match "use dictionary; read dictionary; translate _; examine dictionary"  {
       : if (is_present "tourist") {
          : if (is_carried "dictionary") {
-           : print "The tourist laughs \"Oh you don't speak Korean? Dear me! You should have said so! I was meditating over this book. Oh, I have an English version as well. Please take it.\". She gives you the book. ";
+           : print "The <tourist<#fee>> laughs \"Oh you don't speak Korean? Dear me! You should have said so! I was meditating over this <book<#fee>>. Oh, I have an English version as well. Please take it.\". She gives you the <book<#fee>>. ";
            : create "pigeon_bookreal" ;
            : pocket "pigeon_bookreal" ;
            : swap o1 = "tourist"  o2 = "happy_tourist" ;
          }
          : else {
-           : print "I need to learn Korean or find a way to translate Korean before I can talk to the tourist.";
+           : print "I need to learn Korean or find a way to <translate<#fee>> Korean before I can <talk<#fee>> to the <tourist<#fee>>.";
          }
       }
    }
 
    : match "examine fountain"  {
       : if (is_at "south_park") {
-         : print "Discreet but well-thought-out, this fountain makes the delight of thirsty pigeons and overheated travellers." ;
+         : print "Discreet but well-thought-out, this <fountain<#fee>> makes the delight of thirsty <pigeons<#fee>> and overheated travellers." ;
       }
    }
 
    : match "examine guide; talk _"  {
       : if (is_present "unpaid_tourguide") {
          : clear_screen;
-         : print "\"No ticket? No visit!\", says the poetic tour guide. Can you give your ticket?" ;
+         : print "\"No <ticket<#fee>>? No visit!\", says the poetic <tour<#fee>> <guide<#fee>>. Can you give your <ticket<#fee>>?" ;
          : press_any_key ;
          : redescribe;
       }
       : if (is_present "friendly_tourguide" && is_carried "church_ticket") {
-         : print "\"Welcome! Come in!\", says the happy tour guide." ;
+         : print "\"Welcome! Come in!\", says the happy <tour<#fee>> <guide<#fee>>." ;
       }
       : if (is_present "friendly_tourguide" && !is_carried "church_ticket") {
-         : print "\"I've seen you...  But where is your ticket? I hope you didn't give it to a random stranger.\", says the tour guide." ;
+         : print "\"I've seen you...  But where is your <ticket<#fee>>? I hope you didn't give it to a random stranger.\", says the tour guide." ;
       }
    }
 
    : match "get larry"  {
       : if (is_at "montauk_beach") {
-         : print "Pigeons are not pocket monsters, you cannot just catch them." ;
+         : print "<Pigeons<#fee>> are not pocket monsters, you cannot just catch them." ;
       }
    }
 
@@ -711,40 +705,40 @@ on_command {
          : print "\"Can't you see we are all hungry?\", says Larry." ;
       }
       : if (is_present "helping_larry" && is_exists "absent_pigeon") {
-         : print "Larry has gone to organize everything." ;
+         : print "<Larry<#fee>> has gone to organize everything." ;
       }
       : if (is_present "morehelping_larry") {
-         : print "Are you ready to go north for the big delivery?" ;
+         : print "Are you ready to go <north<#fdd>> for the big delivery?" ;
       }
    }
 
    : match "examine lovers"  {
       : if (is_at "montauk_beach") {
-         : print "You see pigeons making a heart shape in the sky." ;
+         : print "You see <pigeons<#fee>> making a heart shape in the sky." ;
       }
       : if (is_at "nicobar_park") {
          : print "You are alone here." ;
       }
    }
 
-   : match "get meal; examine meal; get bag; examine bag"  {
+   : match "get meal; examine meal"  {
       : if (is_at "coocoo_cafe") {
-         : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
+         : print "<Pigeons<#fee>> are too high, and you are not fit enough to get to the <roof<#fee>>." ;
       }
       : if (is_at "nicobar_park") {
-         : print "The pigeon is very high in the sky, and you cannot fly without a reindeer." ;
+         : print "The <pigeon<#fee>> is very high in the sky, and you cannot fly without a reindeer." ;
       }
    }
 
    : match "examine montauk; examine place"  {
       : if (is_at "montauk_beach") {
-         : print "The beach is quiet today." ;
+         : print "The <beach<#fee>> is quiet today." ;
       }
    }
 
    : match "examine owner; talk owner; talk -"  {
       : if (is_present "bookshop_owner") {
-         : print "\"안녕하세요! \", says the bookshop owner. Maybe you will need to translate to English." ;
+         : print "\"안녕하세요! \", says the bookshop <owner<#fee>>. Maybe you will need to <translate<#fee>> to <English<#fee>>." ;
       }
    }
 
@@ -752,10 +746,10 @@ on_command {
       : if (is_present "bookshop_owner") {
          : clear_screen;
          : if (is_carried "dictionary") {
-             : print "\"안녕하세요! or Hello! Now that you have a dictionary, you are ready to handle korean conversations anywhere in the world, congratulations!\"";
+             : print "\"안녕하세요! or Hello! Now that you have a <dictionary<#fee>>, you are ready to handle korean conversations anywhere in the world, congratulations!\"";
          }
          : else {
-             : print "\"Oh you don't speak Korean? Dear me! Everyone needs a Korean-English dictionary in their life. You can get one by exchanging with another book.\"" ;
+             : print "\"Oh you don't speak Korean? Dear me! Everyone needs a Korean-English <dictionary<#fee>> in their life. You can get one by exchanging with another <book<#fee>>.\"" ;
          }
          : press_any_key ;
          : redescribe;
@@ -764,13 +758,13 @@ on_command {
 
    : match "give book; exchange book"  {
       : if (is_present "bookshop_owner" && is_carried "pigeon_book") {
-            : print "\"Thank you! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. It will open a new world to you.\" You get a Korean-English dictionary." ;
+            : print "\"Thank you! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. It will open a new world to you.\" You get a Korean-English <dictionary<#fee>>." ;
             : destroy "pigeon_book" ;
             : create "dictionary" ;
             : pocket "dictionary" ;
       }
       : if (is_present "bookshop_owner" && is_carried "pigeon_bookreal") {
-            : print "\"This book has a Not For Sale Specimen stamp on it. Sorry, we cannot take it.\" " ;
+            : print "\"This <book<#fee>> has a Not For Sale Specimen stamp on it. Sorry, we cannot take it.\" " ;
       }
    }
 
@@ -782,13 +776,13 @@ on_command {
 
    : match "examine dictionary"  {
          : if (is_exists "dictionary") {
-            : print "\"A Korean-English dictionary.\" " ;
+            : print "\"A Korean-English <dictionary<#fee>>.\" " ;
       }
    }
 
    : match "examine logo"  {
       : if (is_at "coocoo_inside") {
-         : print "The emblematic logo for the Coocoo Cafe. My bird and my coffee." ;
+         : print "The emblematic logo for the <Coocoo<#fee>> <Cafe<#fee>>. My bird and my coffee." ;
       }
    }
 
@@ -803,50 +797,50 @@ on_command {
          : print "You are alone, there is nothing to do here but things are looking good." ;
       }
       : if (is_at "south_park" && is_exists "larry") {
-         : print "A quiet part of the park, in warmer months you can hear the water flowing from the pigeon fountain. There is a beautiful view on the church." ;
+         : print "A quiet part of the <park<#fee>>, in warmer months you can hear the water flowing from the <pigeon<#fee>> <fountain<#fee>>. There is a beautiful view on the <church<#fee>>." ;
       }
    }
 
    : match "examine pigeon"  {
       : if (is_at "coocoo_cafe") {
-         : print "You see pigeons eating and flying with colorful doggy bags. It's like a very busy restaurant." ;
+         : print "You see <pigeons<#fee>> eating and flying with colorful doggy <bags<#fee>>. It's like a very busy <restaurant<#fee>>." ;
       }
       : if (is_at "montauk_beach") {
          : if (is_exists "larry") {
-            : print "Pigeons pretend not to see you but are looking at you on the sly: could you be here to bring a fiest?" ;
+            : print "<Pigeons<#fee>> pretend not to see you but are looking at you on the sly: could you be here to bring a feast?" ;
          }
          : else {
-            : print "Pigeons are flying, exercising and eating. Very healthy." ;
+            : print "<Pigeons<#fee>> are flying, exercising and eating. Very healthy." ;
          }
       }
 
       : if (is_at "nicobar_park" && is_exists "flying_pigeon") {
-         : print "The pigeon looks happy and busy.  It is singing while carrying a Sappy Meal bag: \' lovers meet in Montauk Beach, lalala \'." ;
+         : print "The <pigeon<#fee>> looks happy and busy.  It is singing while carrying a Sappy <Meal<#fee>> <bag<#fee>>: \' lovers meet in Montauk Beach, lalala \'." ;
       }
       : if (is_at "nicobar_park" && is_exists "new_pigeon") {
-         : print "The pigeon looks happy and busy.  It is singing while carrying a dumbbell: \'Best carriers meet in Montauk Beach, lalala \'" ;
+         : print "The <pigeon<#fee>> looks happy and busy.  It is singing while carrying a dumbbell: \'Best carriers meet in Montauk Beach, lalala \'" ;
       }
       : if (is_at "church_tower" && is_exists "gang_pigeon") {
-         : print "The pigeons are getting ready for a big mission." ;
+         : print "The <pigeons<#fee>> are getting ready for a big mission." ;
       }
       : if (is_at "church_tower" && is_exists "absent_pigeon") {
-         : print "How can you gather all pigeons here?" ;
+         : print "How can you gather all <pigeons<#fee>> here?" ;
       }
       : if (is_at "bookshop" || is_at "church" || is_at "south_park" || is_at "church_inside" || is_at "coocoo_inside" || is_at "santa_cellar" || in_labyrinth) {
-         : print "Roses are red, Violets are blue, Pigeons fly in the sky, And so should you." ;
+         : print "Roses are red, Violets are blue, <Pigeons<#fee>> fly in the sky, And so should you." ;
       }
 
    }
 
    : match "get pigeon; talk pigeon"  {
       : if (is_at "coocoo_cafe") {
-         : print "Pigeons are too high, and you are not fit enough to get to the roof." ;
+         : print "<Pigeons<#fee>> are too high, and you are not fit enough to get to the <roof<#fee>>." ;
       }
       : if (is_at "montauk_beach") {
-         : print "Pigeons are not pocket monsters, you cannot just catch them." ;
+         : print "<Pigeons<#fee>> are not pocket monsters, you cannot just catch them." ;
       }
       : if (is_at "nicobar_park") {
-         : print "The pigeon is very high in the sky, and you cannot fly without a reindeer." ;
+         : print "The <pigeon<#fee>> is very high in the sky, and you cannot fly without a reindeer." ;
       }
       : if (is_present "larry") {
          : clear_screen;
@@ -864,64 +858,67 @@ on_command {
 
    : match "examine potion; get potion; examine cellar"  {
       : if (is_at "santa_cellar") {
-         : print "These potions give strength for Christmas day. You already had a drink earlier today, so now you should focus on delivering the presents." ;
+         : print "These <potions<#fee>> give strength for Christmas day. You already had a drink earlier today, so now you should focus on delivering the <presents<#fee>>." ;
       }
    }
 
    : match "examine present"  {
-      : if (is_at "nicobar_park") {
-         : print "There are no presents here." ;
+      : if (is_at "santa_cellar") {
+         : print "There are an enormous amount of <present<#fee>> here... but how will I get them to children in time?" ;
+      }
+      : else {
+         : print "There are no <presents<#fee>> here." ;
       }
    }
 
    : match "examine reindeer; examine rudolph"  {
       : if (is_at "santa_cellar") {
-         : print "It seems that Santa's potions only work on Santa. The reindeer are all incapable of moving! At least they don't look too unhappy." ;
+         : print "It seems that <Santa<#fee>>'s <potions<#fee>> only work on <Santa<#fee>>. The <reindeer<#fee>> are all incapable of moving! At least they don't look too unhappy." ;
       }
    }
 
    : match "talk _"  {
       : if (is_at "santa_cellar") {
-         : print "All the reindeer are smiling with their eyes closed, not too responsive though. Even Rudolph, who usually is unstoppable." ;
+         : print "All the <reindeer<#fee>> are smiling with their eyes closed, not too responsive though. Even <Rudolph<#fee>>, who usually is unstoppable." ;
       }
    }
 
    : match "examine roof"  {
       : if (is_at "coocoo_cafe") {
-         : print "You see pigeons eating and flying with colorful doggy bags. It's like a very busy restaurant." ;
+         : print "You see <pigeons<#fee>> eating and flying with colorful doggy <bags<#fee>>. It's like a very busy <restaurant<#fee>>." ;
       }
    }
 
    : match "examine shop; examine bookshop; examine store"  {
       : if (is_at "bookshop") {
-         : print "This is an exchange only bookshop. Books are the currency." ;
+         : print "This is an <exchange<#fee>> only bookshop. <Books<#fee>> are the currency." ;
       }
    }
 
    : match "examine ticket"  {
       : if (is_carried "church_ticket") {
-         : print "A cheap ticket, but no cheap wonder!";
+         : print "A cheap <ticket<#fee>>, but no cheap wonder!";
       }
    }
 
    : match "examine tourist; talk tourist; talk -"  {
       : if (is_present "tourist") {
-         : print "\"나는 비둘기를 위해 여기에 왔습니다! '비둘기 집에 음식을 두면 비둘기가 옵니다'\", says the cheerful tourist. Maybe you will need to use another item to have a fruitful conversation." ;
+         : print "\"나는 비둘기를 위해 여기에 왔습니다! '비둘기 집에 음식을 두면 비둘기가 옵니다'\", says the cheerful <tourist<#fee>>. Maybe you will need to use another item to have a fruitful conversation." ;
       }
       : if (is_present "happy_tourist") {
-         : print "\"It doesn't matter what people call you unless they call you pigeon pie and eat you up.\", says the happy tourist." ;
+         : print "\"It doesn't matter what people call you unless they call you <pigeon<#fee>> pie and eat you up.\", says the happy <tourist<#fee>>." ;
       }
    }
 
    : match "examine church; examine ellacombe; examine apparatus"  {
       : if (is_at "church_inside") {
-         : print "All you notice is the ellacombe apparatus. You are able to ring all the bells on your own." ;
+         : print "All you notice is the ellacombe <apparatus<#fee>>. You are able to <ring<#fee>> all the bells on your own." ;
       }
    }
 
    : match "examine stained; examine glass; examine window"  {
       : if (is_at "church_inside") {
-         : print "This is a stained glass window depicting The Holy Spirit as a dove." ;
+         : print "This is a stained glass window depicting The Holy Spirit as a <dove<#fee>>." ;
       }
    }
 
@@ -933,22 +930,22 @@ on_command {
 
    : match "examine church; examine tower"  {
       : if (is_at "church_tower") {
-         : print "Some suggest this tower is a special place to organize secret missions." ;
+         : print "Some suggest this <tower<#fee>> is a special place to organize secret missions." ;
       }
       : if (is_at "church_inside") {
-         : print "The tower is upstairs. Go up!" ;
+         : print "The <tower<#fee>> is upstairs. Go <up<#fdd>>!" ;
       }
    }
 
    : match "examine tower"  {
       : if (is_at "church") {
-         : print "You need to enter the church then go upstairs to access the tower." ;
+         : print "You need to <enter<#fdd>> the <church<#fee>> then go upstairs to access the <tower<#fee>>." ;
       }
    }
 
    : match "help waitress; help cafe; clean cafe; tidy cafe"  {
       : if (is_present "waitress") {
-         : print "You are helping the Coocoo Cafe team.";
+         : print "You are helping the <Coocoo<#fee>> <Cafe<#fee>> team.";
          : swap o1 = "waitress"  o2 = "grateful_waitress" ;
          : swap o1 = "bin"  o2 = "full_bin" ;
       }
@@ -956,17 +953,17 @@ on_command {
 
    : match "examine waitress; talk waitress; talk -"  {
       : if (is_present "waitress") {
-         : print "\"There is so much work!!!! Please help me\", says the desperate waitress." ;
+         : print "\"There is so much work!!!! Please <help<#fee>> me\", says the desperate <waitress<#fee>>." ;
       }
       : if (is_present "grateful_waitress") {
-         : print "\"Thank you so much for your help! Now I can spend the rest of the night planning next year's development of the Coocoo Cafe. A more efficient team, more entertainers, more customers, that's my goal!\", says the ambitious waitress." ;
+         : print "\"Thank you so much for your help! Now I can spend the rest of the night planning next year's development of the <Coocoo<#fee>> <Cafe<#fee>>. A more efficient team, more entertainers, more customers, that's my goal!\", says the ambitious <waitress<#fee>>." ;
       }
    }
 
    : match "talk _"  {
       : if (is_present "nicobar_man1" && !is_carried "church_ticket") {
          : clear_screen;
-         : print "\"Have you visited the church? It is famous for its ellacombe apparatus, a mechanism that allows one person to ring all the bells. I see you don't have a ticket! Here, have one to visit.\", says the man.";
+         : print "\"Have you visited the <church<#fee>>? It is famous for its ellacombe apparatus, a mechanism that allows one person to ring all the bells. I see you don't have a <ticket<#fee>>! Here, have one to visit.\", says the <man<#fee>>.";
          : create "church_ticket" ;
          : pocket "church_ticket" ;
          : swap o1 = "nicobar_man1"  o2 = "nicobar_man2" ;
@@ -974,7 +971,7 @@ on_command {
          : redescribe;
       }
       : if (is_present "nicobar_man2") {
-         : print "\"I know this church by heart!\", says the man.";
+         : print "\"I know this <church<#fee>> by heart!\", says the <man<#fee>>.";
       }
    }
 
@@ -992,7 +989,7 @@ on_command {
          : print "You are alone, there is nothing to do here but it's not raining anymore." ;
       }
       : if (is_at "santa_cellar") {
-         : print "Almost all of your precious drinks have been emptied. The Pourpon, the Vallentines... all gone." ;
+         : print "Almost all of your precious <drinks<#fee>> have been emptied. The Pourpon, the Vallentines... all gone." ;
       }
    }
    : if (in_labyrinth) {
@@ -1066,39 +1063,39 @@ on_command {
 
    : match "examine -"  {
       : if (is_at "bookshop") {
-         : print "So many books!" ;
+         : print "So many <books<#fee>>!" ;
       }
       : if (is_at "church") {
-         : print "A church in Norman style, the architecture is captivating." ;
+         : print "A <church<#fee>> in Norman style, the architecture is captivating." ;
       }
       : if (is_at "church_inside") {
          : print "You remember the ellacombe apparatus, and the place for important missions." ;
       }
       : if (is_at "coocoo_cafe") {
-         : print "You see pigeons eating and flying with colorful doggy bags. It's like a very busy restaurant." ;
+         : print "You see <pigeons<#fee>> eating and flying with colorful doggy <bags<#fee>>. It's like a very busy <restaurant<#fee>>." ;
       }
       : if (is_at "coocoo_inside") {
-         : print "The interior of the Coocoo Cafe is very cosy." ;
+         : print "The interior of the <Coocoo<#fee>> <Cafe<#fee>> is very cosy." ;
       }
       : if (in_labyrinth) {
          : print "Find the shortest path to deliver all presents!" ;
       }
       : if (is_at "montauk_beach") {
-         : print "Montauk Beach is popular this season of the year for winter surfing, and is known as a romantic place." ;
+         : print "<Montauk<#fee>> <Beach<#fee>> is popular this season of the year for winter surfing, and is known as a romantic <place<#fee>>." ;
       }
       : if (is_at "nicobar_park") {
          : print "The Nicobar Park is the ideal refuge from the noisy streets of the city." ;
       }
       : if (is_at "santa_cellar") {
-         : print "You've never seen your cellar so crowded, and your barrels so empty." ;
+         : print "You've never seen your <cellar<#fee>> so crowded, and your <barrels<#fee>> so empty." ;
       }
       : if (is_at "south_park") {
-         : print "A quiet part of the park, in warmer months you can hear the water flowing from the pigeon fountain. There is a beautiful view on the church." ;
+         : print "A quiet part of the park, in warmer months you can hear the water flowing from the <pigeon<#fee>> <fountain<#fee>>. There is a beautiful view on the <church<#fee>>." ;
       }
    }
    : match "examine tree; get tree; examine fir; get fir; examine pine; get pine"  {
       : if (is_at "bookshop" || is_at "church" || is_at "coocoo_cafe" || is_at "coocoo_inside" || is_at "nicobar_park" || is_at "south_park" || in_labyrinth) {
-         : print "Trees got dressed up for Christmas." ;
+         : print "<Trees<#fee>> got dressed up for Christmas." ;
       }
    }
 
