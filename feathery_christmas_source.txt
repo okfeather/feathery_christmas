@@ -232,7 +232,7 @@ pigeon_book : object "a <book<#fee>> on the floor \'Pigeons love bread\'" at = "
 
 pigeon_bookreal : object "the real bible about pigeons \'Lovey Dovey Pigeons\'" ;
 
-robin : scenery "some kids, like Robin, are happily screaming 'I can't wait to play Call Of Beauty!' With your help, the pigeons could deliver the gifts to all children" at = "room_tree" ;
+robin : scenery "some kids, like Robin, are happily screaming \'I can't wait to play Call Of Beauty!\' With your help, the pigeons could deliver the gifts to all children" at = "room_tree" ;
 
 happy_tourist : scenery "a <tourist<#fee>>" ;
 
@@ -359,7 +359,7 @@ on_describe {
       : print "CONGRATULATIONS!" ;
       : print "YOU WON THE GAME!" ;
       : print "LARRY AND HIS TROOPS COULD DELIVER ALL PRESENTS!" ;
-      : print "TO THANK THEM, YOU PROMISED TO COME BACK AND GIVE THEM VINTAGE 'THE NOTORIOUS GROUSE' DRINK, WITH SOME PANETTONE AND CASTELLA." ;
+      : print "TO THANK THEM, YOU PROMISED TO COME BACK AND GIVE THEM VINTAGE \'THE NOTORIOUS GROUSE\' DRINK, WITH SOME PANETTONE AND CASTELLA." ;
       : print "THANKS TO YOU, ALL KIDS AROUND THE WORLD WILL BE HAPPY ON CHRISTMAS!" ;
       : play_music sound="music_victory";
       : press_any_key ;
@@ -781,8 +781,8 @@ on_command {
    }
 
    : match "examine logo"  {
-      : if (is_at "coocoo_inside") {
-         : print "The emblematic logo for the <Coocoo<#fee>> <Cafe<#fee>>. My bird and my coffee." ;
+      : if (is_at "coocoo_inside" || is_at "coocoo_cafe") {
+         : print "The emblematic logo for the <Coocoo<#fee>> <Cafe<#fee>>. Motto \'My bird and my coffee\'." ;
       }
    }
 
