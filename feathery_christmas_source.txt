@@ -10,7 +10,7 @@
 
 game_information {
    game_name                    = Feathery Christmas
-   game_version                 = 0.0.2
+   game_version                 = 0.0.3
    game_shortname               = Feathery Xmas
    written_by                   = OK Feather
    uuid                         = b9293521-1ddf-48d0-9798-705e902858f9
@@ -27,6 +27,7 @@ start_at = santa_cellar
 
 vocabulary {
    : verb / aliases = [examine, check, regarde]
+   : verb / aliases = [give, show]
    : noun      / aliases = [bread, croissant, croissants, pain, cookie]
    : noun      / aliases = [cafe, coocoo]
    : noun      / aliases = [guide, tour, tourguide]
@@ -73,7 +74,7 @@ locations {
 
    church_tower : location "You are in the church's tower. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited here. Enter RING NUMBER (e.g. RING 0) to try calling pigeons." ;
 
-   coocoo_cafe : location "You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof. Enter inside!" ;
+   coocoo_cafe : location "You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof." ;
 
    coocoo_inside : location "You are inside the Coocoo Cafe. There are no customers." ;
 
@@ -240,6 +241,12 @@ grateful_waitress : scenery "The Coocoo Cafe team is grateful for your help. You
 ######################################
 
 barriers {
+   block_cafe : block {
+      location = coocoo_inside
+      message  = The restaurant is closed.
+      block_when_exists = grateful_waitress
+
+   }
 
    block_larry : block {
 
@@ -371,6 +378,17 @@ on_describe {
        : play_music sound="music_cafe";
    }
    : if (is_at "coocoo_cafe" ) {
+       : if (!is_exists "grateful_waitress") {
+          : print "Enter inside!";
+       }
+       : else {
+          : if (is_exists "full_bin") {
+              : print "The shop is closed! Where did the leftovers bread and croissants go?";
+          }
+          : else {
+              : print "The shop is closed!";
+          }
+       }
        : stop_music;
    }
    : if (is_at "bookshop" ) {
@@ -531,7 +549,7 @@ on_command {
          }
          : else {
             : if (is_carried "pigeon_bookreal") {
-               : print "Nothing has happened, it is said that the secret combination is recurring number in heavenly pigeon scriptures.";
+               : print "Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is recurring number in heavenly pigeon scriptures.";
             }
             : else {
                : print "Nothing has happened, this must not be the secret combination. The welcoming tourist might have a clue. Also, such a disgraceful melody could never attract any pigeon. Just sayin'";
@@ -634,9 +652,12 @@ on_command {
       : if (is_at "church") {
          : print "A church in Norman style, the architecture is captivating. You need to go south to see the church closer." ;
       }
+      : if (is_at "south_park") {
+         : print "You need to go south to see the church closer. Someone is clearing it far away, but you cannot access it yet.";
+      }
    }
 
-   : match "examine cookie; examine cookies; examine bread; take bread"  {
+   : match "examine bread"  {
       : if (is_at "coocoo_inside") {
          : print "The cafe doesn't take any orders." ;
       }
@@ -648,7 +669,7 @@ on_command {
       }
    }
 
-   : match "give ticket; show ticket"  {
+   : match "give ticket"  {
       : if (is_present "unpaid_tourguide" && is_carried "church_ticket") {
          : print "The tour guide gladly checks the ticket, gives it back to you and says \"Great, let's visit the Church Tower! Please come in! And don't lose the ticket!\" ";
          : swap o1 = "unpaid_tourguide"  o2 = "friendly_tourguide" ;
@@ -874,7 +895,7 @@ on_command {
       }
    }
 
-   : match "examine ticket; look ticket"  {
+   : match "examine ticket"  {
       : if (is_carried "church_ticket") {
          : print "A cheap ticket, but no cheap wonder!";
       }
