@@ -10,7 +10,7 @@
 
 game_information {
    game_name                    = Feathery Christmas
-   game_version                 = 0.0.5
+   game_version                 = 0.0.6
    game_shortname               = Feathery Xmas
    written_by                   = OK Feather
    uuid                         = b9293521-1ddf-48d0-9798-705e902858f9
@@ -474,6 +474,7 @@ on_describe {
       : redescribe;
    }
    : if (is_at "delivery") {
+      : play_music sound="music_delivery";
       : press_any_key;
       : goto "room_tree";
       : redescribe;
@@ -1081,6 +1082,7 @@ on_command {
 
 assets {
    sounds {
+      music_delivery : sound_sample "https://okfeather.github.io/feathery_christmas/music_delivery.mp3" ;
       music_victory : sound_sample "https://okfeather.github.io/feathery_christmas/music_victory.mp3" ;
       music_labyrinth : sound_sample "https://okfeather.github.io/feathery_christmas/music_labyrinth.mp3" ;
       music_cellar : sound_sample "https://okfeather.github.io/feathery_christmas/music_cellar.mp3" ;
