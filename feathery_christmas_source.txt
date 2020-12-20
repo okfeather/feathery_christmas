@@ -33,7 +33,7 @@ vocabulary {
    : noun      / aliases = [guide, tour, tourguide]
    : noun      / aliases = [owner, vendor]
    : noun      / aliases = [pigeon, bird, pigeons, birds]
-   : noun      / aliases = [potion, potions, beverage, beverages, drink, drinks]
+   : noun      / aliases = [potion, potions, beverage, beverages, drink, drinks, barrel, barrels]
    : noun      / aliases = [reindeer, reindeers]
    : noun      / aliases = [tourist, visitor]
    : noun      / aliases = [yourself, santa, myself, me]
@@ -1088,7 +1088,7 @@ on_command {
          : print "The Nicobar Park is the ideal refuge from the noisy streets of the city." ;
       }
       : if (is_at "santa_cellar") {
-         : print "You've never seen your cellar so crowded, and your bottles so empty." ;
+         : print "You've never seen your cellar so crowded, and your barrels so empty." ;
       }
       : if (is_at "south_park") {
          : print "A quiet part of the park, in warmer months you can hear the water flowing from the pigeon fountain. There is a beautiful view on the church." ;
