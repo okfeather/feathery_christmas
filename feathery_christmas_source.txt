@@ -82,7 +82,7 @@ locations {
 
    coocoo_inside : location "You are inside the Coocoo Cafe. There are no customers." ;
 
-   delivery : location "Pigeon are delivering all the gifts with your optimized route!" ;
+   delivery : location "Pigeons are delivering all the gifts with your optimized route!" ;
 
    montauk_beach : location "Montauk is the place where lovers like to meet." ;
 
