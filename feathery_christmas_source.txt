@@ -13,7 +13,7 @@ game_information {
    written_by                   = OK Feather
    uuid                         = b9293521-1ddf-48d0-9798-705e902858f9
    year_of_release              = 2020
-   short_synopsis               = Help Father Christmas deliver gifts without reindeers and save Christmas!
+   short_synopsis               = Help Father Christmas deliver gifts without your reindeer and save Christmas!
 }
 
 loading_screen = loading_screen
@@ -90,7 +90,7 @@ locations {
 
    room_tree : location "You are in front of a big Christmas tree, you see that Larry's friend Columbia safely delivered a lot of the presents." ;
 
-   santa_cellar : location "This is Santa's cellar, where you can normally find different potions to stay cheerful and full of energy. You remember having told the reindeers of these drinks' benefits, so that's probably why they've been drinking a lot. However, they don't seem full of energy. You decide to leave the cellar to get fresh air." ;
+   santa_cellar : location "This is Santa's cellar, where you can normally find different potions to stay cheerful and full of energy. You remember having told the reindeer of these drinks' benefits, so that's probably why they've been drinking a lot. However, they don't seem full of energy. You decide to leave the cellar to get fresh air." ;
 
    south_park : location "You are in the South of Nicobar Park." ;
 
@@ -876,13 +876,13 @@ on_command {
 
    : match "examine reindeer; examine rudolph"  {
       : if (is_at "santa_cellar") {
-         : print "It seems that Santa's potions only work on Santa. The reindeers are all incapable of moving! At least they don't look too unhappy." ;
+         : print "It seems that Santa's potions only work on Santa. The reindeer are all incapable of moving! At least they don't look too unhappy." ;
       }
    }
 
    : match "talk _"  {
       : if (is_at "santa_cellar") {
-         : print "All the reindeers are smiling with their eyes closed, not too responsive though. Even Rudolph, who usually is unstoppable." ;
+         : print "All the reindeer are smiling with their eyes closed, not too responsive though. Even Rudolph, who usually is unstoppable." ;
       }
    }
 
