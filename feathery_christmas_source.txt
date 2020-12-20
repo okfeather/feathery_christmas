@@ -129,7 +129,6 @@ connections {
    church, enter, church_inside,
    church_inside, up, church_tower,
    montauk_beach, north_oneway, labyrinth_start,
-   labyrinth_start, east_oneway, montauk_beach,
 
    labyrinth_start, north_oneway, labyrinth_n,
    labyrinth_n, south_oneway, labyrinth_ns,
@@ -164,20 +163,6 @@ connections {
    labyrinth_nsesn, leave_oneway, montauk_beach,
    labyrinth_nsesnn, leave_oneway, montauk_beach,
    labyrinth_nsenee, leave_oneway, montauk_beach
-
-   labyrinth_n, enter_oneway, labyrinth_start,
-   labyrinth_ns, enter_oneway, labyrinth_start,
-   labyrinth_nse, enter_oneway, labyrinth_start,
-   labyrinth_nsen, enter_oneway, labyrinth_start,
-   labyrinth_nsene, enter_oneway, labyrinth_start,
-   labyrinth_nses, enter_oneway, labyrinth_start,
-   labyrinth_nss, enter_oneway, labyrinth_start,
-   labyrinth_s, enter_oneway, labyrinth_start,
-   labyrinth_se, enter_oneway, labyrinth_start,
-   labyrinth_see, enter_oneway, labyrinth_start,
-   labyrinth_nsesn, enter_oneway, labyrinth_start,
-   labyrinth_nsesnn, enter_oneway, labyrinth_start,
-   labyrinth_nsenee, enter_oneway, labyrinth_start
    ]
 
 }
@@ -458,7 +443,7 @@ on_describe {
        : else {
             : print "You have spent {day_spend_labyrinth_enigma} moves to get to the end but it's still so far away.";
        }
-       : print "Restart by entering <ENTER<#fdd>>";
+       : print "Restart by entering <START<#fdd>>";
    }
    : if (is_at "labyrinth_win" ) {
       : if (day_spend_labyrinth_enigma <= 6) {
@@ -989,6 +974,10 @@ on_command {
       }
    }
    : if (in_labyrinth) {
+      : match "start -; enter -" {
+          : goto "labyrinth_start";
+          : redescribe;
+      }
       : match "e _" {
          : mask {
            : if (try_move() != "") {
