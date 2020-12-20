@@ -36,6 +36,7 @@ vocabulary {
    : noun      / aliases = [book]
    : noun      / aliases = [child, children, kid]
    : noun      / aliases = [montauk, beach]
+   : noun      / aliases = [ellacombe, apparatus]
 }
 
 ######################################
@@ -911,9 +912,9 @@ on_command {
       }
    }
 
-   : match "examine church; examine ellacombe; examine apparatus"  {
+   : match "examine church; examine ellacombe"  {
       : if (is_at "church_inside") {
-         : print "All you notice is the ellacombe <apparatus<#fee>>. You are able to <ring<#fee>> all the bells on your own, thanks to a simple number system." ;
+         : print "All you notice is the <ellacombe<#fee>> <apparatus<#fee>>. You are able to <ring<#fee>> all the bells on your own, thanks to a simple number system." ;
       }
    }
 
