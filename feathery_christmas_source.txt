@@ -10,7 +10,7 @@
 
 game_information {
    game_name                    = Feathery Christmas
-   game_version                 = 0.0.6
+   game_version                 = 0.0.7
    game_shortname               = Feathery Xmas
    written_by                   = OK Feather
    uuid                         = b9293521-1ddf-48d0-9798-705e902858f9
@@ -326,6 +326,19 @@ on_startup {
 }
 
 ######################################
+#  Subroutines                       #
+######################################
+
+subroutines {
+   labyrinth_right : subroutine {
+      : update_graphic;
+      : pause "50" ;
+      : set_integer var = "labyrinth_position_x" {( labyrinth_position_x + 22)}
+      : update_graphic;
+   }
+}
+
+######################################
 #  On Describe                       #
 ######################################
 
@@ -438,25 +451,19 @@ on_describe {
        : set_integer var = "labyrinth_position_x"  value = "0" ;
        : set_integer var = "labyrinth_position_y"  value = "28" ;
        : play_music sound="music_labyrinth";
-       : set_integer var = "day_spend_labyrinth_enigma" value = "6";
+       : set_integer var = "day_spend_labyrinth_enigma" value = "0";
        : update_graphic;
    }
    :else {
        :if (in_labyrinth && !is_at "labyrinth_win") {
+           : if (day_spend_labyrinth_enigma < 2) {
+              : print "You have made your first move to get to the end, it's still so far away.";
+           }
+           : else {
+                : print "You have spent {day_spend_labyrinth_enigma} moves to get to the end but it's still so far away.";
+           }
            : print "Restart by entering ENTER";
        }
-   }
-   : if (is_at "labyrinth_s" ) {
-       : add var = "day_spend_labyrinth_enigma" value = "1" ;
-   }
-   : if (is_at "labyrinth_nsen" ) {
-       : add var = "day_spend_labyrinth_enigma" value = "1" ;
-   }
-   : if (is_at "labyrinth_nss" ) {
-       : add var = "day_spend_labyrinth_enigma" value = "2" ;
-   }
-   : if (is_at "labyrinth_nsesnn" ) {
-       : add var = "day_spend_labyrinth_enigma" value = "2" ;
    }
    : if (is_at "labyrinth_win" ) {
       : if (day_spend_labyrinth_enigma <= 6) {
@@ -466,7 +473,7 @@ on_describe {
       }
       : else {
             # should only show "Retry" phrase when object has not been won
-            : print "Getting to the end was too long, TRY AGAIN!\n(it was just a simulation so Christmas is still ON, YAY!)\n\nRetry it taking taking even less move to save CHRISTMAS!";
+            : print "Getting to the end was too long ({day_spend_labyrinth_enigma} moves), TRY AGAIN!\n(it was just a simulation so Christmas is still ON, YAY!)\n\nRetry it taking taking even less move to save CHRISTMAS!";
             : goto "montauk_beach";
       }
       : set_false "in_labyrinth";
@@ -993,6 +1000,7 @@ on_command {
       : match "e _" {
          : mask {
            : if (try_move() != "") {
+              : increment "day_spend_labyrinth_enigma";
               : set_integer var = "labyrinth_position_x" {( labyrinth_position_x + 22)}
            }
          }
@@ -1000,6 +1008,7 @@ on_command {
       : match "s _" {
          : mask {
            : if (try_move() != "") {
+              : increment "day_spend_labyrinth_enigma";
               : set_integer var = "labyrinth_position_y" {( labyrinth_position_y + 26)}
            }
          }
@@ -1007,25 +1016,33 @@ on_command {
       : match "n _" {
          : mask {
            : if (try_move() != "") {
+              : increment "day_spend_labyrinth_enigma";
               : set_integer var = "labyrinth_position_y" {( labyrinth_position_y - 26)}
            }
          }
       }
       : mask {
         : if (try_move() == "labyrinth_n") {
-            : set_integer var = "labyrinth_position_x" {( labyrinth_position_x + 66)}
+            : gosub "labyrinth_right";
+            : gosub "labyrinth_right";
+            : gosub "labyrinth_right";
         }
         : if (try_move() == "labyrinth_nse") {
-            : set_integer var = "labyrinth_position_x" {( labyrinth_position_x + 44)}
+            : gosub "labyrinth_right";
+            : gosub "labyrinth_right";
         }
         : if (try_move() == "labyrinth_see" && "labyrinth_nss" != current_location()) {
-            : set_integer var = "labyrinth_position_x" {( labyrinth_position_x + 44)}
+            : gosub "labyrinth_right";
+            : gosub "labyrinth_right";
         }
         : if (try_move() == "labyrinth_nses") {
-            : set_integer var = "labyrinth_position_x" {( labyrinth_position_x + 66)}
+            : gosub "labyrinth_right";
+            : gosub "labyrinth_right";
+            : gosub "labyrinth_right";
         }
         : if (try_move() == "labyrinth_nsenee" && "labyrinth_nsesnn" != current_location()) {
-            : set_integer var = "labyrinth_position_x" {( labyrinth_position_x + 44)}
+            : gosub "labyrinth_right";
+            : gosub "labyrinth_right";
         }
       }
    }
