@@ -4,7 +4,7 @@
 
 game_information {
    game_name                    = Feathery Christmas
-   game_version                 = 1.0.0
+   game_version                 = 1.0.1
    game_shortname               = Feathery Xmas
    written_by                   = OK Feather
    uuid                         = b9293521-1ddf-48d0-9798-705e902858f9
@@ -725,7 +725,9 @@ on_command {
                 : print "The <Coocoo<#fee>> <Cafe<#fee>> is closed, thanks for helping!";
             }
          }
-         : print "The <Coocoo<#fee>> <Cafe<#fee>> is about to close, but there is so much left to do!" ;
+         : if (is_exists "waitress") {
+            : print "The <Coocoo<#fee>> <Cafe<#fee>> is about to close, but there is so much left to do!" ;
+         }
       }
       : if (is_at "coocoo_inside" && has_not_created "grateful_waitress") {
          : print "Can you <help<#fee>> the <Coocoo<#fee>> <Cafe <#fee>>with <clean<#fee>>ing before they can celebrate Christmas?" ;
