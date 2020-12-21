@@ -109,7 +109,7 @@ locations {
 
    nicobar_park : location "You are in Nicobar Park." ;
 
-   labyrinth_start : location "<Pigeons<#fee>> are going to give gifts to all children!\nThey just need you to help organize the delivery.\nFind the shortest path to get there before Christmas! May the wind push you and make you save distance!" ;
+   labyrinth_start : location "<Pigeons<#fee>> are going to give gifts to all children!\nThey just need you to help organize the delivery.\nFind the shortest path to get there before Christmas! May the Western wind push you and make you save distance!" ;
 
    room_tree : location "You are in front of a big Christmas tree, you see that Larry's friend Columbia safely delivered a lot of the presents." ;
 
