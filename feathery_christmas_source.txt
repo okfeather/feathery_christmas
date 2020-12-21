@@ -80,6 +80,9 @@ integers {
 
 strings {
    answer_logic : string "";
+   next_track : string "";
+   current_track : string "";
+   sound_volume : string "normal";
 }
 
 ######################################
@@ -90,9 +93,9 @@ locations {
 
    bookshop : location "You are at the book shop. <Talk<#fee>> to the <owner<#fee>> if you need a <book<#fee>>." ;
 
-   church : location "You are in front of the <church<#fee>>. You can access the <tower<#fee>> upstairs if you <enter<#fee>>." ;
+   church : location "You are in front of the <church<#fee>>. You can access the <tower<#fee>> upstairs if you <enter<#fdd>>." ;
 
-   church_inside : location "You are inside the <church<#fee>>. You remember having heard that a secret bell combination would result in all nearby <pigeons<#fee>> being reunited at the <tower<#fee>>. Enter <RING<#fee>> NUMBER (e.g. <RING 0<#fee>>) to try calling <pigeons<#fee>>." ;
+   church_inside : location "You are inside the <church<#fee>>. You remember having heard that a secret bell combination would result in all nearby <pigeons<#fee>> being reunited at the <tower<#fee>>. Enter <RING<#fdd>> NUMBER (e.g. <RING 0<#fdd>>) to try calling <pigeons<#fee>>." ;
 
    church_tower : location "You are in the church's <tower<#fee>>." ;
 
@@ -311,8 +314,8 @@ on_startup {
          target -> ("labyrinth_" + item())
        }
    }
-   : set_music_vol volume="25";
-   : play_music sound="music_intro";
+   : gosub "update_volume";
+   : play_music "music_intro";
    : print "Type <VERB NOUN<#fee>> with the keyboard to advance in the game." ;
    : print "e.g. <EXAMINE PIGEON<#fee>> to take a closer look at a PIGEON." ;
    : print "<GET BREAD<#fee>> to take BREAD and add it to your inventory." ;
@@ -357,6 +360,85 @@ subroutines {
         :  beep millis="200" pitch="42";
       }
    }
+   play_music : subroutine {
+      : if (is_at "santa_cellar") {
+         : set_string var="next_track" text="music_cellar";
+         : if (next_track != current_track) {
+            : play_music "music_cellar";
+         }
+      }
+      : else_if (is_at "nicobar_park" || is_at "church" || is_at "south_park" || is_at "coocoo_cafe") {
+         : set_string var="next_track" text="music_calm";
+         : if (next_track != current_track) {
+            : if (chance(50)) {
+               : play_music "music_calm1";
+            }
+            : else {
+               : play_music "music_calm2";
+            }
+         }
+      }
+      : else_if (is_at "coocoo_inside") {
+         : set_string var="next_track" text="music_cafe";
+         : if (next_track != current_track) {
+            : play_music "music_cafe";
+         }
+      }
+      : else_if (is_at "room_tree") {
+         : set_string var="next_track" text="music_victory";
+         : if (next_track != current_track) {
+            : play_music "music_victory";
+         }
+      }
+      : else_if (is_at "bookshop") {
+         : set_string var="next_track" text="music_bookshop";
+         : if (next_track != current_track) {
+            : play_music "music_bookshop";
+         }
+      }
+      : else_if (is_at "church_inside" || is_at "church_tower") {
+         : set_string var="next_track" text="music_church";
+         : if (next_track != current_track) {
+            : play_music "music_church";
+         }
+      }
+      : else_if (is_at "montauk_beach") {
+         : set_string var="next_track" text="music_beach";
+         : if (next_track != current_track) {
+            : play_music "music_beach";
+         }
+      }
+      : else_if (in_labyrinth) {
+         : set_string var="next_track" text="music_labyrinth";
+         : if (next_track != current_track) {
+            : play_music "music_labyrinth";
+         }
+      }
+      : else_if (is_at "delivery") {
+         : set_string var="next_track" text="music_delivery";
+         : if (next_track != current_track) {
+            : play_music "music_delivery";
+         }
+      }
+      : set_string var="current_track" {(next_track)}
+   }
+   update_volume : subroutine {
+      : if (sound_volume == "lowest") {
+         : set_music_vol volume="3";
+      }
+      : if (sound_volume == "low") {
+         : set_music_vol volume="7";
+      }
+      : if (sound_volume == "normal") {
+         : set_music_vol volume="16";
+      }
+      : if (sound_volume == "high") {
+         : set_music_vol volume="40";
+      }
+      : if (sound_volume == "highest") {
+         : set_music_vol volume="100";
+      }
+   }
 }
 
 ######################################
@@ -364,28 +446,28 @@ subroutines {
 ######################################
 
 on_describe {
+   : gosub "play_music";
    : if (is_present "unpaid_tourguide") {
       : print "The <guide<#fee>> says, \"Do you have an entrance <ticket<#fee>>? Only those with a <ticket<#fee>> can access.\"." ;
    }
-
+   
    : if (is_present "larry" && !has_food_fight) {
       : print "<Larry<#fee>> says, \"I'm glad you met me in <Montauk<#fee>>. I hope you've not come empty-handed.\"." ;
    }
+
 
    : if (is_at "room_tree" ) {
       : print "CONGRATULATIONS!" ;
       : print "YOU WON THE GAME!" ;
       : print "LARRY AND HIS TROOPS COULD DELIVER ALL PRESENTS!" ;
       : print "TO THANK THEM, YOU PROMISED TO COME BACK AND GIVE THEM VINTAGE \'THE NOTORIOUS GROUSE\' DRINK, WITH SOME PANETTONE AND CASTELLA." ;
-      : print "THANKS TO YOU, ALL KIDS AROUND THE WORLD WILL BE HAPPY ON CHRISTMAS!" ;
-      : play_music sound="music_victory";
+      : print "THANKS TO YOU, ALL KIDS AROUND THE WORLD WILL BE HAPPY ON CHRISTMAS!";
       : press_any_key ;
       : clear_screen;
       : stop_music;
       : win_game ;
    }
    : if (is_at "santa_cellar") {
-       : play_music sound="music_cellar";
        : press_any_key ;
        : print "Christmas is coming tonight, everyone cannot wait to open <presents<#fee>>." ;
        : print "With this setback, how will you find a way to send all <presents<#fee>> in time for the big day?" ;
@@ -393,12 +475,6 @@ on_describe {
        : print "Let's find a way to save Christmas!" ;
        : print "Try some commands, e.g. <EXAMINE REINDEER<#fee>>, <GET POTION<#fee>>, <TALK RUDOLPH<#fee>>. If you are stuck, type <HELP<#fee>>." ;
        : press_any_key ;
-   }
-   : if (is_at "nicobar_park") {
-       : play_music sound="music_calm1";
-   }
-   : if (is_at "coocoo_inside" ) {
-       : play_music sound="music_cafe";
    }
    : if (is_at "coocoo_cafe" ) {
        : if (!is_exists "grateful_waitress") {
@@ -410,20 +486,8 @@ on_describe {
        : else {
             : print "The <shop<#fee>> is closed!";
        }
-       : play_music sound="music_calm2";
    }
-   : if (is_at "bookshop" ) {
-       : play_music sound="music_bookshop";
-   }
-   : if (is_at "church" ) {
-       : play_music sound="music_calm1";
-   }
-   : if (is_at "south_park" ) {
-       : play_music sound="music_calm2";
-   }
-   : if (is_at "church_inside" ) {
-       : play_music sound="music_church";
-   }
+   
    : if (is_at "montauk_beach" ) {
        : set_false "in_labyrinth";
        : if (has_food_fight) {
@@ -461,15 +525,11 @@ on_describe {
        : if (is_exists "helping_larry") {
            : print "Larry said \"We will need to go to the church tower, gather the troops there with a secret code.\" ";
        }
-       : else {
-           : play_music sound="music_beach";
-       }
    }
    : if (is_at "labyrinth_start" ) {
        : set_true "in_labyrinth";
        : set_integer var = "labyrinth_position_x"  value = "0" ;
        : set_integer var = "labyrinth_position_y"  value = "28" ;
-       : play_music sound="music_labyrinth";
        : set_integer var = "day_spend_labyrinth_enigma" value = "0";
        : update_graphic;
    }
@@ -496,7 +556,6 @@ on_describe {
       : redescribe;
    }
    : if (is_at "delivery") {
-      : play_music sound="music_delivery";
       : press_any_key;
       : goto "room_tree";
       : redescribe;
@@ -559,20 +618,9 @@ on_command {
       : redescribe;
    }
 
-   : match "sound lowest; music lowest" {
-      : set_music_vol volume="4";
-   }
-   : match "sound low; music low" {
-      : set_music_vol volume="10";
-   }
-   : match "sound normal; music normal" {
-      : set_music_vol volume="25";
-   }
-   : match "sound high; music high" {
-      : set_music_vol volume="50";
-   }
-   : match "sound highest; music highest" {
-      : set_music_vol volume="100";
+   : match "sound lowest; music lowest; sound low; music low; sound normal; music normal; sound high; music high; sound highest; music highest" {
+      : set_string var="sound_volume" {(lower(original "noun1"))}
+      : gosub "update_volume";
    }
    : match "sound -; music -" {
       : mask {
@@ -589,17 +637,18 @@ on_command {
             : swap o1 = "absent_pigeon"  o2 = "gang_pigeon" ;
             : swap o1 = "helping_larry"  o2 = "morehelping_larry" ;
          }
-         : else_if (is_carried "pigeon_bookreal") {
-            : gosub "random_music";
-            : gosub "random_music";
-            : gosub "random_music";
-            : print "Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is recurring number in heavenly pigeon <scriptures<#fee>>.";
-         }
          : else {
+            : set_string var="current_track" text="";
             : gosub "random_music";
             : gosub "random_music";
             : gosub "random_music";
-            : print "Nothing has happened, this must not be the secret combination. The welcoming <tourist<#fee>> might have a clue. Also, such a disgraceful melody could never attract any <pigeon<#fee>>. Just sayin'";
+            : gosub "play_music";
+            : if (is_carried "pigeon_bookreal") {
+               : print "Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is recurring number in heavenly pigeon <scriptures<#fee>>.";
+            }
+            : else {
+               : print "Nothing has happened, this must not be the secret combination. The welcoming <tourist<#fee>> might have a clue. Also, such a disgraceful melody could never attract any <pigeon<#fee>>. Just sayin'";
+            }
          }
       }
    }
