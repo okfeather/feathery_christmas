@@ -1335,6 +1335,17 @@ on_command {
       }
    }
 
+   : match "examine view"  {
+      : if (is_at "church_tower") {
+         : if (is_exists "absent_pigeon") {
+            : print "The city is so beautiful. Admiring the winter twilight sky, you feel like being on top of the world. But something is missing...";
+         }
+         : if (is_exists "gang_pigeon") {
+            : print "Who cares about the view on the city? You've never seen more pigeons in your life, and that alone is a memory you will cherish.";
+         }
+      }
+   }
+
    : match "examine yourself; talk yourself"  {
       : if (is_at "nicobar_park" && is_exists "a_yourself1") {
          : print "You are alone, there is nothing to do here and it's raining." ;
