@@ -847,16 +847,16 @@ on_command {
    : match "examine map; map _; use map" {
       : set_theme "theme_mono";
       : clear_screen;
-      : print {("^n^^c^<____________<#000>><Santa takeoff<#" + (in_labyrinth ? "afa" : is_exists "morehelping_larry" ? "aaf" : "faa") + ">>" )}
+      : print {("^n^^c^<____________<#000>><Santa takeoff<#" + (in_labyrinth ? "afa" : is_north_open ? "aaf" : "faa") + ">>" )}
       : print "^n^^c^<_____________<#000>>⬆";
-      : print {("^n^^c^<___<#000>><Inside<#" + (is_at "coocoo_inside"?"afa": is_exists "grateful_waitress" ? "faa" : "aaf")+">><___<#000>>--------------")};
-      : print {("^n^^c^<______<#000>>⬆<_____<#000>>|<Montauk Beach<#" + (is_at "montauk_beach"?"afa":"aaf")+">>|")};
+      : print {("^n^^c^<___<#000>><Inside<#" + (is_at "coocoo_inside"?"afa": is_exists "grateful_waitress" || !can_leave_church ? "faa" : "aaf")+">><___<#000>>--------------")};
+      : print {("^n^^c^<______<#000>>⬆<_____<#000>>|<Montauk Beach<#" + (is_at "montauk_beach"?"afa": can_leave_church ? "aaf" : "faa")+">>|")};
       : print "^n^^c^--------------------------";
-      : print {("^n^^c^|<Coocoo Cafe<#" + (is_at "coocoo_cafe"?"afa":"aaf")+">>| <Nicobar Park<#" + (is_at "nicobar_park"?"afa":"aaf")+">>|")};
+      : print {("^n^^c^|<Coocoo Cafe<#" + (is_at "coocoo_cafe"?"afa": can_leave_church ? "aaf" : "faa")+">>| <Nicobar Park<#" + (is_at "nicobar_park"?"afa": can_leave_church ? "aaf" : "faa")+">>|")};
       : print "^n^^c^--------------------------";
-      : print {("^n^^c^|<_<#000>> <Bookshop<#" + (is_at "bookshop"?"afa":"aaf")+">> |<_<#000>> <South Park<#" + (is_at "south_park"?"afa":"aaf")+">> |")};
+      : print {("^n^^c^|<_<#000>> <Bookshop<#" + (is_at "bookshop"?"afa": can_leave_church ? "aaf" : "faa")+">> |<_<#000>> <South Park<#" + (is_at "south_park"?"afa": can_leave_church ? "aaf" : "faa")+">> |")};
       : print "^n^^c^--------------------------";
-      : print {("^n^^c^<____________<#000>>| <__<#000>> <Church<#" + (is_at "church"?"afa": is_exists "larry" ? "faa" : "aaf")+">> <__<#000>>|")};
+      : print {("^n^^c^<____________<#000>>| <__<#000>> <Church<#" + (is_at "church"?"afa": is_exists "larry" || !can_leave_church ? "faa" : "aaf")+">> <__<#000>>|")};
       : print "^n^^c^<____________<#000>>--------------";
       : print {("^n^^c^<____________<#000>>⬇\n<____________<#000>><Inside<#" + (is_at "church_inside"?"afa": is_exists "unpaid_tourguide" || !is_carried "church_ticket" ? "faa" : "aaf")+">>")};
       : print {("^n^^c^<____________<#000>>⬇\n<____________<#000>><Tower<#" + (is_at "church_tower"?"afa":is_exists "unpaid_tourguide" || !is_carried "church_ticket" ? "faa" : "aaf")+">>")};
