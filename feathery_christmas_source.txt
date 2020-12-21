@@ -337,10 +337,9 @@ on_startup {
 
 subroutines {
    labyrinth_right : subroutine {
+      : set_integer var = "labyrinth_position_x" {( labyrinth_position_x + 22)};
       : update_graphic;
-      : pause "50" ;
-      : set_integer var = "labyrinth_position_x" {( labyrinth_position_x + 22)}
-      : update_graphic;
+      : pause "50";
    }
    random_music : subroutine {
       : store_random var = "pitch_random";
@@ -560,6 +559,7 @@ on_describe {
       : goto "room_tree";
       : redescribe;
    }
+   : gosub "play_music";
 }
 
 ######################################
@@ -1124,6 +1124,8 @@ on_command {
            : if (try_move() != "") {
               : increment "day_spend_labyrinth_enigma";
               : set_integer var = "labyrinth_position_x" {( labyrinth_position_x + 22)}
+              : update_graphic;
+              : pause "50" ;
            }
          }
       }
@@ -1132,6 +1134,8 @@ on_command {
            : if (try_move() != "") {
               : increment "day_spend_labyrinth_enigma";
               : set_integer var = "labyrinth_position_y" {( labyrinth_position_y + 26)}
+              : update_graphic;
+              : pause "50" ;
            }
          }
       }
@@ -1140,6 +1144,8 @@ on_command {
            : if (try_move() != "") {
               : increment "day_spend_labyrinth_enigma";
               : set_integer var = "labyrinth_position_y" {( labyrinth_position_y - 26)}
+              : update_graphic;
+              : pause "50" ;
            }
          }
       }
