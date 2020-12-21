@@ -27,7 +27,7 @@ game_settings {
 }
 
 loading_screen = loading_screen
-// autorediscribe if locations/objects changes
+// autoredescribe if locations/objects changes
 redescribe = auto_beta
 
 start_at = santa_cellar
@@ -976,7 +976,7 @@ on_command {
 
    : match "examine present"  {
       : if (is_at "santa_cellar") {
-         : print "There are an enormous amount of <present<#fee>> here... but how will I get them to children in time?" ;
+         : print "There is an enormous amount of <presents<#fee>> here... but how will I get them to children in time?" ;
       }
       : else {
          : print "There are no <presents<#fee>> here." ;
