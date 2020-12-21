@@ -1093,6 +1093,15 @@ on_command {
       }
    }
 
+   : match "talk 안녕하세요; say 안녕하세요; talk korean"  {
+      : if (is_present "bookshop_owner") {
+         : print "\"공공외교가 단기적으로 눈금을 움직이는 능력으로 평가받는 세상에서는 인적 교류와 같은 장기적인 프로젝트는 효과가 별로 없고단기적인 옹호 노력만이 타당하게 보일 수 있다.\" That's fascinating.";
+      }
+      : if (is_present "tourist") {
+         : print "\"강제적인 힘과 반대되는 소프트파워는 상대방을 자신이 원하는 대로 하도록 설득하는 능력이다. That's mind-blowing.\"";
+      }
+   }
+
    : match "give book; exchange book; exhanging book"  {
       : if (is_present "bookshop_owner" && is_carried "pigeon_book") {
             : print "\"Thank you! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. It will open a new world to you.\" You get a Korean-English <dictionary<#fee>>." ;
