@@ -4,7 +4,7 @@
 
 game_information {
    game_name                    = Feathery Christmas
-   game_version                 = 1.0.2
+   game_version                 = 1.0.1
    game_shortname               = Feathery Xmas
    written_by                   = OK Feather
    uuid                         = b9293521-1ddf-48d0-9798-705e902858f9
@@ -1143,7 +1143,7 @@ on_command {
       }
       : if (is_at "church_tower") {
          : if (is_exists "morehelping_larry") {
-            : print "\"We're ready when you want to go, I propose now! maybe? We will rejoin at Montauk Beach!\"";
+            : print "\"We're ready when you want to go, I'd suggest now! Maybe? We will gather at Montauk Beach, join us there!\"";
          }
       }
    }
