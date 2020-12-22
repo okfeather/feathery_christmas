@@ -120,7 +120,7 @@ collections {
    }
    lying_choice9 : list {
       items = [
-         "Jamie : Each of us five ate bread",
+         "Jamie : Each of the five of us ate bread",
          "Keith : Jamie ate the least bread or only one pigeon ate less bread than him",
          "Gabe : There is only one pigeon who ate as much bread as me. And it is not Yuri",
          "Steve : I am the only one who ate the least bread",
@@ -1183,7 +1183,7 @@ on_command {
          : print "<Larry<#fee>> has gone to organize everything." ;
       }
       : else_if (is_present "morehelping_larry") {
-         : print "\"Are you ready to go <north<#fdd>> for the big delivery?\"" ;
+         : print "\"Are you ready to go <North<#fdd>> for the big delivery?\"" ;
       }
       : else_if (is_at "church_tower" && is_exists "morehelping_larry") {
          : print "\"We're ready when you want to go, I'd suggest now! Maybe? We will gather at Montauk Beach, join us there!\"";
