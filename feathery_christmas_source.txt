@@ -407,7 +407,7 @@ barriers {
    block_larry : block {
 
       location = labyrinth_start
-      message  = The path is blocked by Larry
+      message  = The path is blocked by Larry.
       block_when_exists = larry
       show_blocked_exit = true
 
@@ -416,7 +416,7 @@ barriers {
    block_helpinglarry : block {
 
       location = labyrinth_start
-      message  = We will only take that path once all pigeons are assembled and ready
+      message  = We will only take that path once all pigeons are assembled and ready.
       block_when_not = is_north_open
       show_blocked_exit = true
 
@@ -432,7 +432,7 @@ barriers {
    block_tourguide : block {
 
       location = church_inside
-      message  = The path is blocked by the tour guide
+      message  = The path is blocked by the tour guide.
       block_when_exists = unpaid_tourguide
       show_blocked_exit = true
 
@@ -441,7 +441,7 @@ barriers {
    block_tourguide2 : block {
 
       location = church_inside
-      message  = The path is blocked by the tour guide
+      message  = The path is blocked by the tour guide.
       block_when_not_carried = church_ticket
       show_blocked_exit = true
 
@@ -643,7 +643,7 @@ on_describe {
          : print "You are having more hope about saving Christmas.";
       }
       : else_if (is_first_entered()) {
-         : print "You think sadly at the thought that all <children<#fee>> will think they were bad this year and didn't deserve a <present<#fee>>";
+         : print "You think sadly at the thought that all <children<#fee>> will think they were bad this year and didn't deserve a <present<#fee>>.";
       }
 
    }
