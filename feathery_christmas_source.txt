@@ -664,8 +664,11 @@ subroutines {
          )}
          : print "{string_tmp}";
          : if (lying_solution == integer_tmp) {
-            : swap o1 = "larry"  o2 = "helping_larry" ;
-            : set_false "has_food_fight";
+            : if (!has_larry_gone) {
+               : destroy "larry";
+               : create "helping_larry" ;
+               : set_false "has_food_fight";
+            }
          }
          : press_any_key;
          : redescribe;
@@ -709,8 +712,11 @@ subroutines {
          )}
          : print "{string_tmp}";
          : if (lying_solution == integer_tmp) {
-            : swap o1 = "larry"  o2 = "helping_larry" ;
-            : set_false "has_food_fight";
+            : if (!has_larry_gone) {
+               : destroy "larry";
+               : create "helping_larry" ;
+               : set_false "has_food_fight";
+            }
          }
          : press_any_key;
          : redescribe;
@@ -730,8 +736,11 @@ subroutines {
          )}
          : print "{string_tmp}";
          : if (lying_solution == integer_tmp) {
-            : swap o1 = "larry"  o2 = "helping_larry" ;
-            : set_false "has_food_fight";
+            : if (!has_larry_gone) {
+               : destroy "larry";
+               : create "helping_larry" ;
+               : set_false "has_food_fight";
+            }
          }
          : press_any_key;
          : redescribe;
@@ -751,8 +760,11 @@ subroutines {
          )}
          : print "{string_tmp}";
          : if (lying_solution == integer_tmp) {
-            : swap o1 = "larry"  o2 = "helping_larry" ;
-            : set_false "has_food_fight";
+            : if (!has_larry_gone) {
+               : destroy "larry";
+               : create "helping_larry" ;
+               : set_false "has_food_fight";
+            }
          }
          : press_any_key;
          : redescribe;
