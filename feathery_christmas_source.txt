@@ -13,12 +13,19 @@ game_information {
 }
 
 themes {
-  theme_base : theme {}
+  theme_base : theme {
+      colors {
+         exit_list_item_pen = #fdd
+      }
+      lister_exits {
+         is_list_enter = true
+      }
+  }
   theme_mono : theme {
       theme_settings {
          font = daad
       }
-  }
+   }
 }
 
 game_settings {
@@ -67,6 +74,8 @@ booleans {
    hard_mode : boolean "false";
    is_north_open : boolean "false";
    can_leave_church : boolean "true";
+   has_good_hope  : boolean "false";
+   has_larry_gone  : boolean "false";
 }
 
 collections {
@@ -329,10 +338,6 @@ connections {
 
 objects {
 
-a_yourself1 : scenery "<yourself<#fee>> crying at the thought that all <children<#fee>> will think they were bad this year and didn't deserve a <present<#fee>>" at = "nicobar_park" ;
-
-a_yourself2 : scenery "<yourself<#fee>> having more hope" ;
-
 bin : scenery "a beautiful Art Deco {hard_mode?`bin`:`<bin<#fee>>`}" at = "coocoo_cafe";
 
 bookshop_owner : scenery "the <bookshop<#fee>> <owner<#fee>>" at = "bookshop";
@@ -366,6 +371,8 @@ absent_pigeon : scenery "no <birds<#fee>>" at = "church_tower" ;
 gang_pigeon : scenery "that the biggest group of <pigeons<#fee>> you've ever seen in your entire life is gathered here" ;
 
 pigeon_book : object "a {hard_mode?`book`:`<book<#fee>>`} on the floor \'Pigeons love bread\'" at = "nicobar_park" ;
+
+pigeon_booklove : object "a {hard_mode?`book`:`<book<#fee>>`} \'Pigeons love bread\'";
 
 pigeon_bookreal : object "the real bible about pigeons \'Lovey Dovey Pigeons\'" ;
 
@@ -407,12 +414,12 @@ barriers {
    block_helpinglarry : block {
 
       location = labyrinth_start
-      message  = The path is blocked until we have assembled all pigeons
+      message  = We will only take that path once all pigeons are assembled and ready
       block_when_not = is_north_open
       show_blocked_exit = true
 
    }
-   
+
    block_leave_tower : block {
       location = church
       message  = There are crowds of birds everywhere, I should check the tower <up<#fee>> before getting out.
@@ -425,6 +432,7 @@ barriers {
       location = church_inside
       message  = The path is blocked by the tour guide
       block_when_exists = unpaid_tourguide
+      show_blocked_exit = true
 
    }
 
@@ -433,6 +441,7 @@ barriers {
       location = church_inside
       message  = The path is blocked by the tour guide
       block_when_not_carried = church_ticket
+      show_blocked_exit = true
 
    }
 
@@ -611,22 +620,34 @@ on_describe {
       : win_game ;
    }
    : if (is_at "santa_cellar") {
-       : press_any_key ;
+       : if (is_first_entered()) {
+         : press_any_key ;
+       }
        : print "Christmas is coming tonight, everyone cannot wait to open <presents<#fee>>." ;
        : print "With this setback, how will you find a way to send all <presents<#fee>> in time for the big day?" ;
-       : press_any_key ;
+       : if (is_first_entered()) {
+         : press_any_key ;
+       }
        : print "Let's find a way to save Christmas!" ;
        : print "Try some commands, e.g. <EXAMINE REINDEER<#fee>>, <GET POTION<#fee>>, <TALK RUDOLPH<#fee>>. If you are stuck, type <HELP<#fee>>." ;
-       : press_any_key ;
+       : if (is_first_entered()) {
+         : press_any_key ;
+       }
+   }
+   : if (is_at "nicobar_park") {
+      : if (has_good_hope) {
+         : print "You are having more hope about saving Christmas.";
+      }
+      : else_if (is_first_entered()) {
+         : print "You think sadly at the thought that all <children<#fee>> will think they were bad this year and didn't deserve a <present<#fee>>";
+      }
+
    }
    : if (is_at "coocoo_cafe" ) {
-       : if (!is_exists "grateful_waitress") {
-          : print "<Enter<#fdd>> inside!";
-       }
-       : else_if (is_exists "full_bin") {
+       : if (is_exists "full_bin") {
             : print "The <shop<#fee>> is closed! Where did the leftover <bread<#fee>> and <croissants<#fee>> go?";
        }
-       : else {
+       : else_if (is_exists "grateful_waitress") {
             : print "The <shop<#fee>> is closed!";
        }
    }
@@ -755,7 +776,13 @@ on_describe {
          : choose "{string_tmp}";
       }
       : if (is_exists "helping_larry") {
-         : print "Larry said \"We will need to go to the church tower, gather the troops there with a secret code.\" ";
+         : if (!has_larry_gone) {
+            : set_true "has_larry_gone";
+            : print "Larry said \"We will need to go to the church tower, gather the troops there with a secret code.\" ";
+         }
+         : else {
+            : print "Before leaving, Larry said that he was going to the church tower to gather the troops with a secret code.";
+         }
       }
    }
    : if (is_at "church_inside" && is_exists "gang_pigeon") {
@@ -932,7 +959,7 @@ on_command {
          : print "Larry takes the loaf of bread and says \"Let's share the bread with all my friends!\" ";
          : set_true "has_food_fight";
          : destroy "bread" ;
-         : swap o1 = "a_yourself1"  o2 = "a_yourself2" ;
+         : set_true "has_good_hope";
          : swap o1 = "flying_pigeon"  o2 = "new_pigeon" ;
          : press_any_key;
          : redescribe;
@@ -948,27 +975,29 @@ on_command {
    }
 
    : match "examine book; read book; use book; examine bible; read bible; use bible"  {
-      : if (is_at "nicobar_park" && !is_carried "pigeon_book") {
+      : if (is_at "nicobar_park" && !is_exists "pigeon_booklove") {
          : print "Some <books<#fee>> are more important than food. Like this <book<#fee>>, maybe." ;
       }
-      : if (is_at "nicobar_park" && is_carried "pigeon_book") {
+      : if (is_at "nicobar_park" && is_carried "pigeon_booklove") {
          : print "Inside it says \'<Pigeons<#fee>> love carrying heavy objects, but need energy to do so.\'" ;
       }
       : if (is_carried "pigeon_bookreal") {
          : print "Inside it says \'A <pigeon<#fee>> can fly up to {hard_mode ? `one hundred forty-three` : `<143<#fee>>`} kilometers per hour. Just ask for Caballero.\'" ;
       }
-      : if (is_at "bookshop" && !is_carried "pigeon_book") {
+      : if (is_at "bookshop" && !is_carried "pigeon_booklove") {
          : print "There are so many <books<#fee>> here." ;
       }
-      : if (is_at "bookshop" && is_carried "pigeon_book") {
+      : if (is_at "bookshop" && is_carried "pigeon_booklove") {
          : print "Who would want to read such a tiny <book<#fee>> anyway?" ;
       }
    }
 
    : match "get book"  {
-      : if (is_at "nicobar_park" && has_not_created "pigeon_book") {
+      : if (is_at "nicobar_park" && is_present "pigeon_book") {
         : print "You take the <book<#fee>>" ;
-        : pocket "pigeon_book";
+        : destroy "pigeon_book";
+        : create "pigeon_booklove";
+        : pocket "pigeon_booklove";
       }
    }
 
@@ -1013,6 +1042,9 @@ on_command {
    : match "examine bread"  {
       : if (is_at "coocoo_inside") {
          : print "The <cafe<#fee>> doesn't take any orders." ;
+      }
+      : else_if (is_carried "bread") {
+         : print "This seems to be a perfectly fine piece of bread. Maybe someone is hungry?";
       }
    }
 
@@ -1142,9 +1174,9 @@ on_command {
    }
 
    : match "give book; exchange book"  {
-      : if (is_present "bookshop_owner" && is_carried "pigeon_book") {
+      : if (is_present "bookshop_owner" && is_carried "pigeon_booklove") {
             : print "\"Thank you! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. It will open a new world to you.\" You get a Korean-English <dictionary<#fee>>." ;
-            : destroy "pigeon_book" ;
+            : destroy "pigeon_booklove" ;
             : create "dictionary" ;
             : pocket "dictionary" ;
       }
@@ -1386,10 +1418,10 @@ on_command {
    }
 
    : match "examine yourself; talk yourself"  {
-      : if (is_at "nicobar_park" && is_exists "a_yourself1") {
+      : if (is_at "nicobar_park" && !has_good_hope) {
          : print "You are alone, there is nothing to do here and it's raining." ;
       }
-      : if (is_at "nicobar_park" && is_exists "a_yourself2") {
+      : if (is_at "nicobar_park" && has_good_hope) {
          : print "You are alone, there is nothing to do here but it's not raining anymore." ;
       }
       : if (is_at "santa_cellar") {
