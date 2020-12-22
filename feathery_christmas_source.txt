@@ -354,7 +354,7 @@ larry : scenery "<Larry<#fee>>, the leader of the pack of <pigeons<#fee>>" at = 
 
 helping_larry : scenery "<Larry<#fee>> flying" ;
 
-morehelping_larry : scenery "<Larry<#fee>> that is ready to go <north<#fee>> with all his crowd of friends.";
+morehelping_larry : scenery "<Larry<#fee>>, who is ready to go <north<#fee>> with all his crowd of friends." ;
 
 nicobar_man1 : scenery "a {hard_mode?`man`:`<man<#fee>>`} thinking by himself" at = "south_park"  ;
 
