@@ -670,8 +670,10 @@ subroutines {
                : set_false "has_food_fight";
             }
          }
-         : press_any_key;
-         : redescribe;
+         : if (!has_larry_gone) {
+             : press_any_key;
+             : redescribe;
+         }
       }
       : set_integer var="integer_tmp" {(
          int(collection_get { collection="lying_character_order" index -> (1)})
@@ -694,8 +696,10 @@ subroutines {
                : set_false "has_food_fight";
             }
          }
-         : press_any_key;
-         : redescribe;
+         : if (!has_larry_gone) {
+             : press_any_key;
+             : redescribe;
+         }
       }
       : set_integer var="integer_tmp" {(
          int(collection_get { collection="lying_character_order" index -> (2)})
@@ -718,8 +722,10 @@ subroutines {
                : set_false "has_food_fight";
             }
          }
-         : press_any_key;
-         : redescribe;
+         : if (!has_larry_gone) {
+             : press_any_key;
+             : redescribe;
+         }
       }
       : set_integer var="integer_tmp" {(
          int(collection_get { collection="lying_character_order" index -> (3)})
@@ -742,8 +748,10 @@ subroutines {
                : set_false "has_food_fight";
             }
          }
-         : press_any_key;
-         : redescribe;
+         : if (!has_larry_gone) {
+             : press_any_key;
+             : redescribe;
+         }
       }
       : set_integer var="integer_tmp" {(
          int(collection_get { collection="lying_character_order" index -> (4)})
@@ -766,8 +774,6 @@ subroutines {
                : set_false "has_food_fight";
             }
          }
-         : press_any_key;
-         : redescribe;
       }
       : set_string var="string_tmp"  {(collection_get { collection="lying_queries" index -> (lying_form)})};
       : choose "{string_tmp}";
