@@ -1297,6 +1297,12 @@ on_command {
       }
    }
 
+   : match "examine bag; get bag"  {
+      : if (is_at "coocoo_cafe" || (is_at "nicobar_park" && is_exists "flying_pigeon")) {
+         : print "Both kids and pigeons love their Sappy Meals. You're way too grown-up for that." ;
+      }
+   }
+
    : match "examine pigeon"  {
       : if (is_at "coocoo_cafe") {
          : print "You see <pigeons<#fee>> eating and flying with colorful doggy <bags<#fee>>. It's like a very busy <restaurant<#fee>>." ;
