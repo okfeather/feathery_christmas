@@ -938,7 +938,7 @@ on_command {
                }
             }
             : else {
-               : print "You found the signal again, congratulation!";
+               : print "You found the signal again, congratulations!";
             }
          }
          : else {
