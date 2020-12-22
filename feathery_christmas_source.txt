@@ -87,8 +87,8 @@ collections {
          "Andrew: Charlie got bread",
          "Barbara: Darla and I got bread",
          "Charlie: I didn't get bread",
-         "Darla: Erik didn't get bread",
-         "Erik: Both Andrew and Darla got bread"
+         "Darla: Eric didn't get bread",
+         "Eric: Both Andrew and Darla got bread"
       ]
    }
    lying_choice4 : list {
@@ -96,29 +96,47 @@ collections {
          "Andrew: I ate bread",
          "Barbara: Charlie or I didn't get bread",
          "Charlie: Andrew or Darla didn't get bread",
-         "Darla: Charlie and Erik got bread",
-         "Erik: Darla got bread"
+         "Darla: Charlie and Eric got bread",
+         "Eric: Darla got bread"
       ]
    }
    lying_choice6 : list {
       items = [
          "Andrew: Darla is telling the truth",
          "Barbara: Charlie is lying",
-         "Charlie: Erik is lying",
+         "Charlie: Eric is lying",
          "Darla: At least one out of Barbara and me are telling the truth",
-         "Erik: Andrew is lying"
+         "Eric: Andrew is lying"
+      ]
+   }
+   lying_choice8 : list {
+      items = [
+         "Alice-Ben-Chris-Dan-Eric-Felix-George",
+         "Eric-George-Alice-Ben-Felix-Chris-Dan",
+         "Chris-Eric-Dan-Ben-Felix-Alice-George",
+         "Chris-Dan-George-Ben-Alice-Eric-Felix",
+         "Chris-Eric-Felix-Ben-Alice-George-Dan"
+      ]
+   }
+   lying_choice9 : list {
+      items = [
+         "Jamie : Each of us five ate bread",
+         "Kith : Jamie ate the least bread or only one pigeon ate less bread than him",
+         "Gabe : There is only one pigeon who ate as much bread as me. And it is not Yuri",
+         "Steve : I am the only one who ate the least bread",
+         "Yuri : There is only one pigeon who ate the most bread, but sadly it's not me…"
       ]
    }
    lying_choices: list {
-      items = [lying_choice1, lying_choice1, lying_choice1, lying_choice4, lying_choice4, lying_choice6, lying_choice6]
+      items = [lying_choice1, lying_choice1, lying_choice1, lying_choice4, lying_choice4, lying_choice6, lying_choice6, lying_choice8, lying_choice9]
    }
    lying_response1 : list {
       items = [
-         "Sorry, Andrew was the wrong choice{!hard_mode ? ` : it would mean Charlie, Darla and Erik lied but there are only 2 liars`} :(",
-         "Sorry, Barbara was the wrong choice{!hard_mode ? ` : it would mean she, Charlie and Erik lied but there are only 2 liars`} :(",
+         "Sorry, Andrew was the wrong choice{!hard_mode ? ` : it would mean Charlie, Darla and Eric lied but there are only 2 liars`} :(",
+         "Sorry, Barbara was the wrong choice{!hard_mode ? ` : it would mean she, Charlie and Eric lied but there are only 2 liars`} :(",
          "You won, well done! Charlie is given the remaining bread and all pigeons are now well-fed! {!hard_mode ? ` (Andrew and Darla were lying)`}",
          "Sorry, Darla was the wrong choice{!hard_mode ? `  : it would mean she, Barbara and Charlie lied but there are only 2 liars`} :("
-         "Sorry, Erik was the wrong choice{!hard_mode ? `  : it would mean only Charlie lied but there are 2 liars`} :("
+         "Sorry, Eric was the wrong choice{!hard_mode ? `  : it would mean only Charlie lied but there are 2 liars`} :("
       ]
    }
    lying_response2 : list {
@@ -127,7 +145,7 @@ collections {
          "Sorry, Barbara was the wrong choice :(",
          "Sorry, Charlie was the wrong choice :(",
          "Sorry, Darla was the wrong choice :("
-         "Sorry, Erik was the wrong choice :("
+         "Sorry, Eric was the wrong choice :("
       ]
    }
    lying_response3 : list {
@@ -136,7 +154,7 @@ collections {
          "Sorry, Barbara was the wrong choice :(",
          "Sorry, Charlie was the wrong choice :(",
          "You won, well done! With the lie spotted, we can amply feed the poor hungry pigeon!",
-         "Sorry, Erik was the wrong choice :("
+         "Sorry, Eric was the wrong choice :("
       ]
    }
    lying_response4 : list {
@@ -145,7 +163,7 @@ collections {
          "You won, well done! Barbara is given the remaining bread and all pigeons are now well-fed!",
          "Sorry, Charlie was the wrong choice :(",
          "Sorry, Darla was the wrong choice :("
-         "Sorry, Erik was the wrong choice :("
+         "Sorry, Eric was the wrong choice :("
       ]
    }
    lying_response5 : list {
@@ -154,7 +172,7 @@ collections {
          "Sorry, Barbara was the wrong choice :(",
          "You won, well done! With the lie spotted, we can amply feed the poor hungry pigeon!",
          "Sorry, Darla was the wrong choice :("
-         "Sorry, Erik was the wrong choice :("
+         "Sorry, Eric was the wrong choice :("
       ]
    }
    lying_response6 : list {
@@ -172,11 +190,29 @@ collections {
          "You won, well done! With the lie spotted, we can amply feed the poor hungry pigeon!",
          "Sorry, Charlie was the wrong choice :(",
          "Sorry, Darla was the wrong choice :("
-         "Sorry, Erik was the wrong choice :("
+         "Sorry, Eric was the wrong choice :("
+      ]
+   }
+   lying_response8 : list {
+      items = [
+         "Sorry, this was not the correct order :(",
+         "Sorry, this was not the correct order :(",
+         "You won, well done! Now every pigeon can be well-fed!",
+         "Sorry, this was not the correct order :(",
+         "Sorry, this was not the correct order :("
+      ]
+   }
+   lying_response9 : list {
+      items = [
+         "Sorry, this was not the correct order :(",
+         "Yes, you are correct! Kith ate the most bread. Now we can feed remaining bread based on your findings so all pigeon are well-fed!",
+         "Sorry, this was not the correct order :(",
+         "Sorry, this was not the correct order :(",
+         "Sorry, this was not the correct order :("
       ]
    }
    lying_responses: list {
-      items = [lying_response1, lying_response2, lying_response3, lying_response4, lying_response5, lying_response6, lying_response7]
+      items = [lying_response1, lying_response2, lying_response3, lying_response4, lying_response5, lying_response6, lying_response7, lying_response8, lying_response9]
    }
    lying_introductions: list {
       items = [
@@ -185,8 +221,10 @@ collections {
          "One of the pigeons did not get any bread!! Two are liars!\n",
          "One of the pigeons did not get any bread!! One is a liar!\n",
          "One of the pigeons did not get any bread!! One is a liar!\n",
-         "One of the pigeons did not get any bread!! Two are liars!\n",
-         "One of the pigeons did not get any bread!! Two are liars!\n",
+         "Some of these pigeons did not get any bread!! Two are liars!\n",
+         "Some of these pigeons did not get any bread!! Two are liars!\n",
+         "Pigeons are lining up in order of weight (from light to heavy). Consider the below conditions.\n-There is only one pigeon who is heavier than Alice.\n-George is heavier than Felix, and Felix is heavier than Dan.\n-There are two pigeons between Alice and Dan.\n-There is no pigeon who is lighter than Chris.\n-Ben is standing in the middle.\n",
+         "Every pigeon is telling the truth.",
       ]
    }
    lying_queries: list {
@@ -198,10 +236,12 @@ collections {
          "Who is a liar?",
          "Who is a lying male pigeon?",
          "Who is a lying female pigeon?",
+         "What is the correct order?",
+         "Who ate the most bread?"
       ]
    }
    lying_solutions: list {
-      items = [2, 0, 3, 1, 2, 4, 1]
+      items = [2, 0, 3, 1, 2, 4, 1, 2, 1]
    }
    lying_character_order: list {
       items = [0, 1, 2, 3, 4]
@@ -659,7 +699,7 @@ on_describe {
    : if (is_at "montauk_beach" ) {
       : set_false "in_labyrinth";
       : if (has_food_fight) {
-         : print "Whomp! Coo! Coocoo! Coo! *combat sounds*\n";
+         : print "Whomp! Coo! Coocoo! Coo! There is a fight about the bread division.\n";
          : if (hard_mode) {
             : set_integer var="lying_form" {(random((collection_count "lying_choices") - 1))}
          }
