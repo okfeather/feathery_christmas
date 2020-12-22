@@ -370,6 +370,8 @@ absent_pigeon : scenery "no <birds<#fee>>" at = "church_tower" ;
 
 gang_pigeon : scenery "that the biggest group of <pigeons<#fee>> you've ever seen in your entire life is gathered here" ;
 
+map : object "a {hard_mode?`map`:`<map<#fdd>>`} of the village" at = "santa_cellar";
+
 pigeon_book : object "a {hard_mode?`book`:`<book<#fee>>`} on the floor \'Pigeons love bread\'" at = "nicobar_park" ;
 
 pigeon_booklove : object "a {hard_mode?`book`:`<book<#fee>>`} \'Pigeons love bread\'";
@@ -469,17 +471,19 @@ on_startup {
    }
    : gosub "update_volume";
    : play_music "music_intro";
-   : print "Type <VERB NOUN<#fee>> with the keyboard to advance in the game." ;
-   : print "e.g. <EXAMINE PIGEON<#fee>> to take a closer look at a PIGEON." ;
-   : print "<GET BREAD<#fee>> to take BREAD and add it to your inventory." ;
+   : print "Type <VERB NOUN<#fdd>> with the keyboard to advance in the game." ;
+   : print "e.g. <EXAMINE PIGEON<#fdd>> to take a closer look at a PIGEON." ;
+   : print "<GET BREAD<#fdd>> to take BREAD and add it to your inventory." ;
    : press_any_key ;
-   : print "To travel, type <NORTH<#fee>>, <EAST<#fee>>, <SOUTH<#fee>>, <WEST<#fee>> (or <N<#fee>>, <E<#fee>>, <S<#fee>>, <W<#fee>>), <ENTER<#fee>>, <EXIT<#fee>>, <UP<#fee>>, <DOWN<#fee>>" ;
+   : print "To travel, type <NORTH<#fdd>>, <EAST<#fdd>>, <SOUTH<#fdd>>, <WEST<#fdd>> (or <N<#fdd>>, <E<#fdd>>, <S<#fdd>>, <W<#fdd>>), <ENTER<#fdd>>, <EXIT<#fdd>>, <UP<#fdd>>, <DOWN<#fdd>>" ;
    : press_any_key ;
-   : print "To check your inventory, type <INVENTORY<#fee>> (or <I<#fee>>, <POCKETS<#fee>>)" ;
+   : print "To check your inventory, type <INVENTORY<#fdd>> (or <I<#fdd>>, <POCKETS<#fdd>>)" ;
    : press_any_key ;
-   : print "To stop music, type <SOUND OFF<#fee>> (<SOUND ON<#fee>> to enable music)" ;
+   : print "To stop music, type <SOUND OFF<#fdd>> (<SOUND ON<#fdd>> to enable music)" ;
    : press_any_key ;
-   : print "To see available commands at a location, type <HELP<#fee>>" ;
+   : print "You start in easy mode. If you are a text-adventure veteran, you can switch to <HARD<#fdd>> mode (less textual hints, harder puzzles). You can switch at any time by typing <EASY<#fdd>> or <HARD<#fdd>>.";
+   : press_any_key ;
+   : print "To see available commands at a location, type <HELP<#fdd>>" ;
    : press_any_key ;
 
 }
@@ -872,26 +876,42 @@ on_command {
         : print "Unknown verb - \"cheat\".";
      }
    }
+   
+   : if (is_present "map" && !is_carried "map" && is_at "santa_cellar") {
+      : match "exit _; get map" {
+         : mask {
+            : print "This {hard_mode?`map`:`<map<#fee>>`} could probably be useful, I'm taking it.";
+            : pocket "map";
+            : press_any_key;
+            
+         }
+      }
+   }
 
    : match "examine map; map _; use map" {
-      : set_theme "theme_mono";
-      : clear_screen;
-      : print {("^n^^c^<____________<#000>><Santa takeoff<#" + (in_labyrinth ? "afa" : is_north_open ? "aaf" : "faa") + ">>" )}
-      : print "^n^^c^<_____________<#000>>⬆";
-      : print {("^n^^c^<___<#000>><Inside<#" + (is_at "coocoo_inside"?"afa": is_exists "grateful_waitress" || !can_leave_church ? "faa" : "aaf")+">><___<#000>>--------------")};
-      : print {("^n^^c^<______<#000>>⬆<_____<#000>>|<Montauk Beach<#" + (is_at "montauk_beach"?"afa": can_leave_church ? "aaf" : "faa")+">>|")};
-      : print "^n^^c^--------------------------";
-      : print {("^n^^c^|<Coocoo Cafe<#" + (is_at "coocoo_cafe"?"afa": can_leave_church ? "aaf" : "faa")+">>| <Nicobar Park<#" + (is_at "nicobar_park"?"afa": can_leave_church ? "aaf" : "faa")+">>|")};
-      : print "^n^^c^--------------------------";
-      : print {("^n^^c^|<_<#000>> <Bookshop<#" + (is_at "bookshop"?"afa": can_leave_church ? "aaf" : "faa")+">> |<_<#000>> <South Park<#" + (is_at "south_park"?"afa": can_leave_church ? "aaf" : "faa")+">> |")};
-      : print "^n^^c^--------------------------";
-      : print {("^n^^c^<____________<#000>>| <__<#000>> <Church<#" + (is_at "church"?"afa": is_exists "larry" || !can_leave_church ? "faa" : "aaf")+">> <__<#000>>|")};
-      : print "^n^^c^<____________<#000>>--------------";
-      : print {("^n^^c^<____________<#000>>⬇\n<____________<#000>><Inside<#" + (is_at "church_inside"?"afa": is_exists "unpaid_tourguide" || !is_carried "church_ticket" ? "faa" : "aaf")+">>")};
-      : print {("^n^^c^<____________<#000>>⬇\n<____________<#000>><Tower<#" + (is_at "church_tower"?"afa":is_exists "unpaid_tourguide" || !is_carried "church_ticket" ? "faa" : "aaf")+">>")};
-      : press_any_key;
-      : set_theme "theme_base";
-      : redescribe;
+      : if (is_carried "map") {
+          : set_theme "theme_mono";
+          : clear_screen;
+          : print {("^n^^c^<____________<#000>><Santa takeoff<#" + (in_labyrinth ? "afa" : is_north_open ? "aaf" : "faa") + ">>" )}
+          : print "^n^^c^<_____________<#000>>⬆";
+          : print {("^n^^c^<___<#000>><Inside<#" + (is_at "coocoo_inside"?"afa": is_exists "grateful_waitress" || !can_leave_church ? "faa" : "aaf")+">><___<#000>>--------------")};
+          : print {("^n^^c^<______<#000>>⬆<_____<#000>>|<Montauk Beach<#" + (is_at "montauk_beach"?"afa": can_leave_church ? "aaf" : "faa")+">>|")};
+          : print "^n^^c^--------------------------";
+          : print {("^n^^c^|<Coocoo Cafe<#" + (is_at "coocoo_cafe"?"afa": can_leave_church ? "aaf" : "faa")+">>| <Nicobar Park<#" + (is_at "nicobar_park"?"afa": can_leave_church ? "aaf" : "faa")+">>|")};
+          : print "^n^^c^--------------------------";
+          : print {("^n^^c^|<_<#000>> <Bookshop<#" + (is_at "bookshop"?"afa": can_leave_church ? "aaf" : "faa")+">> |<_<#000>> <South Park<#" + (is_at "south_park"?"afa": can_leave_church ? "aaf" : "faa")+">> |")};
+          : print "^n^^c^--------------------------";
+          : print {("^n^^c^<____________<#000>>| <__<#000>> <Church<#" + (is_at "church"?"afa": is_exists "larry" || !can_leave_church ? "faa" : "aaf")+">> <__<#000>>|")};
+          : print "^n^^c^<____________<#000>>--------------";
+          : print {("^n^^c^<____________<#000>>⬇\n<____________<#000>><Inside<#" + (is_at "church_inside"?"afa": is_exists "unpaid_tourguide" || !is_carried "church_ticket" ? "faa" : "aaf")+">>")};
+          : print {("^n^^c^<____________<#000>>⬇\n<____________<#000>><Tower<#" + (is_at "church_tower"?"afa":is_exists "unpaid_tourguide" || !is_carried "church_ticket" ? "faa" : "aaf")+">>")};
+          : press_any_key;
+          : set_theme "theme_base";
+          : redescribe;
+      }
+      : else_if (is_present "map") {
+         : print "A {hard_mode?`map`:`<map<#fee>>`} of the village, maybe it could be useful?";
+      }
    }
 
    : match "sound lowest; music lowest; sound low; music low; sound normal; music normal; sound high; music high; sound highest; music highest" {
@@ -1497,14 +1517,16 @@ on_command {
             : print "- Type 'EASY' to get into easy mode (easier puzzles, more hints)";
        }
        : print "- Type 'ENTER' to try to enter a store or building";
-       : if (hard_mode) {
+       : if (!hard_mode) {
             : print "- Type 'HARD' to get into hard mode (harder puzzles, less hints)";
        }
        : if (!hard_mode && is_at "coocoo_inside") {
          : print "- Type 'HELP objectname' to try to help the object/person";
        }
        : print "- Type 'GIVE objectname' to give an object to someone";
-       : print "- Type 'MAP' to display map (<current location<#afa>>, <accessible<#aaf>>, <inaccessible<#faa>>)";
+       : if (is_carried "map") {
+         : print "- Type 'MAP' to display map (<current location<#afa>>, <accessible<#aaf>>, <inaccessible<#faa>>)";
+       }
        : if (is_at "church_inside") {
            : print "- Type 'RING number' to test a code on the apparatus";
        }
