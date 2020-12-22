@@ -1013,7 +1013,12 @@ on_command {
    }
 
    : if (is_present "map" && !is_carried "map" && is_at "santa_cellar") {
-      : match "exit _; get map" {
+      : match "get map" {
+        : print "This {hard_mode?`map`:`<map<#fee>>`} will probably be very useful.";
+        : pocket "map";
+        : press_any_key;
+      }
+      : match "exit _" {
          : mask {
             : print "This {hard_mode?`map`:`<map<#fee>>`} could probably be useful, I'm taking it.";
             : pocket "map";
