@@ -234,7 +234,7 @@ strings {
 
 locations {
 
-   bookshop : location "You are at the book shop. <Talk<#fee>> to the <owner<#fee>> if you need a <book<#fee>>." ;
+   bookshop : location "You are in front of the book shop and see the <owner<#fee>> outside. <Talk<#fee>> to the <owner<#fee>> if you need a <book<#fee>>." ;
 
    church : location "You are in front of the <church<#fee>>. You can access the <tower<#fee>> upstairs if you <enter<#fdd>>." ;
 
