@@ -1054,7 +1054,7 @@ on_command {
          : print "Inside it says \'<Pigeons<#fee>> love carrying heavy objects, but need energy to do so.\'" ;
       }
       : if (is_carried "pigeon_bookreal") {
-         : print "Inside it says \'A <pigeon<#fee>> can fly up to {hard_mode ? `one hundred forty-three` : `<143<#fee>>`} kilometers per hour. Just ask for Caballero.\'" ;
+         : print "Inside it says \'A <pigeon<#fee>> can fly up to {hard_mode ? `one hundred forty-three` : `<143<#fee>>`} kilometers per hour. Just like Caballero.\'" ;
       }
       : if (is_at "bookshop" && !is_carried "pigeon_booklove") {
          : print "There are so many <books<#fee>> here." ;
@@ -1070,6 +1070,12 @@ on_command {
         : destroy "pigeon_book";
         : create "pigeon_booklove";
         : pocket "pigeon_booklove";
+      }
+   }
+
+   : match "examine caballero"  {
+      : if (is_carried "pigeon_bookreal") {
+        : print "Caballero once flew from Etroeungt to Sibculo (239km), a real hero." ;
       }
    }
 
