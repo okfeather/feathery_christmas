@@ -954,7 +954,7 @@ on_command {
         : print "I'm adding that to my list of <comments<#fee>>.";
         : set_string var="comments" {(comments + "\n<_<#000>>" + string_tmp)};
      }
-        
+
    }
    : match "drop *" {
       : print "Your pockets are very big, you don't need to drop anything.";
@@ -1285,8 +1285,8 @@ on_command {
       : else_if (is_at "church_tower" && is_exists "morehelping_larry") {
          : print "\"We're ready when you want to go, I'd suggest now! Maybe? We will gather at Montauk Beach, join us there!\"";
       }
-      : else {
-         : print "Larry is not here.";
+      : else_if (is_at "montauk_beach") {
+         : print "<Larry<#fee>> is not here." ;
       }
    }
 
@@ -1422,7 +1422,7 @@ on_command {
       : if (is_at "nicobar_park" && is_exists "flying_pigeon") {
          : print "The <pigeon<#fee>> looks happy and busy.  It is singing while carrying a Sappy <Meal<#fee>> <bag<#fee>>: \' lovers meet in Montauk Beach, lalala \'." ;
       }
-      
+
       : if (is_at "nicobar_park" && is_exists "new_pigeon") {
          : print "The <pigeon<#fee>> looks happy and busy.  It is singing while carrying a dumbbell: \'Best carriers meet in Montauk Beach, lalala \'" ;
       }
