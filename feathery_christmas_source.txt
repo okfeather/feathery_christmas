@@ -1301,7 +1301,7 @@ on_command {
 
    : if (is_at "nicobar_park" && (is_exists "flying_pigeon" || is_exists "new_pigeon")) {
       : match "sing _" {
-         : print "You are singing along the pigeon, what a gread duo!";
+         : print "You are singing along the pigeon, what a great duo!";
       }
    }
 
