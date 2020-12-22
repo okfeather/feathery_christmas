@@ -1175,6 +1175,29 @@ on_command {
       }
    }
 
+   : match "examine road"  {
+      : if (is_at "south_park" && is_exists "larry") {
+         : print "There is too much snow on the South road to take it. But you can see someone clearing it from afar.";
+      }
+
+      : else_if (is_at "south_park" && !is_exists "larry") {
+         : print "The snow covering the road to the church has been cleared, you can now take it.";
+      }
+   }
+   : match "take road"  {
+      : if (is_at "south_park" && is_exists "larry") {
+         : print "You can't right now, there is too much snow.";
+      }
+      : else_if (is_at "south_park" && !is_exists "larry") {
+         : print "You cannot literally take a road, that's an expression.";
+      }
+   }
+
+    : match "examine door; examine window; examine wall"  {
+      : if (is_at "church") {
+         : print "You see beautiful details on the door, walls and windows. These must have been added centuries after the church was built." ;
+      }
+   }
 
    : match "examine church"  {
       : if (is_at "church") {
