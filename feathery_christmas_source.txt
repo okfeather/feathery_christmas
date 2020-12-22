@@ -830,7 +830,7 @@ on_describe {
          }
       }
       : if (is_north_open) {
-         : print "There is a lot of pigeons around. It seems everything is ready!";
+         : print "There are a lot of pigeons around. It seems everything is ready!";
       }
       : else_if (is_exists "gang_pigeon") {
          : print "There are no pigeons here.";
@@ -933,6 +933,10 @@ on_command {
 
          }
       }
+   }
+
+   : match "clear -; redescribe -" {
+        : redescribe;
    }
 
    : match "examine map; map _; use map" {
@@ -1468,6 +1472,7 @@ on_command {
    }
    : match "hard -" {
       : set_true "hard_mode";
+      : set_true "can_leave_church";
       : print "Game is now in hard mode (harder puzzles, less hints) use <EASY<#fdd>> to go back to easy mode.";
    }
    : match "easy -" {
