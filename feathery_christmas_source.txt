@@ -637,6 +637,129 @@ subroutines {
          : set_music_vol volume="100";
       }
    }
+   play_lying_puzzle : subroutine {
+      : if (hard_mode) {
+         : set_integer var="lying_form" {(random((collection_count "lying_choices") - 1))}
+      }
+      : else {
+         : set_integer var="lying_form" value="0";
+      }
+      : print {(collection_get { collection="lying_introductions" index -> (lying_form)})}
+      : if (hard_mode) {
+         : collection_sort collection="lying_character_order" algorithm="shuffle";
+      }
+      : set_integer var="lying_solution" {(int(collection_get { collection="lying_solutions" index -> (lying_form)}))}
+      : set_integer var="integer_tmp" {(
+         int(collection_get { collection="lying_character_order" index -> (0)})
+      )}
+      : set_string var="string_tmp" {(
+         collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
+      )}
+      : add_choice "{string_tmp}" {
+         : set_integer var="integer_tmp" {(
+            int(collection_get { collection="lying_character_order" index -> (0)})
+         )}
+         : set_string var="string_tmp" {(
+            collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
+         )}
+         : print "{string_tmp}";
+         : if (lying_solution == integer_tmp) {
+            : swap o1 = "larry"  o2 = "helping_larry" ;
+            : set_false "has_food_fight";
+         }
+         : press_any_key;
+         : redescribe;
+      }
+      : set_integer var="integer_tmp" {(
+         int(collection_get { collection="lying_character_order" index -> (1)})
+      )}
+      : set_string var="string_tmp" {(
+         collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
+      )}
+      : add_choice "{string_tmp}" {
+         : set_integer var="integer_tmp" {(
+            int(collection_get { collection="lying_character_order" index -> (1)})
+         )}
+         : set_string var="string_tmp" {(
+            collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
+         )}
+         : print "{string_tmp}";
+         : if (lying_solution == integer_tmp) {
+            : if (!has_larry_gone) {
+               : destroy "larry";
+               : create "helping_larry" ;
+               : set_false "has_food_fight";
+            }
+         }
+         : press_any_key;
+         : redescribe;
+      }
+      : set_integer var="integer_tmp" {(
+         int(collection_get { collection="lying_character_order" index -> (2)})
+      )}
+      : set_string var="string_tmp" {(
+         collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
+      )}
+      : add_choice "{string_tmp}" {
+         : set_integer var="integer_tmp" {(
+            int(collection_get { collection="lying_character_order" index -> (2)})
+         )}
+         : set_string var="string_tmp" {(
+            collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
+         )}
+         : print "{string_tmp}";
+         : if (lying_solution == integer_tmp) {
+            : swap o1 = "larry"  o2 = "helping_larry" ;
+            : set_false "has_food_fight";
+         }
+         : press_any_key;
+         : redescribe;
+      }
+      : set_integer var="integer_tmp" {(
+         int(collection_get { collection="lying_character_order" index -> (3)})
+      )}
+      : set_string var="string_tmp" {(
+         collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
+      )}
+      : add_choice "{string_tmp}" {
+         : set_integer var="integer_tmp" {(
+            int(collection_get { collection="lying_character_order" index -> (3)})
+         )}
+         : set_string var="string_tmp" {(
+            collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
+         )}
+         : print "{string_tmp}";
+         : if (lying_solution == integer_tmp) {
+            : swap o1 = "larry"  o2 = "helping_larry" ;
+            : set_false "has_food_fight";
+         }
+         : press_any_key;
+         : redescribe;
+      }
+      : set_integer var="integer_tmp" {(
+         int(collection_get { collection="lying_character_order" index -> (4)})
+      )}
+      : set_string var="string_tmp" {(
+         collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
+      )}
+      : add_choice "{string_tmp}" {
+         : set_integer var="integer_tmp" {(
+            int(collection_get { collection="lying_character_order" index -> (4)})
+         )}
+         : set_string var="string_tmp" {(
+            collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
+         )}
+         : print "{string_tmp}";
+         : if (lying_solution == integer_tmp) {
+            : swap o1 = "larry"  o2 = "helping_larry" ;
+            : set_false "has_food_fight";
+         }
+         : press_any_key;
+         : redescribe;
+      }
+      : set_string var="string_tmp"  {(collection_get { collection="lying_queries" index -> (lying_form)})};
+      : choose "{string_tmp}";
+   }
 }
 
 ######################################
@@ -702,124 +825,7 @@ on_describe {
       : set_false "in_labyrinth";
       : if (has_food_fight) {
          : print "Whomp! Coo! Coocoo! Coo! There is a fight about sharing the bread.\n";
-         : if (hard_mode) {
-            : set_integer var="lying_form" {(random((collection_count "lying_choices") - 1))}
-         }
-         : else {
-            : set_integer var="lying_form" value="0";
-         }
-         : print {(collection_get { collection="lying_introductions" index -> (lying_form)})}
-         : if (hard_mode) {
-            : collection_sort collection="lying_character_order" algorithm="shuffle";
-         }
-         : set_integer var="lying_solution" {(int(collection_get { collection="lying_solutions" index -> (lying_form)}))}
-         : set_integer var="integer_tmp" {(
-            int(collection_get { collection="lying_character_order" index -> (0)})
-         )}
-         : set_string var="string_tmp" {(
-            collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
-         )}
-         : add_choice "{string_tmp}" {
-            : set_integer var="integer_tmp" {(
-               int(collection_get { collection="lying_character_order" index -> (0)})
-            )}
-            : set_string var="string_tmp" {(
-               collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
-            )}
-            : print "{string_tmp}";
-            : if (lying_solution == integer_tmp) {
-               : swap o1 = "larry"  o2 = "helping_larry" ;
-               : set_false "has_food_fight";
-            }
-            : press_any_key;
-            : redescribe;
-         }
-         : set_integer var="integer_tmp" {(
-            int(collection_get { collection="lying_character_order" index -> (1)})
-         )}
-         : set_string var="string_tmp" {(
-            collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
-         )}
-         : add_choice "{string_tmp}" {
-            : set_integer var="integer_tmp" {(
-               int(collection_get { collection="lying_character_order" index -> (1)})
-            )}
-            : set_string var="string_tmp" {(
-               collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
-            )}
-            : print "{string_tmp}";
-            : if (lying_solution == integer_tmp) {
-               : swap o1 = "larry"  o2 = "helping_larry" ;
-               : set_false "has_food_fight";
-            }
-            : press_any_key;
-            : redescribe;
-         }
-         : set_integer var="integer_tmp" {(
-            int(collection_get { collection="lying_character_order" index -> (2)})
-         )}
-         : set_string var="string_tmp" {(
-            collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
-         )}
-         : add_choice "{string_tmp}" {
-            : set_integer var="integer_tmp" {(
-               int(collection_get { collection="lying_character_order" index -> (2)})
-            )}
-            : set_string var="string_tmp" {(
-               collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
-            )}
-            : print "{string_tmp}";
-            : if (lying_solution == integer_tmp) {
-               : swap o1 = "larry"  o2 = "helping_larry" ;
-               : set_false "has_food_fight";
-            }
-            : press_any_key;
-            : redescribe;
-         }
-         : set_integer var="integer_tmp" {(
-            int(collection_get { collection="lying_character_order" index -> (3)})
-         )}
-         : set_string var="string_tmp" {(
-            collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
-         )}
-         : add_choice "{string_tmp}" {
-            : set_integer var="integer_tmp" {(
-               int(collection_get { collection="lying_character_order" index -> (3)})
-            )}
-            : set_string var="string_tmp" {(
-               collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
-            )}
-            : print "{string_tmp}";
-            : if (lying_solution == integer_tmp) {
-               : swap o1 = "larry"  o2 = "helping_larry" ;
-               : set_false "has_food_fight";
-            }
-            : press_any_key;
-            : redescribe;
-         }
-         : set_integer var="integer_tmp" {(
-            int(collection_get { collection="lying_character_order" index -> (4)})
-         )}
-         : set_string var="string_tmp" {(
-            collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
-         )}
-         : add_choice "{string_tmp}" {
-            : set_integer var="integer_tmp" {(
-               int(collection_get { collection="lying_character_order" index -> (4)})
-            )}
-            : set_string var="string_tmp" {(
-               collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
-            )}
-            : print "{string_tmp}";
-            : if (lying_solution == integer_tmp) {
-               : swap o1 = "larry"  o2 = "helping_larry" ;
-               : set_false "has_food_fight";
-            }
-            : press_any_key;
-            : redescribe;
-         }
-         : set_string var="string_tmp"  {(collection_get { collection="lying_queries" index -> (lying_form)})};
-         : choose "{string_tmp}";
+         : gosub "play_lying_puzzle";
       }
       : if (is_exists "helping_larry") {
          : if (!has_larry_gone) {
@@ -894,6 +900,11 @@ on_describe {
 ######################################
 
 on_command {
+   : if (has_larry_gone && hard_mode) {
+      : match "play logic" {
+         : gosub "play_lying_puzzle";
+      }
+   }
    : if (is_at "church_tower") {
       : mask {
          : match "exit _; north _" {
@@ -969,12 +980,6 @@ on_command {
    : match "cheat dictionary" {
      : create "dictionary";
      : pocket "dictionary";
-   }
-
-   : match "cheat lie" {
-      : goto "montauk_beach";
-      : set_true "has_food_fight";
-      : redescribe;
    }
    : match "cheat *" {
      : goto {(rationalized "noun1")}
@@ -1696,6 +1701,9 @@ on_command {
        : print "- Type 'GIVE objectname' to give an object to someone";
        : if (is_carried "map") {
          : print "- Type 'MAP' to display map (<current location<#afa>>, <accessible<#aaf>>, <inaccessible<#faa>>)";
+       }
+       : if (has_larry_gone && hard_mode) {
+         : print "- Type 'PLAY LOGIC' to play a pigeon logic puzzle with no rewards";
        }
        : if (is_at "church_inside") {
            : print "- Type 'RING number' to test a code on the apparatus";
