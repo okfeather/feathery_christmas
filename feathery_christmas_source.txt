@@ -941,7 +941,7 @@ on_command {
       : set_sentence "comment";
    }
    : match "comment _" {
-      : set_string var="string_tmp" {(substring {offset -> (strlen {(original "verb")}) string -> (sentence_raw())})};
+      : set_string var="string_tmp" {(substring {offset -> (strlen {(original "verb")}) string -> (command_text())})};
       : if (string_tmp == "") {
         : if (comments == "") {
             : print "You have not made any comment yet";
