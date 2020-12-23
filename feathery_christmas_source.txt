@@ -41,6 +41,7 @@ vocabulary {
    : verb / aliases = [talk, say, speak, tell]
    : verb / aliases = [comment, comments, note, notes]
    : verb / aliases = [exchange, exchanging]
+   : verb / aliases = [kill,threaten,menace,intimidate,browbeat,bully,scare,frighten,terrorize,murder,assassinate]
    : noun      / aliases = [bread, croissant, pain, cookie, loaf]
    : noun      / aliases = [cafe, coocoo, shop, restaurant]
    : noun      / aliases = [guide, tour, tourguide]
@@ -73,6 +74,7 @@ booleans {
    has_good_hope  : boolean "false";
    has_larry_gone  : boolean "false";
    is_playing_logic  : boolean "false";
+   keep_same_logic : boolean "false";
 }
 
 collections {
@@ -237,9 +239,9 @@ collections {
          "Who ate the most bread?"
       ]
    }
-   lying_men: list {items = [Andrew,Charlie,Eric,Jamie,Keith,Gabe,Steve,George,Felix,Dan,Chris,Woolliam]}
-   lying_women: list {items = [Barbara,Darla,Alice,Dova,Gigi]}
-   lying_people: list {items = [Yuri,Jay]}
+   lying_men: list {items = [Andrew,Charlie,Eric,Jamie,Keith,Gabe,Steve,George,Felix,Dan,Chris,Woolliam,Sterling,Larry]}
+   lying_women: list {items = [Barbara,Darla,Alice,Dova,Gigi,Fiona,Faye,Ena,Amaia,Saya,Columbia,Ara,Ava,Rosella,Columbia,Aya]}
+   lying_people: list {items = [Yuri,Jay,Coco,Taylor,Shannon,Jun,Robin,Xue,Merle]}
    lying_solutions: list {
       items = [2, 0, 3, 1, 2, 4, 1, 2, 1]
    }
@@ -495,13 +497,11 @@ barriers {
    }
 
    block_tourguide2 : block_path {
-
       from = church
       to = church_inside
       message  = The path is blocked by the tour guide.
       block_when_not_carried = church_ticket
       show_blocked_exit = true
-
    }
 
    block_church : block_path {
@@ -683,14 +683,14 @@ subroutines {
       )}
    }
    play_lying_puzzle : subroutine {
-      : if (hard_mode) {
+      : if (hard_mode && !keep_same_logic) {
          : set_integer var="lying_form" {(random((collection_count "lying_choices") - 1))}
       }
-      : else {
+      : else_if (!keep_same_logic) {
          : set_integer var="lying_form" value="0";
       }
       : print {(collection_get { collection="lying_introductions" index -> (lying_form)})}
-      : if (hard_mode) {
+      : if (hard_mode && !keep_same_logic) {
          : collection_sort collection="lying_character_order" algorithm="shuffle";
          : collection_sort collection="lying_men" algorithm="shuffle";
          : collection_sort collection="lying_women" algorithm="shuffle";
@@ -736,7 +736,6 @@ subroutines {
       : set_integer var="integer_tmp" value="4";
       : gosub "play_lying_puzzle_next_response_line";
       : add_choice "{string_tmp}" {
-      
          : set_integer var="integer_tmp" value="4";
          : gosub "play_lying_puzzle_choice";
       }
@@ -883,11 +882,15 @@ on_describe {
 ######################################
 
 on_command {
-   : if (has_larry_gone && hard_mode) {
-      : match "play logic" {
+   : if (has_larry_gone) {
+      : match "play logic; replay logic" {
+         : if (verb_is "replay") {
+            : set_true var="keep_same_logic";
+         }
          : set_true var="is_playing_logic";
          : gosub "play_lying_puzzle";
          : set_false var="is_playing_logic";
+         : set_false var="keep_same_logic";
       }
    }
    : if (is_at "church_tower") {
@@ -910,6 +913,9 @@ on_command {
             : set_sentence "exit";
          }
       }
+      : match "kill waitress" {
+          : print "I would never do that!!";
+      }
    }
    : if (is_at "church_inside") {
       : mask {
@@ -923,9 +929,12 @@ on_command {
    }
    : if (is_at "church") {
       : mask {
-         : match "south _" {
+         : match "south _; open door; open church; unlock door; unlock church" {
             : set_sentence "enter";
          }
+      }
+      : match "kill guide" {
+          : print "I would never do that!!";
       }
    }
    : if (hard_mode) {
@@ -1042,9 +1051,8 @@ on_command {
             : play_music sound="music_bells";
             : if (!is_exists "gang_pigeon") {
                : print "{message_church_inside_gang}";
-               : destroy "absent_pigeon";
+               : swap o1="absent_pigeon" o2="gang_pigeon";
                : destroy "helping_larry";
-               : create "gang_pigeon" ;
                : if (!hard_mode) {
                   : set_false "can_leave_church";
                }
@@ -1087,12 +1095,12 @@ on_command {
    }
 
    : match "give bread"  {
-      : if (is_present "larry" && is_carried "bread" ) {
+      : if (is_present "larry" && is_carried "bread") {
          : print "Larry takes the loaf of bread and says \"Let's share the bread with all my friends!\" ";
          : set_true "has_food_fight";
          : destroy "bread" ;
          : set_true "has_good_hope";
-         : swap o1 = "flying_pigeon"  o2 = "new_pigeon" ;
+         : swap o1 = "flying_pigeon"  o2 = "new_pigeon";
          : press_any_key;
          : redescribe;
       }
@@ -1693,7 +1701,7 @@ on_command {
          : print "- Type 'MAP' to display map (<current location<#afa>>, <accessible<#aaf>>, <inaccessible<#faa>>)";
        }
        : if (has_larry_gone && hard_mode) {
-         : print "- Type 'PLAY LOGIC' to play a pigeon logic puzzle with no rewards";
+         : print "- Type 'PLAY LOGIC' or 'REPLAY LOGIC' to play/replay a pigeon logic puzzle with no rewards";
        }
        : if (is_at "church_inside") {
            : print "- Type 'RING number' to test a code on the apparatus";
