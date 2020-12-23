@@ -4,7 +4,7 @@
 
 game_information {
    game_name                    = Feathery Christmas
-   game_version                 = 1.0.1
+   game_version                 = 1.0.2
    game_shortname               = Feathery Xmas
    written_by                   = OK Feather
    uuid                         = b9293521-1ddf-48d0-9798-705e902858f9
@@ -28,12 +28,7 @@ themes {
    }
 }
 
-game_settings {
-   experimental_inject_css = custom_styles
-}
-
 loading_screen = loading_screen
-// autoredescribe if locations/objects changes
 redescribe = auto_beta
 
 start_at = santa_cellar
@@ -77,6 +72,7 @@ booleans {
    can_leave_church : boolean "true";
    has_good_hope  : boolean "false";
    has_larry_gone  : boolean "false";
+   is_playing_logic  : boolean "false";
 }
 
 collections {
@@ -439,59 +435,63 @@ grateful_waitress : scenery "The <Coocoo<#fee>> <Cafe<#fee>> team is grateful fo
 ######################################
 
 barriers {
-   block_cafe : block {
-      location = coocoo_inside
+   block_cafe : block_path {
+      from = coocoo_cafe
+      to = coocoo_inside
       message  = The restaurant is closed.
       block_when_exists = grateful_waitress
 
    }
 
-   block_larry : block {
-
-      location = labyrinth_start
+   block_larry : block_path {
+      from = montauk_beach
+      to = labyrinth_start
       message  = The path is blocked by Larry.
       block_when_exists = larry
       show_blocked_exit = true
 
    }
 
-   block_helpinglarry : block {
-
-      location = labyrinth_start
+   block_helpinglarry : block_path {
+      from = montauk_beach
+      to = labyrinth_start
       message  = We will only take that path once all pigeons are assembled and ready.
       block_when_not = is_north_open
       show_blocked_exit = true
 
    }
 
-   block_leave_tower : block {
-      location = church
+   block_leave_tower : block_path {
+      from = church_inside
+      to = church
       message  = There are crowds of birds everywhere, I should check the tower <up<#fee>> before getting out.
       block_when_not = can_leave_church
       show_blocked_exit = true
    }
 
-   block_tourguide : block {
+   block_tourguide : block_path {
 
-      location = church_inside
+      from = church
+      to = church_inside
       message  = The path is blocked by the tour guide.
       block_when_exists = unpaid_tourguide
       show_blocked_exit = true
 
    }
 
-   block_tourguide2 : block {
+   block_tourguide2 : block_path {
 
-      location = church_inside
+      from = church
+      to = church_inside
       message  = The path is blocked by the tour guide.
       block_when_not_carried = church_ticket
       show_blocked_exit = true
 
    }
 
-   block_church : block {
-
-      location = church
+   block_church : block_path {
+      from = south_park
+      to = church
       message  = The road to the church is currently covered in snow. Someone is clearing it from afar, but you cannot access it yet.
       block_when_exists = larry
       show_blocked_exit = true
@@ -637,6 +637,34 @@ subroutines {
          : set_music_vol volume="100";
       }
    }
+   play_lying_puzzle_choice : subroutine {
+      : set_integer var="integer_tmp" {(
+         int(collection_get { collection="lying_character_order" index -> (integer_tmp)})
+      )}
+      : set_string var="string_tmp" {(
+         collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
+      )}
+      : print "{string_tmp}";
+      : if (lying_solution == integer_tmp) {
+         : if (!is_playing_logic) {
+            : destroy "larry";
+            : create "helping_larry" ;
+            : set_false "has_food_fight";
+         }
+      }
+      : if (!is_playing_logic) {
+          : press_any_key;
+          : redescribe;
+      }
+   }
+   play_lying_puzzle_next_response_line :  subroutine {
+      : set_integer var="integer_tmp" {(
+         int(collection_get { collection="lying_character_order" index -> (integer_tmp)})
+      )}
+      : set_string var="string_tmp" {(
+         collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
+      )}
+   }
    play_lying_puzzle : subroutine {
       : if (hard_mode) {
          : set_integer var="lying_form" {(random((collection_count "lying_choices") - 1))}
@@ -649,134 +677,39 @@ subroutines {
          : collection_sort collection="lying_character_order" algorithm="shuffle";
       }
       : set_integer var="lying_solution" {(int(collection_get { collection="lying_solutions" index -> (lying_form)}))}
-      : set_integer var="integer_tmp" {(
-         int(collection_get { collection="lying_character_order" index -> (0)})
-      )}
-      : set_string var="string_tmp" {(
-         collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
-      )}
-      : add_choice "{string_tmp}" {
-         : set_integer var="integer_tmp" {(
-            int(collection_get { collection="lying_character_order" index -> (0)})
-         )}
-         : set_string var="string_tmp" {(
-            collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
-         )}
-         : print "{string_tmp}";
-         : if (lying_solution == integer_tmp) {
-            : if (!has_larry_gone) {
-               : destroy "larry";
-               : create "helping_larry" ;
-               : set_false "has_food_fight";
-            }
-         }
-         : if (!has_larry_gone) {
-             : press_any_key;
-             : redescribe;
-         }
+      : set_integer var="integer_tmp" value="0";
+      : gosub "play_lying_puzzle_next_response_line";
+      : add_choice  "{string_tmp}" {
+         : set_integer var="integer_tmp" value="0";
+         : gosub  "play_lying_puzzle_choice" ;
       }
-      : set_integer var="integer_tmp" {(
-         int(collection_get { collection="lying_character_order" index -> (1)})
-      )}
-      : set_string var="string_tmp" {(
-         collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
-      )}
-      : add_choice "{string_tmp}" {
-         : set_integer var="integer_tmp" {(
-            int(collection_get { collection="lying_character_order" index -> (1)})
-         )}
-         : set_string var="string_tmp" {(
-            collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
-         )}
-         : print "{string_tmp}";
-         : if (lying_solution == integer_tmp) {
-            : if (!has_larry_gone) {
-               : destroy "larry";
-               : create "helping_larry" ;
-               : set_false "has_food_fight";
-            }
-         }
-         : if (!has_larry_gone) {
-             : press_any_key;
-             : redescribe;
-         }
+      : set_integer var="integer_tmp" value="1";
+      : gosub mask = "true"  "play_lying_puzzle_next_response_line";
+      : add_choice  "{string_tmp}" {
+         : set_integer var="integer_tmp" value="1";
+         : gosub "play_lying_puzzle_choice";
       }
-      : set_integer var="integer_tmp" {(
-         int(collection_get { collection="lying_character_order" index -> (2)})
-      )}
-      : set_string var="string_tmp" {(
-         collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
-      )}
+      : set_integer var="integer_tmp" value="2";
+      : gosub "play_lying_puzzle_next_response_line";
       : add_choice "{string_tmp}" {
-         : set_integer var="integer_tmp" {(
-            int(collection_get { collection="lying_character_order" index -> (2)})
-         )}
-         : set_string var="string_tmp" {(
-            collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
-         )}
-         : print "{string_tmp}";
-         : if (lying_solution == integer_tmp) {
-            : if (!has_larry_gone) {
-               : destroy "larry";
-               : create "helping_larry" ;
-               : set_false "has_food_fight";
-            }
-         }
-         : if (!has_larry_gone) {
-             : press_any_key;
-             : redescribe;
-         }
+         : set_integer var="integer_tmp" value="2";
+         : gosub "play_lying_puzzle_choice";
       }
-      : set_integer var="integer_tmp" {(
-         int(collection_get { collection="lying_character_order" index -> (3)})
-      )}
-      : set_string var="string_tmp" {(
-         collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
-      )}
+      : set_integer var="integer_tmp" value="3";
+      : gosub "play_lying_puzzle_next_response_line";
       : add_choice "{string_tmp}" {
-         : set_integer var="integer_tmp" {(
-            int(collection_get { collection="lying_character_order" index -> (3)})
-         )}
-         : set_string var="string_tmp" {(
-            collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
-         )}
-         : print "{string_tmp}";
-         : if (lying_solution == integer_tmp) {
-            : if (!has_larry_gone) {
-               : destroy "larry";
-               : create "helping_larry" ;
-               : set_false "has_food_fight";
-            }
-         }
-         : if (!has_larry_gone) {
-             : press_any_key;
-             : redescribe;
-         }
+         : set_integer var="integer_tmp" value="3";
+         : gosub "play_lying_puzzle_choice";
       }
-      : set_integer var="integer_tmp" {(
-         int(collection_get { collection="lying_character_order" index -> (4)})
-      )}
-      : set_string var="string_tmp" {(
-         collection_get { collection -> (collection_get { collection="lying_choices" index -> (lying_form)}) index -> (integer_tmp)}
-      )}
+      : set_integer var="integer_tmp" value="4";
+      : gosub "play_lying_puzzle_next_response_line";
       : add_choice "{string_tmp}" {
-         : set_integer var="integer_tmp" {(
-            int(collection_get { collection="lying_character_order" index -> (4)})
-         )}
-         : set_string var="string_tmp" {(
-            collection_get { collection -> (collection_get { collection="lying_responses" index -> (lying_form)}) index -> (integer_tmp)}
-         )}
-         : print "{string_tmp}";
-         : if (lying_solution == integer_tmp) {
-            : if (!has_larry_gone) {
-               : destroy "larry";
-               : create "helping_larry" ;
-               : set_false "has_food_fight";
-            }
-         }
+      
+         : set_integer var="integer_tmp" value="4";
+         : gosub "play_lying_puzzle_choice";
       }
       : set_string var="string_tmp"  {(collection_get { collection="lying_queries" index -> (lying_form)})};
-      : choose "{string_tmp}";
+      : choose "{string_tmp}" hint="numeric_list_always" ;
    }
 }
 
@@ -920,7 +853,9 @@ on_describe {
 on_command {
    : if (has_larry_gone && hard_mode) {
       : match "play logic" {
+         : set_true var="is_playing_logic";
          : gosub "play_lying_puzzle";
+         : set_false var="is_playing_logic";
       }
    }
    : if (is_at "church_tower") {
@@ -1793,10 +1728,6 @@ assets {
       music_intro: sound_sample "https://okfeather.github.io/feathery_christmas/music_intro.mp3";
       music_calm1: sound_sample "https://okfeather.github.io/feathery_christmas/music_calm1.mp3";
       music_calm2: sound_sample "https://okfeather.github.io/feathery_christmas/music_calm2.mp3";
-   }
-   style_sheets {
-      custom_styles : base64_css "";
-      #"KiB7IGNvbG9yOiByZWQhaW1wb3J0YW50OyB9";
    }
    graphics {
       labyrinth : base64_png "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" {
