@@ -76,7 +76,6 @@ vocabulary {
    : noun      / aliases = [ellacombe, apparatus]
    : noun      / aliases = [comment, comments, note, notes]
    : noun      / aliases = [bird, dove]
-   : noun      / aliases = [bird, dove]
    : noun      / aliases = [christmas, hanukkah, kwanzaa, greetings, holidays, noel, noël, navidad, wishes, yuletide]
    : noun      / aliases = [fight,combat,conflict]
 }
@@ -156,16 +155,16 @@ collections {
    lying_response1 : list {
       items = [
          "Sorry, {lying_man1} was the wrong choice{!hard_mode ? ` : it would mean {lying_man2}, {lying_woman2} and {lying_man3} lied but there are only 2 liars`} :(",
-         "Sorry, {lying_woman2} was the wrong choice{!hard_mode ? ` : it would mean she, {lying_man2} and {lying_man3} lied but there are only 2 liars`} :(",
+         "Sorry, {lying_woman1} was the wrong choice{!hard_mode ? ` : it would mean she, {lying_man2} and {lying_man3} lied but there are only 2 liars`} :(",
          "You won, well done! {lying_man2} is given the remaining bread and all pigeons are now well-fed! {!hard_mode ? ` ({lying_man1} and {lying_woman2} were lying)`}",
-         "Sorry, {lying_woman2} was the wrong choice{!hard_mode ? `  : it would mean she, {lying_woman2} and {lying_man2} lied but there are only 2 liars`} :("
+         "Sorry, {lying_woman2} was the wrong choice{!hard_mode ? `  : it would mean she, {lying_woman1} and {lying_man2} lied but there are only 2 liars`} :("
          "Sorry, {lying_man3} was the wrong choice{!hard_mode ? `  : it would mean only {lying_man2} lied but there are 2 liars`} :("
       ]
    }
    lying_response2 : list {
       items = [
          "You won, well done! With the lie spotted, we can amply feed the poor hungry pigeon!",
-         "Sorry, {lying_woman2} was the wrong choice :(",
+         "Sorry, {lying_woman1} was the wrong choice :(",
          "Sorry, {lying_man2} was the wrong choice :(",
          "Sorry, {lying_woman2} was the wrong choice :("
          "Sorry, {lying_man3} was the wrong choice :("
@@ -174,7 +173,7 @@ collections {
    lying_response3 : list {
       items = [
          "Sorry, {lying_man1} was the wrong choice :(",
-         "Sorry, {lying_woman2} was the wrong choice :(",
+         "Sorry, {lying_woman1} was the wrong choice :(",
          "Sorry, {lying_man2} was the wrong choice :(",
          "You won, well done! With the lie spotted, we can amply feed the poor hungry pigeon!",
          "Sorry, {lying_man3} was the wrong choice :("
@@ -935,6 +934,14 @@ on_describe {
 ######################################
 
 on_command {
+   : match "follow _;about _; credit _; credits _; readme _"  {
+      : if ((verb_is "about" || verb_is "follow") && is_exists (s1())) {
+         : set_sentence {("examine "+ rationalized "noun1")};
+      }
+      : else {
+          : print "YOU CAN FOLLOW OR CHECK OK FEATHER EVERYWHERE: https://www.okfeather.com " ;
+      }
+   }
    : if (is_at "montauk_beach" && has_food_fight) {
        : match "play _;replay _;talk pigeon;talk larry;find solution;try again;x pigeon;x fight;resolve fight;help fight;x larry" {
          : gosub "play_lying_puzzle";
@@ -1755,10 +1762,6 @@ on_command {
       : if (is_at "church") {
          : print "You need to <enter<#fdd>> the <church<#fee>> then go upstairs to access the <tower<#fee>>." ;
       }
-   }
-
-   : match "follow _"  {
-      : print "FOLLOW OK FEATHER EVERYWHERE: https://www.okfeather.com " ;
    }
 
    : if (is_present "waitress") {
