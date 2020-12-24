@@ -50,7 +50,14 @@ vocabulary {
    : verb / aliases = [talk, say, speak, tell]
    : verb / aliases = [comment, comments, note, notes]
    : verb / aliases = [exchange, exchanging]
-   : verb / aliases = [kill,threaten,menace,intimidate,browbeat,bully,scare,frighten,terrorize,murder,assassinate]
+   : verb / aliases = [exit, leave, outside, out]
+   : verb / aliases = [enter, inside, in]
+   : verb / aliases = [ring,strike]
+   : verb / aliases = [thank, thanks]
+   : verb / aliases = [merry, happy, feliz, joyous, feathery, great, joyeux, enjoy, warmest, jolly, cheerful]
+   : verb / aliases = [kill,threaten,menace,intimidate,browbeat,bully,scare,frighten,terrorize,murder,assassinate,beat]
+   : verb / aliases = ["cry", ":(","=(", "='(", ":'("]
+   : verb / aliases = ["smile", "grin", "laugh", ":)","=)",":D","=D"]
    : noun      / aliases = [bread, croissant, pain, cookie, loaf]
    : noun      / aliases = [cafe, coocoo, shop, restaurant]
    : noun      / aliases = [guide, tour, tourguide]
@@ -68,6 +75,9 @@ vocabulary {
    : noun      / aliases = [montauk, beach]
    : noun      / aliases = [ellacombe, apparatus]
    : noun      / aliases = [comment, comments, note, notes]
+   : noun      / aliases = [bird, dove]
+   : noun      / aliases = [bird, dove]
+   : noun      / aliases = [christmas, hanukkah, kwanzaa, greetings, holidays, noel, noël, navidad, wishes, yuletide]
 }
 
 ######################################
@@ -86,6 +96,8 @@ booleans {
    keep_same_logic : boolean "false";
    is_sound_muted : boolean "true";
    music_ever_enabled : boolean "false";
+   help_about_commands : boolean "false";
+   has_lifetime_cafe_pass : boolean "false";
 }
 
 collections {
@@ -549,10 +561,16 @@ on_startup {
       }
       : clear_screen;
    }
-   : if (sysvar_bool "sysvar_music_enabled") {
+   : else_if (sysvar_bool "sysvar_music_enabled") {
       : set_true "music_ever_enabled";
       : if (sysvar_bool "sysvar_sound_enabled") {
          : set_false "is_sound_muted";
+         : print "You can lower or stop sound at any moment with <SOUND LOWEST<#fdd>> or <SOUND OFF<#fdd>>.\n";
+         : press_any_key;
+      }
+      : else {
+         : print "Feathery Christmas uses background music. You can enable music at any moment with <SOUND ON<#fdd>> or <SOUND LOWEST<#fdd>> for lower volume.\n";
+         : press_any_key;
       }
    }
    : gosub "update_volume";
@@ -949,19 +967,16 @@ on_command {
    }
    : if (is_at "coocoo_cafe") {
       : mask {
-         : match "north _" {
+         : match "north _; go cafe" {
             : set_sentence "enter";
          }
       }
    }
    : if (is_at "coocoo_inside") {
       : mask {
-         : match "south _" {
+         : match "south _; leave cafe" {
             : set_sentence "exit";
          }
-      }
-      : match "kill waitress" {
-          : print "I would never do that!!";
       }
    }
    : if (is_at "church_inside") {
@@ -976,13 +991,21 @@ on_command {
    }
    : if (is_at "church") {
       : mask {
-         : match "south _; open door; open church; unlock door; unlock church" {
+         : match "south _; open door; open church; unlock door; unlock church; go church" {
             : set_sentence "enter";
          }
       }
-      : match "kill guide" {
-          : print "I would never do that!!";
+   }
+   : match "kill *" {
+      : if (is_carried (s1())) {
+         : print {("It would be a waste to "+original "verb" + " what I have taken!!!")};
       }
+      : else_if (is_present (s1())) {
+         : print "I would never do that!!!";
+      }
+   }
+   : match "ho _; oh _; ha _; ah _" {
+      : print "Ho ho ho... if Christmas is saved children will be so Ha Ha Happy!";
    }
    : if (hard_mode) {
        : match "get all" {
@@ -1188,7 +1211,6 @@ on_command {
          : redescribe;
       }
    }
-
    : match "get bread"  {
       : if (is_at "coocoo_cafe" && is_exists "full_bin") {
         : print "You take the <loaf<#fee>> of <bread<#fee>> and other delicacies from the <bin<#fee>>." ;
@@ -1197,6 +1219,11 @@ on_command {
       }
       : if (is_at "coocoo_inside") {
          : print {("There is no "+original "noun1"+" I can take here for free.")};
+      }
+   }
+   : match "thank bin; thank -"  {
+      : if (is_exists "grateful_waitress" && is_present "bin") {
+         : print "The bin doesn't answer, but it is probably very happy to be helpful!";
       }
    }
 
@@ -1251,7 +1278,15 @@ on_command {
          : print "Can you {hard_mode?`help`:`<help<#fee>>`} the <Coocoo<#fee>> <Cafe <#fee>>with {hard_mode?`clean`:`<clean<#fee>>`}ing before they can celebrate Christmas?" ;
       }
       : if (is_at "coocoo_inside" && is_exists "grateful_waitress") {
-         : print "You have a lifetime pass to visit the <cafe<#fee>>, even when it is closed." ;
+         : print "You have a lifetime pass to visit the <cafe<#fee>>, even when it is closed.";
+         : set_true "has_lifetime_cafe_pass";
+      }
+   }
+   : match "enter _; use pass" {
+      : mask {
+         : if (is_at "coocoo_cafe" && has_lifetime_cafe_pass) {
+            : print "Your still have your lifetime pass to enter when closed, but it doesn't open closed door. It will be open again soon!";
+         }
       }
    }
 
@@ -1375,6 +1410,11 @@ on_command {
          : print "<Larry<#fee>> is not here." ;
       }
    }
+   : match "thank larry; thank -; thank pigeon; high five; highfive larry; highfive pigeon; highfive -"  {
+      : if (is_present "morehelping_larry" || (is_at "church_tower" && is_exists "morehelping_larry")) {
+         : print "\"It's all thanks to your hard work!\"";
+      }
+   }
 
    : match "examine lovers"  {
       : if (is_at "montauk_beach") {
@@ -1444,6 +1484,11 @@ on_command {
       }
       : if (is_present "bookshop_owner" && is_carried "pigeon_bookreal") {
             : print "\"This <book<#fee>> has a Not For Sale Specimen stamp on it. Sorry, we cannot take it.\" " ;
+      }
+   }
+   : match "thank owner; thank -"  {
+      : if (is_present "bookshop_owner" && is_exists "dictionary") {
+         : print "\"You are quite welcome, I love to see people searching knowledge!\"";
       }
    }
 
@@ -1569,6 +1614,64 @@ on_command {
       }
    }
 
+   : match "happy christmas" {
+      : if (is_present "bookshop_owner") {
+         : print {("\""+camel(original "verb") + " " + camel(original "noun1") + " to you too!\"")};
+      }
+      : else_if (is_present "waitress") {
+         : print {("\""+camel(original "verb") + " " + camel(original "noun1") + "!! There is still lot of work to do here!\"")};
+      }
+      : else_if (is_present "grateful_waitress") {
+         : print {(camel(original "verb") + " " + camel(original "noun1") + " to you! Thanks for all your help!")};
+      }
+      : else_if (is_present "larry") {
+         : print {("\"Feathery " + (original "noun1") + "!\"")};
+      }
+      : else_if (is_present "morehelping_larry" || (is_at "church_tower" && is_exists "morehelping_larry")) {
+         : print {("\"FEATHERY " + upper(original "noun1") + "! With all your work we can affirm it will be happy!\"")};
+      }
+      : else_if (is_present "nicobar_man1") {
+         : print {("\""+lower(original "verb") + " " + lower(original "noun1") + "\"")};
+      }
+      : else_if (is_present "nicobar_man2") {
+         : print {("\""+camel(original "verb") + " " + camel(original "noun1") + "\"")};
+      }
+      : else_if (is_present "tourist") {
+         : print {("\"행복한 크리스마스 되십시오\"")};
+      }
+      : else_if (is_present "happy_tourist") {
+         : print {("\"크리스마스 잘 보내세요! Merry Christmas!\"")};
+      }
+      : else_if (is_present "unpaid_tourguide") {
+         : print {("\"Good " + camel(original "noun1") + "\"")};
+      }
+      : else_if (is_present "unpaid_tourguide") {
+         : print {("\"Merry " + camel(original "noun1") + "\"")};
+      }
+      : else {
+         : print {("Ho ho ho! "+camel(original "verb") + " " + camel(original "noun1") + " to everyone!")};
+      }
+   }
+   : if (verb_is ":(") {
+      : if (is_north_open) {
+         : print "I should smile, we have nearly finished saving Christmas!";
+      }
+      : else_if (!is_exists "larry") {
+         : print "I should not be sad, we are at the last steps of saving Christmas!";
+      }
+      : else {
+         : print "Let's not be sad, we can still save Christmas!";
+      }
+   }
+   : if (verb_is ":)") {
+      : if (is_north_open) {
+         : print "Ho ho ho! We are just about to save Christmas! What a joyous day to remember!";
+      }
+      : else {
+         : print "Ho ho ho! Let's save Christmas with a smile!";
+      }
+   }
+
    : match "talk _"  {
       : if (is_at "santa_cellar") {
          : print "All the <reindeer<#fee>> are smiling with their eyes closed, not too responsive though. Even <Rudolph<#fee>>, who usually is unstoppable." ;
@@ -1593,12 +1696,17 @@ on_command {
       }
    }
 
-   : match "examine tourist; talk tourist; talk -"  {
+   : match "examine tourist; talk tourist; talk -; wave tourist"  {
       : if (is_present "tourist") {
          : print "\"나는 비둘기를 위해 여기에 왔습니다! '비둘기 집에 음식을 두면 비둘기가 옵니다'\", says the cheerful <tourist<#fee>>. Maybe you will need to use another item to have a fruitful conversation." ;
       }
       : if (is_present "happy_tourist") {
          : print "\"It doesn't matter what people call you unless they call you <pigeon<#fee>> pie and eat you up.\", says the happy <tourist<#fee>>." ;
+      }
+   }
+   : match "thank tourist; thank -"  {
+      : if (is_present "happy_tourist") {
+         : print "\"아니에요! You are welcome!\", say the joyous <tourist<#fee>>." ;
       }
    }
 
@@ -1636,6 +1744,17 @@ on_command {
    }
 
    : if (is_present "waitress") {
+      : match "help -" {
+         : if (!hard_mode) {
+            : ask_bool {
+               var      = help_about_commands
+               question = Do you want help about game commands?
+            }
+            : if (!help_about_commands) {
+               : set_sentence "help waitress";
+            }
+         }
+      }
       : match "help waitress; help cafe; clean cafe; tidy cafe; give help; help clean; clean -"  {
          : print "You are helping the <Coocoo<#fee>> <Cafe<#fee>> team.";
          : swap o1 = "waitress"  o2 = "grateful_waitress" ;
@@ -1652,7 +1771,7 @@ on_command {
       }
    }
 
-   : match "talk _"  {
+   : match "talk _; wave man"  {
       : if (is_present "nicobar_man1" && !is_carried "church_ticket") {
          : clear_screen;
          : print "\"Have you visited the <church<#fee>>? It is famous for its ellacombe apparatus, a mechanism that allows one person to ring all the bells. I see you don't have a <ticket<#fee>>! Here, have one to visit.\", says the <man<#fee>>.";
@@ -1664,6 +1783,11 @@ on_command {
       }
       : if (is_present "nicobar_man2") {
          : print "\"I know this <church<#fee>> by heart!\", says the <man<#fee>>.";
+      }
+   }
+   : match "thank man; thank *"  {
+      : if (is_present "nicobar_man2") {
+         : print "\"It was my pleasure, I'm happy if more people enjoy our culture.\"" ;
       }
    }
    : match "hard -" {
@@ -1843,7 +1967,7 @@ on_command {
       }
    }
    : match "nothing -" {
-      : print "{string_tmp}";
+      : print "{nothing_message}";
       : set_string var="nothing_message" text="";
    }
 }
