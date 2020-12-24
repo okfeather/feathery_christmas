@@ -565,7 +565,7 @@ on_startup {
       : set_true "music_ever_enabled";
       : if (sysvar_bool "sysvar_sound_enabled") {
          : set_false "is_sound_muted";
-         : print "You can lower or stop sound at any moment with <SOUND LOWEST<#fdd>> or <SOUND OFF<#fdd>>.\n";
+         : print "You can lower or stop the sound at any moment with <SOUND LOWEST<#fdd>> or <SOUND OFF<#fdd>>.\n";
          : press_any_key;
       }
       : else {
@@ -579,13 +579,13 @@ on_startup {
    : print "e.g. <EXAMINE PIGEON<#fdd>> (or <X<#fdd>>) to take a closer look at a PIGEON." ;
    : print "<GET BREAD<#fdd>> to take BREAD and add it to your inventory." ;
    : press_any_key ;
-   : print "To travel, type <NORTH<#fdd>>, <EAST<#fdd>>, <SOUTH<#fdd>>, <WEST<#fdd>> (or <N<#fdd>>, <E<#fdd>>, <S<#fdd>>, <W<#fdd>>), <ENTER<#fdd>>, <EXIT<#fdd>>, <UP<#fdd>>, <DOWN<#fdd>>" ;
+   : print "To travel, type <NORTH<#fdd>>, <EAST<#fdd>>, <SOUTH<#fdd>>, <WEST<#fdd>> (or <N<#fdd>>, <E<#fdd>>, <S<#fdd>>, <W<#fdd>>), <ENTER<#fdd>>, <EXIT<#fdd>>, <UP<#fdd>>, <DOWN<#fdd>>." ;
    : press_any_key ;
-   : print "To check your inventory, type <INVENTORY<#fdd>> (or <I<#fdd>>)" ;
+   : print "To check your inventory, type <INVENTORY<#fdd>> (or <I<#fdd>>)." ;
    : press_any_key ;
    : print "You start in easy mode. If you are a text-adventure veteran, you can switch to <HARD<#fdd>> mode (less textual hints, harder puzzles). You can switch at any time by typing <EASY<#fdd>> or <HARD<#fdd>>.";
    : press_any_key ;
-   : print "To see available commands at a location, type <HELP<#fdd>>" ;
+   : print "To see available commands at a location, type <HELP<#fdd>>." ;
    : press_any_key ;
 
 }
@@ -1263,7 +1263,7 @@ on_command {
 
    : match "get book"  {
       : if (is_at "nicobar_park" && is_present "pigeon_book") {
-        : print "You take the <book<#fee>>" ;
+        : print "You take the <book<#fee>>." ;
         : destroy "pigeon_book";
         : create "pigeon_booklove";
         : pocket "pigeon_booklove";
@@ -1351,6 +1351,12 @@ on_command {
       }
       : else_if (is_carried "bread") {
          : print "This seems to be a perfectly fine piece of bread. Maybe someone is hungry?";
+      }
+   }
+
+   : match "examine painting"  {
+      : if (is_at "coocoo_inside") {
+         : print "Nobody knows the author of this painting. Maybe it's an autoportrait." ;
       }
    }
 
@@ -1468,8 +1474,11 @@ on_command {
    }
 
    : match "examine owner; talk owner; talk -"  {
-      : if (is_present "bookshop_owner") {
+      : if (is_present "bookshop_owner" && !is_carried "dictionary") {
          : print "\"안녕하세요! \", says the bookshop <owner<#fee>>. Maybe you will need to <translate<#fee>> to <English<#fee>>." ;
+      }
+      : if (is_present "bookshop_owner" && is_carried "dictionary") {
+         : print "\"Now that you have a <dictionary<#fee>>, you are ready to handle Korean conversations anywhere in the world, congratulations!\", says the bookshop <owner<#fee>>." ;
       }
    }
 
@@ -1477,7 +1486,7 @@ on_command {
       : if (is_present "bookshop_owner") {
          : clear_screen;
          : if (is_carried "dictionary") {
-             : print "\"안녕하세요! or Hello! Now that you have a <dictionary<#fee>>, you are ready to handle korean conversations anywhere in the world, congratulations!\"";
+             : print "\"안녕하세요! or Hello! Now that you have a <dictionary<#fee>>, you are ready to handle Korean conversations anywhere in the world, congratulations!\"";
          }
          : else {
              : print "\"Oh you don't speak Korean? Dear me! Everyone needs a Korean-English <dictionary<#fee>> in their life. You can get one by {hard_mode?`exchanging`:`<exchanging<#fee>>`} with another {hard_mode?`book`:`<book<#fee>>`}.\"" ;
@@ -1959,6 +1968,9 @@ on_command {
       }
       : if (is_at "church_inside") {
          : print "You remember the ellacombe apparatus, and the place for important missions." ;
+      }
+      : if (is_at "church_tower") {
+         : print "Some suggest this <tower<#fee>> is a special place to organize secret missions." ;
       }
       : if (is_at "coocoo_cafe") {
          : print "You see <pigeons<#fee>> eating and flying with colorful doggy <bags<#fee>>. It's like a very busy <restaurant<#fee>>." ;
