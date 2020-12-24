@@ -55,7 +55,7 @@ vocabulary {
    : verb / aliases = [ring,strike]
    : verb / aliases = [thank, thanks]
    : verb / aliases = [merry, happy, feliz, joyous, feathery, great, joyeux, enjoy, warmest, jolly, cheerful]
-   : verb / aliases = [kill,threaten,menace,intimidate,browbeat,bully,scare,frighten,terrorize,murder,assassinate,beat]
+   : verb / aliases = [kill,threaten,menace,intimidate,browbeat,bully,scare,frighten,terrorize,murder,assassinate,beat,fight,combat]
    : verb / aliases = ["cry", ":(","=(", "='(", ":'("]
    : verb / aliases = ["smile", "grin", "laugh", ":)","=)",":D","=D"]
    : noun      / aliases = [bread, croissant, pain, cookie, loaf]
@@ -78,6 +78,7 @@ vocabulary {
    : noun      / aliases = [bird, dove]
    : noun      / aliases = [bird, dove]
    : noun      / aliases = [christmas, hanukkah, kwanzaa, greetings, holidays, noel, noël, navidad, wishes, yuletide]
+   : noun      / aliases = [fight,combat,conflict]
 }
 
 ######################################
@@ -98,6 +99,7 @@ booleans {
    music_ever_enabled : boolean "false";
    help_about_commands : boolean "false";
    has_lifetime_cafe_pass : boolean "false";
+   gave_wrong_answer_lying : boolean "false";
 }
 
 collections {
@@ -732,11 +734,8 @@ subroutines {
             : destroy "larry";
             : create "helping_larry" ;
             : set_false "has_food_fight";
+            : set_true "has_larry_gone";
          }
-      }
-      : if (!is_playing_logic) {
-          : press_any_key;
-          : redescribe;
       }
    }
    play_lying_puzzle_next_response_line :  subroutine {
@@ -867,22 +866,13 @@ on_describe {
             : print "The <shop<#fee>> is closed!";
        }
    }
-
    : if (is_at "montauk_beach" ) {
       : set_false "in_labyrinth";
       : if (has_food_fight) {
-         : print "Whomp! Coo! Coocoo! Coo! There is a fight about sharing the bread.\n";
-         : gosub "play_lying_puzzle";
+         : print "\"Whomp! Coo! Coocoo! Coo!\" There is a {hard_mode ? `fight`:`<fight<#fee>>`} about sharing the {hard_mode ? `bread`:`<bread<#fee>>`}.  It seems everyone did not receive the same quantity.";
       }
       : if (is_exists "helping_larry") {
-         : if (!has_larry_gone) {
-            : set_true "has_larry_gone";
-            : print "Larry said \"We will need to go to the church tower, gather the troops there with a secret code.\" ";
-            : press_any_key;
-         }
-         : else {
-            : print "Before leaving, Larry said that he was going to the church tower to gather the troops with a secret code.";
-         }
+         : print "Before leaving, Larry said that he was going to the church tower to gather the troops with a secret code.";
       }
       : if (is_north_open) {
          : print "There are a lot of pigeons around. It seems everything is ready!";
@@ -947,6 +937,24 @@ on_describe {
 ######################################
 
 on_command {
+   : if (is_at "montauk_beach" && has_food_fight) {
+       : match "play _;replay _;talk pigeon;talk larry;find solution;try again;x pigeon;x fight;resolve fight;help fight;x larry" {
+         : gosub "play_lying_puzzle";
+         : if (has_food_fight) {
+            : if (!gave_wrong_answer_lying) {
+                : set_true "gave_wrong_answer_lying";
+                : print "\"You could try to find {hard_mode?`a`:`the`} solution again or go somewhere else, we will not move until this is solved anyway\" says Larry.";
+                : press_any_key;
+            }
+         }
+         : else {
+            : press_any_key;
+            : print "Larry said \"We will need to go to the church tower, gather the troops there with a secret code.\" ";
+            : press_any_key;
+         }
+         : return;
+      }
+   }
    : if (has_larry_gone) {
       : match "play logic; replay logic" {
          : if (verb_is "replay") {
@@ -1203,12 +1211,15 @@ on_command {
    : match "give bread"  {
       : if (is_present "larry" && is_carried "bread") {
          : print "Larry takes the loaf of bread and says \"Let's share the bread with all my friends!\" ";
+         : press_any_key;
+         : print "After breaking the bread and distributing parts to all pigeons, they eat in silence until...";
+         : press_any_key;
+         : print "\"Whomp! Coo! Coocoo! Coo!\" There is a {hard_mode ? `fight`:`<fight<#fee>>`} about sharing the {hard_mode ? `bread`:`<bread<#fee>>`}, it seems everyone did not receive the same quantity.";
          : set_true "has_food_fight";
          : destroy "bread" ;
          : set_true "has_good_hope";
          : swap o1 = "flying_pigeon"  o2 = "new_pigeon";
          : press_any_key;
-         : redescribe;
       }
    }
    : match "get bread"  {
@@ -1442,7 +1453,12 @@ on_command {
 
    : match "examine montauk; examine place"  {
       : if (is_at "montauk_beach") {
-         : print "The <beach<#fee>> is quiet today." ;
+         : if (has_food_fight) {
+             : print "The <beach<#fee>> is not very quiet right now with the <fight<#fee>> about food." ;
+         }
+         : else {
+             : print "The <beach<#fee>> is quiet today." ;
+         }
       }
    }
 
