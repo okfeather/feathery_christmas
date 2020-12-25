@@ -1880,6 +1880,17 @@ on_command {
             : print "Who cares about the view on the city? You've never seen more pigeons in your life, and that alone is a memory you will cherish.";
          }
       }
+      : if (is_at "coocoo_inside") {
+         : print "The beautiful colour patterns in the sky make the window almost look like a painting." ;
+      }
+   }
+   : match "examine sky"  {
+      : if (!is_at "church_inside" && !is_at "santa_cellar") {
+         : print "The sunset is making beautiful colour patterns in the sky, but it reminds you that the time for the delivery is nearing." ;
+      }
+      : if (is_at "church_inside" || is_at "santa_cellar") {
+         : print "Here, you cannot see the sky." ;
+      }
    }
 
    : match "examine yourself; talk yourself"  {
