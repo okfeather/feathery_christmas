@@ -1366,7 +1366,7 @@ on_command {
 
    : match "examine customer"  {
       : if (is_at "coocoo_inside") {
-         : print "There is no customer." ;
+         : print "There are no customers." ;
       }
    }
 
