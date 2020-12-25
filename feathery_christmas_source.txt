@@ -1479,6 +1479,15 @@ on_command {
       }
    }
 
+   : match "get coffee; examine coffee"  {
+      : if (is_present "waitress") {
+         : print "The smell of coffee is mesmerizing... you'd like to get one but the team cannot serve you right now." ;
+      }
+      : if (is_present "grateful_waitress") {
+         : print "To thank you, the team lets you access their own pot of fragrant Vietnamese coffee... you take a big cup to stay focused." ;
+      }
+   }
+
    : match "get meal; examine meal"  {
       : if (is_at "coocoo_cafe") {
          : print "<Pigeons<#fee>> are too high, and you are not fit enough to get to the <roof<#fee>>." ;
