@@ -1460,13 +1460,13 @@ on_command {
          : print "Larry starts coocooing the song with you.";
       }
       : if (is_at "santa_cellar") {
-         : print "You hear one reindeer faintly tring to hum along, then snoring loudly again.";
+         : print "You hear one reindeer faintly trying to hum along, then snoring loudly again.";
       }
       : if (is_present "morehelping_larry") {
          : print "Larry and all his friends start coocooing the song with you.";
       }
       : if (is_present "gang_pigeon") {
-         : print "All the pigeons are coocooing the song with you. The whole church is resonating with it.";
+         : print "Melody flies to the center to form a choir, and all fellow pigeons start coocooing the song with you. The whole church is resonating with it.";
       }
       : if (is_present "waitress") {
          : print "Nobody seems to hear you because they are so busy.";
@@ -1476,6 +1476,14 @@ on_command {
       }
       : if (is_present "tourist") {
          : print "The tourist smiles gently. \"Oh you like it? I wrote it for a game I made with friends\", she tells you.";
+      }
+   }
+   : match "examine melody"  {
+      : if (is_present "gang_pigeon") {
+         : print "Melody is a cute pigeon with a white pattern on her feathers, and a deep contralto voice." ;
+      }
+      : else {
+         : print "You only have Christmas melodies in your mind, but that does not help to solve your predicament." ;
       }
    }
 
