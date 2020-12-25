@@ -34,6 +34,7 @@ themes {
 
 game_settings {
    auto_ask_sound_permissions = false
+   enable_standard_all_behaviour = false
 }
 
 
@@ -941,6 +942,9 @@ on_command {
       : else {
           : print "YOU CAN FOLLOW OR CHECK OK FEATHER EVERYWHERE: https://www.okfeather.com " ;
       }
+   }
+   : match "get all;give all" {
+      : print "It's a little too much";
    }
    : if (is_at "montauk_beach" && has_food_fight) {
        : match "play _;replay _;talk pigeon;talk larry;find solution;try again;x pigeon;x fight;resolve fight;help fight;x larry" {
