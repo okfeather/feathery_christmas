@@ -944,7 +944,7 @@ on_command {
       }
    }
    : match "get all;give all" {
-      : print "It's a little too much";
+      : print "I know it's Christmas, but that's a little too much.";
    }
    : if (is_at "montauk_beach" && has_food_fight) {
        : match "play _;replay _;talk pigeon;talk larry;find solution;try again;x pigeon;x fight;resolve fight;help fight;x larry" {
@@ -1451,9 +1451,31 @@ on_command {
       }
    }
 
-   : if (is_at "nicobar_park" && (is_exists "flying_pigeon" || is_exists "new_pigeon")) {
-      : match "sing _" {
-         : print "You are singing along the pigeon, what a great duo!";
+   : match "sing _" {
+      : print "You start singing your favourite Christmas Carol, \"Feathery Christmas\".";
+      : if (is_at "nicobar_park" && (is_exists "flying_pigeon" || is_exists "new_pigeon")) {
+         : print "You are singing along with the pigeon, what a great duo!";
+      }
+      : if (is_present "larry"  || is_present "helping_larry") {
+         : print "Larry starts coocooing the song with you.";
+      }
+      : if (is_at "santa_cellar") {
+         : print "You hear one reindeer faintly tring to hum along, then snoring loudly again.";
+      }
+      : if (is_present "morehelping_larry") {
+         : print "Larry and all his friends start coocooing the song with you.";
+      }
+      : if (is_present "gang_pigeon") {
+         : print "All the pigeons are coocooing the song with you. The whole church is resonating with it.";
+      }
+      : if (is_present "waitress") {
+         : print "Nobody seems to hear you because they are so busy.";
+      }
+      : if (is_present "grateful_waitress") {
+         : print "The waitress smiles gently. \"This song is always playing here in the winter, no wonder you can't get it out of your mind\", she tells you.";
+      }
+      : if (is_present "tourist") {
+         : print "The tourist smiles gently. \"Oh you like it? I wrote it for a game I made with friends\", she tells you.";
       }
    }
 
