@@ -806,7 +806,7 @@ subroutines {
       }
       : if (!is_playing_logic) {
          : add_choice "(go away and <try again<#fdd>> later)" {
-            : print "\"You can <try again<#fdd>> later, we are waiting for your wiseness!\"";
+            : print "\"You can <try again<#fdd>> later, we are waiting for your wisdom!\"";
          }
       }
       : print {(collection_get { collection="lying_introductions" index -> (lying_form)})}
