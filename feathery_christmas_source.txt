@@ -1698,7 +1698,7 @@ on_command {
          : print "It seems that <Santa<#fee>>'s <potions<#fee>> only work on <Santa<#fee>>. The <reindeer<#fee>> are all incapable of moving! At least they don't look too unhappy." ;
       }
       : else {
-         : print "The reindeers are not available at the moment, maybe on next year Christmas?";
+         : print "The reindeers are not available at the moment, maybe on next year's Christmas?";
       }
    }
 
