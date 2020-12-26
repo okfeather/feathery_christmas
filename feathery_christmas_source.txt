@@ -55,29 +55,34 @@ vocabulary {
    : verb / aliases = [enter, inside, in]
    : verb / aliases = [ring,strike]
    : verb / aliases = [thank, thanks]
-   : verb / aliases = [merry, happy, feliz, joyous, feathery, great, joyeux, enjoy, warmest, jolly, cheerful]
+   : verb / aliases = [merry, happy, feliz, joyous, feathery, great, joyeux, enjoy, warmest, jolly, cheerful, 행복한]
    : verb / aliases = [kill,threaten,menace,intimidate,browbeat,bully,scare,frighten,terrorize,murder,assassinate,beat,fight,combat,hurt,kick,harm,injure,insult]
    : verb / aliases = ["cry", ":(","=(", "='(", ":'("]
    : verb / aliases = ["smile", "grin", "laugh", ":)","=)",":D","=D"]
-   : noun      / aliases = [bread, croissant, pain, cookie, loaf]
+   : noun      / aliases = [bread, croissant, pain, cookie, loaf, biscuit]
    : noun      / aliases = [cafe, coocoo, shop, restaurant]
    : noun      / aliases = [guide, tour, tourguide]
    : noun      / aliases = [owner, vendor]
    : noun      / aliases = [pigeon, bird, dove]
-   : noun      / aliases = [potion, beverage, drink, barrel]
-   : noun      / aliases = [reindeer, rudolph]
+   : noun      / aliases = [potion, beverage, drink, barrel, energy, barel]
+   : noun      / aliases = [reindeer, rudolph, reinder, rendeer, render]
    : noun      / aliases = [tourist, visitor]
    : noun      / aliases = [yourself, santa, myself, me]
-   : noun      / aliases = [dictionary, dico, dic, dict]
+   : noun      / aliases = [dictionary, dico, dic, dict, dictionnary]
    : noun      / aliases = [bin, compost, trashcan, garbage, trash]
    : noun      / aliases = [bible, scripture]
    : noun      / aliases = [child, children, kid]
    : noun      / aliases = [montauk, beach]
-   : noun      / aliases = [ellacombe, apparatus]
+   : noun      / aliases = [ellacombe, apparatus, elacombe, aparatus]
    : noun      / aliases = [comment, comments, note, notes]
    : noun      / aliases = [bird, dove]
-   : noun      / aliases = [christmas, hanukkah, kwanzaa, greetings, holidays, noel, noël, navidad, wishes, yuletide]
+   : noun      / aliases = [christmas, hanukkah, kwanzaa, greetings, holidays, noel, noël, navidad, wishes, yuletide, 크리스마스]
    : noun      / aliases = [fight,combat,conflict]
+   : noun      / aliases = [floor, ground, flooring]
+   : noun      / aliases = [caballero, caballaro, cabalero, cabalaro]
+   : noun      / aliases = [etroeungt, etrœungt, etrung, etrungt, etreungt, etreung, etroung, etroungt]
+   : noun      / aliases = [sibculo,sibcullo,sibkullo,sibkulo]
+   : noun      / aliases = [up,upstair]
 }
 
 ######################################
@@ -685,7 +690,7 @@ subroutines {
             : play_music "music_beach";
          }
       }
-      : else_if (in_labyrinth) {
+      : else_if (in_labyrinth || is_at "labyrinth_start") {
          : set_string var="next_track" text="music_labyrinth";
          : if (next_track != current_track) {
             : play_music "music_labyrinth";
@@ -828,7 +833,6 @@ on_describe {
       : print "<Larry<#fee>> says, \"I'm glad you met me in <Montauk<#fee>>. I hope you've not come empty-handed.\"." ;
    }
 
-
    : if (is_at "room_tree" ) {
       : print "CONGRATULATIONS!" ;
       : print "YOU WON THE GAME!" ;
@@ -844,7 +848,7 @@ on_describe {
        : if (is_first_entered()) {
          : press_any_key ;
        }
-       : print "Christmas is coming tonight, everyone cannot wait to open <presents<#fee>>." ;
+       : print "Christmas is coming tonight, everyone can't wait to open <presents<#fee>>." ;
        : print "With this setback, how will you find a way to send all <presents<#fee>> in time for the big day?" ;
        : if (is_first_entered()) {
          : press_any_key ;
@@ -875,7 +879,7 @@ on_describe {
    : if (is_at "montauk_beach" ) {
       : set_false "in_labyrinth";
       : if (has_food_fight) {
-         : print "\"Whomp! Coo! Coocoo! Coo!\" There is a {hard_mode ? `fight`:`<fight<#fee>>`} about sharing the {hard_mode ? `bread`:`<bread<#fee>>`}.  It seems everyone did not receive the same quantity.";
+         : print "\"Whomp! Coo! Coocoo! Coo!\" There is a {hard_mode ? `fight`:`<fight<#fee>>`} about sharing the {hard_mode ? `bread`:`<bread<#fee>>`}.  It seems everyone did not receive the same quantity.\nDo you want to <try again<#fdd>> to <resolve<#fee>> the <fight<#fee>>?";
       }
       : if (is_exists "helping_larry") {
          : print "Before leaving, Larry said that he was going to the church tower to gather the troops with a secret code.";
@@ -957,8 +961,14 @@ on_command {
    : match "refresh _" {
       : set_sentence "look";
    }
+   : match "verb noun" {
+      : print "You need to type commands consisting in one verb or one verb and one noun, for example:\n\n>><EXAMINE<#fdd>>\n>><LOOK PIGEON<#fdd>>\n\nType <HELP<#fdd>> to have a summary of useful commands.";
+   }
+   : match "save christmas" {
+      : print "We will do it!";
+   }
    : if (is_at "montauk_beach" && has_food_fight) {
-       : match "play _;replay _;talk pigeon;talk larry;find solution;try again;x pigeon;x fight;resolve fight;help fight;x larry;x bread" {
+       : match "play _;replay _;talk pigeon;talk larry;find solution;try again;x pigeon;x fight;solve _;resolve _;help fight;x larry;x bread;yes _; yep _; ok _" {
          : gosub "play_lying_puzzle";
          : if (has_food_fight) {
             : if (!gave_wrong_answer_lying) {
@@ -971,8 +981,12 @@ on_command {
             : press_any_key;
             : print "Larry said \"We will need to go to the church tower, gather the troops there with a secret code.\" ";
             : press_any_key;
+            : redescribe;
          }
          : return;
+      }
+      : match "no _; nope _" {
+         : print "\"Take your time, we will still be fighting when you are ready.\"";
       }
    }
    : if (!has_food_fight && !is_exists "larry") {
@@ -1047,7 +1061,7 @@ on_command {
       : set_string var="string_tmp" {(substring {offset -> (strlen {(original "verb")}) string -> (command_text())})};
       : if (string_tmp == "") {
         : if (comments == "") {
-            : print "You have not made any comment yet";
+            : print "I have not made any <comment<#fdd>> yet";
         }
         : else {
             : print "Here are all the comments I have made:{comments}";
@@ -1131,7 +1145,7 @@ on_command {
          : print "A {hard_mode?`map`:`<map<#fee>>`} of the village, maybe it could be useful?";
       }
    }
-   : match "sound _; music _" {
+   : match "sound _; music _; volume _" {
       : if (preposition_is "on" || noun1_is "lowest" || noun1_is "low" || noun1_is "normal" || noun1_is "high" || noun1_is "highest") {
          : mask {
             : set_string var="string_tmp" {(rationalized "noun1")}
@@ -1252,6 +1266,9 @@ on_command {
       : if (is_at "coocoo_inside") {
          : print {("There is no "+original "noun1"+" I can take here for free.")};
       }
+      : if (is_at "church_inside") {
+         : print "The bread is stale, may it rest in peace inside these holly halls forever!";
+      }
    }
    : match "thank bin; thank -"  {
       : if (is_exists "grateful_waitress" && is_present "bin") {
@@ -1286,6 +1303,18 @@ on_command {
       }
    }
 
+   : match "examine etroeungt"  {
+      : if (is_carried "pigeon_bookreal") {
+        : print bottom_spacing = "false"  "Etroeungt is a commune in the Nord department in northern France. ";
+        : set_sentence "examine caballero";
+      }
+   }
+   : match "examine sibculo"  {
+      : if (is_carried "pigeon_bookreal") {
+        : print bottom_spacing = "false"  "Sibculo is a village in the eastern Netherlands. ";
+        : set_sentence "examine caballero";
+      }
+   }
    : match "examine caballero"  {
       : if (is_carried "pigeon_bookreal") {
         : print "Caballero once flew from Etroeungt to Sibculo (239km), a real hero." ;
@@ -1314,7 +1343,7 @@ on_command {
          : set_true "has_lifetime_cafe_pass";
       }
    }
-   : match "enter _; use pass" {
+   : match "enter _; use pass; use card" {
       : mask {
          : if (is_at "coocoo_cafe" && has_lifetime_cafe_pass) {
             : print "Your still have your lifetime pass to enter when the cafe is closed, but it doesn't open the locked door. It will be open again soon!";
@@ -1328,7 +1357,7 @@ on_command {
       }
    }
 
-   : match "examine road"  {
+   : match "examine road; examine path; examine south"  {
       : if (is_at "south_park" && is_exists "larry") {
          : print "There is too much snow on the South road to take it. But you can see someone clearing it from afar.";
       }
@@ -1352,12 +1381,24 @@ on_command {
       }
    }
 
-   : match "examine church"  {
+   : match "examine church; examine tower"  {
       : if (is_at "church") {
          : print "A <church<#fee>> in Norman style, the architecture is captivating. You can <enter<#fdd>> to visit." ;
       }
       : if (is_at "south_park") {
          : print "You need to go <south<#fdd>> to see the <church<#fee>> closer.";
+      }
+   }
+
+   : match "examine floor; look down" {
+      : if (is_at "church_inside") {
+         : set_sentence "examine bread";
+      }
+      : else_if (is_at "santa_cellar") {
+         : set_sentence "examine reindeer";
+      }
+      : else {
+         : set_sentence "objects";
       }
    }
 
@@ -1367,6 +1408,9 @@ on_command {
       }
       : else_if (is_carried "bread") {
          : print "This seems to be a perfectly fine piece of bread. Maybe someone is hungry?";
+      }
+      : if (is_at "church_inside") {
+         : print "You see some stale bread by kneeling on the floor and looking.";
       }
    }
 
@@ -1560,15 +1604,18 @@ on_command {
       }
    }
 
-   : match "give book; exchange book"  {
+   : match "give book; exchange book; exchange -"  {
       : if (is_present "bookshop_owner" && is_carried "pigeon_booklove") {
             : print "\"Thank you! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. It will open a new world to you.\" You get a Korean-English <dictionary<#fee>>." ;
             : destroy "pigeon_booklove" ;
             : create "dictionary" ;
             : pocket "dictionary" ;
       }
-      : if (is_present "bookshop_owner" && is_carried "pigeon_bookreal") {
+      : else_if (is_present "bookshop_owner" && is_carried "pigeon_bookreal") {
             : print "\"This <book<#fee>> has a Not For Sale Specimen stamp on it. Sorry, we cannot take it.\" " ;
+      }
+      : else_if (is_present "bookshop_owner") {
+         : print "\"Please bring me a book to exchange.\"";
       }
    }
    : match "thank owner; thank -"  {
@@ -1618,7 +1665,7 @@ on_command {
 
    : match "examine pigeon"  {
       : if (is_at "coocoo_cafe") {
-         : print "You see <pigeons<#fee>> eating and flying with colorful doggy <bags<#fee>>. It's like a very busy <restaurant<#fee>>." ;
+         : print "You see <pigeons<#fee>> eating and flying with colourful doggy <bags<#fee>>. It's like a very busy <restaurant<#fee>>." ;
       }
       : if (is_at "montauk_beach") {
          : if (is_exists "larry") {
@@ -1651,7 +1698,6 @@ on_command {
       : if (is_at "bookshop" || is_at "church" || is_at "south_park" || is_at "church_inside" || is_at "coocoo_inside" || is_at "santa_cellar" || in_labyrinth) {
          : print "Roses are red, Violets are blue, <Pigeons<#fee>> fly in the sky, And so should you." ;
       }
-
    }
 
    : match "get pigeon; talk pigeon"  {
@@ -1678,6 +1724,29 @@ on_command {
       }
    }
 
+   : match "x fresh; x air; x smell; get fresh; get air; x smell; smell _"  {
+      : if (is_at "santa_cellar") {
+         : print "Lets <exit<#fdd>> and get some fresh air.";
+      }
+      : else_if (is_at "coocoo_inside") {
+         : print "The mixed smell of coffee and pastry really makes me hungry.";
+      }
+      : else_if (is_at "church_inside") {
+         : print "Do I smell heavenly the sanctity of the church, or did someone leave stale bread?";
+      }
+      : else_if (is_at "church_tower") {
+         : if (is_exists "gang_pigeon") {
+            : print "The <pigeons<#fee>> are overflowing your senses!" ;
+         }
+         : else {
+            : print "The air is so fresh here and the <view<#fee>> is great.";
+         }
+      }
+      : else {
+         : print "It's nice to get some fresh air.";
+      }
+   }
+
    : match "examine potion; get potion; examine cellar"  {
       : if (is_at "santa_cellar") {
          : print "These <potions<#fee>> give strength for Christmas day. You already had a drink earlier today, so now you should focus on delivering the <presents<#fee>>." ;
@@ -1698,7 +1767,7 @@ on_command {
          : print "It seems that <Santa<#fee>>'s <potions<#fee>> only work on <Santa<#fee>>. The <reindeer<#fee>> are all incapable of moving! At least they don't look too unhappy." ;
       }
       : else {
-         : print "The reindeers are not available at the moment, maybe on next year's Christmas?";
+         : print "The reindeer are not available at the moment, maybe on next year's Christmas?";
       }
    }
 
@@ -1768,7 +1837,7 @@ on_command {
 
    : match "examine roof"  {
       : if (is_at "coocoo_cafe") {
-         : print "You see <pigeons<#fee>> eating and flying with colorful doggy <bags<#fee>>. It's like a very busy <restaurant<#fee>>." ;
+         : print "You see <pigeons<#fee>> eating and flying with colourful doggy <bags<#fee>>. It's like a very busy <restaurant<#fee>>." ;
       }
    }
 
@@ -1815,6 +1884,11 @@ on_command {
          : print "The view is beautiful." ;
       }
    }
+   : match "examine up" {
+      : if (is_at "church_inside") {
+         : set_sentence "examine tower";
+      }
+   }
 
    : match "examine church; examine tower"  {
       : if (is_at "church_tower") {
@@ -1850,13 +1924,18 @@ on_command {
       }
    }
 
-   : match "examine waitress; talk waitress; talk -"  {
+   : match "examine waitress; talk waitress; talk -; examine team; talk team"  {
       : if (is_present "waitress") {
          : print "\"There is so much work!!!! Please {hard_mode?`help`:`<help<#fee>>`} me\", says the desperate {hard_mode?`waitress`:`<waitress<#fee>>`}." ;
       }
       : if (is_present "grateful_waitress") {
          : print "\"Thank you so much for your help! Now I can spend the rest of the night planning next year's development of the <Coocoo<#fee>> <Cafe<#fee>>. A more efficient team, more entertainers, more customers, that's my goal!\", says the ambitious <waitress<#fee>>." ;
       }
+   }
+   : match "examine entertainer; examine singer; examine comedian" {
+         : if (is_present "waitress" || is_present "grateful_waitress") {
+            : print "\"They have left, we are the only ones still here\", says the {hard_mode?`waitress`:`<waitress<#fee>>`}." ;
+         }
    }
 
    : match "talk _; wave man"  {
@@ -1907,7 +1986,7 @@ on_command {
          : print "The beautiful colour patterns in the sky make the window almost look like a painting." ;
       }
    }
-   : match "examine sky"  {
+   : match "examine sky; examine sunset"  {
       : if (!is_at "church_inside" && !is_at "santa_cellar") {
          : print "The sunset is making beautiful colour patterns in the sky, but it reminds you that the time for the delivery is nearing." ;
       }
@@ -2042,7 +2121,7 @@ on_command {
          : print "Some suggest this <tower<#fee>> is a special place to organize secret missions." ;
       }
       : if (is_at "coocoo_cafe") {
-         : print "You see <pigeons<#fee>> eating and flying with colorful doggy <bags<#fee>>. It's like a very busy <restaurant<#fee>>." ;
+         : print "You see <pigeons<#fee>> eating and flying with colourful doggy <bags<#fee>>. It's like a very busy <restaurant<#fee>>." ;
       }
       : if (is_at "coocoo_inside") {
          : print "The interior of the <Coocoo<#fee>> <Cafe<#fee>> is very cosy." ;
