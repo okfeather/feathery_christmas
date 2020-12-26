@@ -65,13 +65,12 @@ vocabulary {
    : noun      / aliases = [owner, vendor]
    : noun      / aliases = [pigeon, bird, dove]
    : noun      / aliases = [potion, beverage, drink, barrel]
-   : noun      / aliases = [reindeer]
+   : noun      / aliases = [reindeer, rudolph]
    : noun      / aliases = [tourist, visitor]
    : noun      / aliases = [yourself, santa, myself, me]
    : noun      / aliases = [dictionary, dico, dic, dict]
    : noun      / aliases = [bin, compost, trashcan, garbage, trash]
    : noun      / aliases = [bible, scripture]
-   : noun      / aliases = [book]
    : noun      / aliases = [child, children, kid]
    : noun      / aliases = [montauk, beach]
    : noun      / aliases = [ellacombe, apparatus]
@@ -955,6 +954,9 @@ on_command {
    : match "get all;give all" {
       : print "I know it's Christmas, but that's a little too much.";
    }
+   : match "refresh _" {
+      : set_sentence "look";
+   }
    : if (is_at "montauk_beach" && has_food_fight) {
        : match "play _;replay _;talk pigeon;talk larry;find solution;try again;x pigeon;x fight;resolve fight;help fight;x larry;x bread" {
          : gosub "play_lying_puzzle";
@@ -1048,7 +1050,7 @@ on_command {
             : print "You have not made any comment yet";
         }
         : else {
-            : print "Here are all the comments you have made:{comments}";
+            : print "Here are all the comments I have made:{comments}";
         }
      }
      : else {
@@ -1691,9 +1693,12 @@ on_command {
       }
    }
 
-   : match "examine reindeer; examine rudolph"  {
+   : match "examine reindeer; get reindeer"  {
       : if (is_at "santa_cellar") {
          : print "It seems that <Santa<#fee>>'s <potions<#fee>> only work on <Santa<#fee>>. The <reindeer<#fee>> are all incapable of moving! At least they don't look too unhappy." ;
+      }
+      : else {
+         : print "The reindeers are not available at the moment, maybe on next year Christmas?";
       }
    }
 
