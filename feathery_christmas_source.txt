@@ -1726,13 +1726,13 @@ on_command {
 
    : match "x fresh; x air; x smell; get fresh; get air; x smell; smell _"  {
       : if (is_at "santa_cellar") {
-         : print "Lets <exit<#fdd>> and get some fresh air.";
+         : print "Let's <exit<#fdd>> and get some fresh air.";
       }
       : else_if (is_at "coocoo_inside") {
          : print "The mixed smell of coffee and pastry really makes me hungry.";
       }
       : else_if (is_at "church_inside") {
-         : print "Do I smell heavenly the sanctity of the church, or did someone leave stale bread?";
+         : print "Do I smell the heavenly sanctity of the church, or did someone leave stale bread?";
       }
       : else_if (is_at "church_tower") {
          : if (is_exists "gang_pigeon") {
