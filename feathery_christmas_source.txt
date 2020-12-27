@@ -582,6 +582,12 @@ on_startup {
    : gosub "update_volume";
    : play_music "music_intro";
    : print "Type <VERB NOUN<#fdd>> with the keyboard to advance in the game." ;
+   : if (is_mobile()) {
+      : print "You can touch some coloured words to copy them, or touch and hold to choose an action.";
+   }
+   : else {
+      : print "You can click some coloured words to copy them, or right-click to choose an action.";
+   }
    : print "e.g. <EXAMINE PIGEON<#fdd>> (or <X<#fdd>>) to take a closer look at a PIGEON." ;
    : print "<GET BREAD<#fdd>> to take BREAD and add it to your inventory." ;
    : press_any_key ;
@@ -953,7 +959,7 @@ on_command {
          : set_sentence {("examine "+ rationalized "noun1")};
       }
       : else {
-          : print "YOU CAN FOLLOW OR CHECK OK FEATHER EVERYWHERE: https://www.okfeather.com " ;
+          : print "YOU CAN FOLLOW OR CHECK OK FEATHER EVERYWHERE: <okfeather.com>[https://www.okfeather.com]" ;
       }
    }
    : match "get all;give all" {
