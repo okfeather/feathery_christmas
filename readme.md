@@ -18,7 +18,11 @@ You'll need to EXAMINE your surroundings and the various objects you can find, o
 You can GIVE or TAKE objects.
 To move on the map, you can use the cardinal directions, NORTH, EAST, SOUTH and WEST (or shortcuts N, E, S, W); there are some places you can ENTER or EXIT.
 
+You start in easy mode. If you are a text-adventure veteran, you can switch to HARD mode (less textual hints, harder puzzles). You can switch at any time by typing EASY or HARD.
+
 Type HELP to get some HELP.
+
+Learn to write your own text adventure game (in an hour) with Adventuron, https://adventuron.io/documentation/tutorial-a.html
 
 ## Credits
 
@@ -29,10 +33,10 @@ Special Thank You to our Playtesters, Mélanie and Thomas.
 ## Jam Submissions Comments
 
 Development Time
-3 days (for 4 persons)
+5 days (for 4 persons)
 
 Native Language
-English
+Various (not English)
 
 Opinion of Adventuron
 Adventuron is a really good tool for beginners as it is really good at catching errors. Love it! 
