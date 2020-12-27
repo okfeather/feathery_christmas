@@ -967,6 +967,21 @@ on_command {
    : match "save christmas" {
       : print "We will do it!";
    }
+   : match "give bread"  {
+      : if (is_present "larry" && is_carried "bread") {
+         : print "Larry takes the loaf of bread and says \"Let's share the bread with all my friends!\" ";
+         : press_any_key;
+         : print "After breaking the bread and distributing parts to all pigeons, they eat in silence until...";
+         : press_any_key;
+         : print "\"Whomp! Coo! Coocoo! Coo!\" There is a {hard_mode ? `fight`:`<fight<#fee>>`} about sharing the {hard_mode ? `bread`:`<bread<#fee>>`}, it seems everyone did not receive the same quantity.";
+         : set_true "has_food_fight";
+         : destroy "bread" ;
+         : set_true "has_good_hope";
+         : swap o1 = "flying_pigeon"  o2 = "new_pigeon";
+         : press_any_key;
+         : set_sentence "play";
+      }
+   }
    : if (is_at "montauk_beach" && has_food_fight) {
        : match "play _;replay _;talk pigeon;talk larry;find solution;try again;x pigeon;x fight;solve _;resolve _;help fight;x larry;x bread;yes _; yep _; ok _" {
          : gosub "play_lying_puzzle";
@@ -974,14 +989,11 @@ on_command {
             : if (!gave_wrong_answer_lying) {
                 : set_true "gave_wrong_answer_lying";
                 : print "\"You could try to find {hard_mode?`a`:`the`} solution again or go somewhere else, we will not move until this is solved anyway\" says Larry.";
-                : press_any_key;
             }
          }
          : else {
             : press_any_key;
             : print "Larry said \"We will need to go to the church tower, gather the troops there with a secret code.\" ";
-            : press_any_key;
-            : redescribe;
          }
          : return;
       }
@@ -1242,21 +1254,6 @@ on_command {
       }
    }
 
-   : match "give bread"  {
-      : if (is_present "larry" && is_carried "bread") {
-         : print "Larry takes the loaf of bread and says \"Let's share the bread with all my friends!\" ";
-         : press_any_key;
-         : print "After breaking the bread and distributing parts to all pigeons, they eat in silence until...";
-         : press_any_key;
-         : print "\"Whomp! Coo! Coocoo! Coo!\" There is a {hard_mode ? `fight`:`<fight<#fee>>`} about sharing the {hard_mode ? `bread`:`<bread<#fee>>`}, it seems everyone did not receive the same quantity.";
-         : set_true "has_food_fight";
-         : destroy "bread" ;
-         : set_true "has_good_hope";
-         : swap o1 = "flying_pigeon"  o2 = "new_pigeon";
-         : press_any_key;
-         : gosub "play_lying_puzzle";
-      }
-   }
    : match "get bread"  {
       : if (is_at "coocoo_cafe" && is_exists "full_bin") {
         : print "You take the <loaf<#fee>> of <bread<#fee>> and other delicacies from the <bin<#fee>>." ;
