@@ -1,0 +1,700 @@
+﻿
+OK
+
+
+You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons.
+
+You see a tourist.
+
+Exits: Up (Ų), Exit (ų)
+
+>WAVE TOURIST
+
+Unknown verb - "wave".
+
+>RING 1
+
+Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is a recurring number in heavenly pigeon scriptures.
+
+>RING 2
+
+Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is a recurring number in heavenly pigeon scriptures.
+
+>RING 1337
+
+Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is a recurring number in heavenly pigeon scriptures.
+
+>RING 0815
+
+Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is a recurring number in heavenly pigeon scriptures.
+
+>RING 69
+
+Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is a recurring number in heavenly pigeon scriptures.
+
+>RING RING RING RING RING RING RING BANANAPHONE
+
+You can't do that.
+
+>=(
+
+Unknown verb - "=(".
+
+>UP
+
+
+You are in the church's tower.
+
+You see no birds.
+
+Exits: Down (ų)
+
+>DOWN
+
+
+You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons.
+
+You see a tourist.
+
+Exits: Up (Ų), Exit (ų)
+
+>RING 12345678
+
+Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is a recurring number in heavenly pigeon scriptures.
+
+>EXIT
+
+
+You are in front of the church. You can access the tower upstairs if you enter.
+
+You see the tour guide for the church and its tower.
+
+Exits: North (Ů), Enter (Ų)
+
+>NORTH
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>NORTH
+
+
+You are in Nicobar Park.
+
+You see another pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+You are having more hope about saving Christmas.
+
+>TALK PIGEON
+
+The pigeon is very high in the sky, and you cannot fly without a reindeer.
+
+>WEST
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin.
+
+Exits: South (ů), East (Ű)
+
+The shop is closed!
+
+>EXAMINE
+
+You see pigeons eating and flying with colorful doggy bags. It's like a very busy restaurant.
+
+>GET BAG
+
+Both kids and pigeons love their Sappy Meals. You're way too grown-up for that.
+
+>I
+
+You are carrying: \
+\
+(*)  a map of the village\
+\
+(*)  a ticket to visit the church\
+\
+(*)  a Korean-English dictionary\
+\
+(*)  the real bible about pigeons 'Lovey Dovey Pigeons'\
+
+
+>READ BIBLE
+
+Inside it says 'A pigeon can fly up to 143 kilometers per hour. Just like Caballero.'
+
+>EAST
+
+
+You are in Nicobar Park.
+
+You see another pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+You are having more hope about saving Christmas.
+
+>SOUTH
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>SOUTH
+
+
+You are in front of the church. You can access the tower upstairs if you enter.
+
+You see the tour guide for the church and its tower.
+
+Exits: North (Ů), Enter (Ų)
+
+>ENTER
+
+
+You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons.
+
+You see a tourist.
+
+Exits: Up (Ų), Exit (ų)
+
+>RING 143
+
+You hear lots of beautiful noises coming from upstairs. We should go up and check if the pigeons have really come.
+
+
+You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons.
+
+You see that the biggest group of pigeons you've ever seen in your entire life is gathered here and a tourist.
+
+Exits: Up (Ų), Exit (ų)
+
+>UP
+
+
+You are in the church's tower.
+
+Exits: Down (ų)
+
+"Okay, everything should go well now. We're almost done. The next step is to continue from Montauk Beach", says Larry.
+
+>BEACH
+
+Unknown verb - "beach".
+
+>TALK LARRY
+
+"We're ready when you want to go, I'd suggest now! Maybe? We will gather at Montauk Beach, join us there!"
+
+>HIGHFIVE LARR<
+
+Unknown verb - "highfive".
+
+>DOWN
+
+
+You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons.
+
+You see that the biggest group of pigeons you've ever seen in your entire life is gathered here and a tourist.
+
+Exits: Up (Ų), Exit (ų)
+
+You hear lots of beautiful noises coming from upstairs. We should go up and check if the pigeons have really come.
+
+>EXIT
+
+
+You are in front of the church. You can access the tower upstairs if you enter.
+
+You see the tour guide for the church and its tower.
+
+Exits: North (Ů), Enter (Ų)
+
+>NORTH
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>NORTH
+
+
+You are in Nicobar Park.
+
+You see another pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+You are having more hope about saving Christmas.
+
+>NORTH
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, who is ready to go north with his crowd of friends..
+
+Exits: North (Ů), South (ů)
+
+There are a lot of pigeons around. It seems everything is ready!
+
+>NORTH
+
+
+Pigeons are going to give gifts to all children!
+
+They just need you to help organize the delivery.
+
+Find the shortest path to get there before Christmas! May the eastward wind push you and make you save distance!
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+>NORTH
+
+
+Exits: South (ů), Exit (ų)
+
+You have made your first move to get to the end, it's still so far away.
+
+Restart by entering ENTER
+
+>SOUTH
+
+
+Exits: South (ů), East (Ű), Exit (ų)
+
+You have spent 2 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>EAST
+
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+You have spent 3 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>NORTH
+
+
+Exits: East (Ű), Exit (ų)
+
+You have spent 4 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>EAST
+
+
+Exits: East (Ű), Exit (ų)
+
+You have spent 5 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>EAST
+
+
+Hint: You are on the path for next year's Christmas
+
+Exits: South (ů), Exit (ų)
+
+You have spent 6 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>SOUTH
+
+
+You arrived at the end! Congratulations!
+
+Getting to the end was too long (7 moves), TRY AGAIN!
+
+(it was just a simulation so Christmas is still ON, YAY!)
+
+
+
+Retry it taking even less moves to save CHRISTMAS!
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, who is ready to go north with his crowd of friends..
+
+Exits: North (Ů), South (ů)
+
+There are a lot of pigeons around. It seems everything is ready!
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, who is ready to go north with his crowd of friends..
+
+Exits: North (Ů), South (ů)
+
+>NORTH
+
+
+Pigeons are going to give gifts to all children!
+
+They just need you to help organize the delivery.
+
+Find the shortest path to get there before Christmas! May the eastward wind push you and make you save distance!
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+>SOUTH
+
+
+Exits: East (Ű), Exit (ų)
+
+You have made your first move to get to the end, it's still so far away.
+
+Restart by entering ENTER
+
+>EAST
+
+
+Exits: East (Ű), Exit (ų)
+
+You have spent 2 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>EAST
+
+
+Hint: south slowed you like a sloth...
+
+Exits: North (Ů), Exit (ų)
+
+You have spent 3 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>NORTH
+
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+You have spent 4 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>SOUTH
+
+
+Exits: North (Ů), Exit (ų)
+
+You have spent 5 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>NORTH
+
+
+Exits: North (Ů), East (Ű), Exit (ų)
+
+You have spent 6 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>EAST
+
+
+You arrived at the end! Congratulations!
+
+Getting to the end was too long (7 moves), TRY AGAIN!
+
+(it was just a simulation so Christmas is still ON, YAY!)
+
+
+
+Retry it taking even less moves to save CHRISTMAS!
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, who is ready to go north with his crowd of friends..
+
+Exits: North (Ů), South (ů)
+
+There are a lot of pigeons around. It seems everything is ready!
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, who is ready to go north with his crowd of friends..
+
+Exits: North (Ů), South (ů)
+
+>NORTH
+
+
+Pigeons are going to give gifts to all children!
+
+They just need you to help organize the delivery.
+
+Find the shortest path to get there before Christmas! May the eastward wind push you and make you save distance!
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+>NORTH
+
+
+Exits: South (ů), Exit (ų)
+
+You have made your first move to get to the end, it's still so far away.
+
+Restart by entering ENTER
+
+>SOUTH
+
+
+Exits: South (ů), East (Ű), Exit (ų)
+
+You have spent 2 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>SOUTH
+
+
+Exits: East (Ű), Exit (ų)
+
+You have spent 3 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>EAST
+
+
+Hint: south slowed you like a sloth...
+
+Exits: North (Ů), Exit (ų)
+
+You have spent 4 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>NORTH
+
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+You have spent 5 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>EXIT
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, who is ready to go north with his crowd of friends..
+
+Exits: North (Ů), South (ů)
+
+There are a lot of pigeons around. It seems everything is ready!
+
+>NORTH
+
+
+Pigeons are going to give gifts to all children!
+
+They just need you to help organize the delivery.
+
+Find the shortest path to get there before Christmas! May the eastward wind push you and make you save distance!
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+>NORTH
+
+
+Exits: South (ů), Exit (ų)
+
+You have made your first move to get to the end, it's still so far away.
+
+Restart by entering ENTER
+
+>SOUTH
+
+
+Exits: South (ů), East (Ű), Exit (ų)
+
+You have spent 2 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>EAST
+
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+You have spent 3 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>NORTH
+
+
+Exits: East (Ű), Exit (ų)
+
+You have spent 4 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>EAST
+
+
+Exits: East (Ű), Exit (ų)
+
+You have spent 5 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>EXIT
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, who is ready to go north with his crowd of friends..
+
+Exits: North (Ů), South (ů)
+
+There are a lot of pigeons around. It seems everything is ready!
+
+>NORTH
+
+
+Pigeons are going to give gifts to all children!
+
+They just need you to help organize the delivery.
+
+Find the shortest path to get there before Christmas! May the eastward wind push you and make you save distance!
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+>NORTH
+
+
+Exits: South (ů), Exit (ų)
+
+You have made your first move to get to the end, it's still so far away.
+
+Restart by entering ENTER
+
+>SOUTH
+
+
+Exits: South (ů), East (Ű), Exit (ų)
+
+You have spent 2 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>EAST
+
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+You have spent 3 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>SOUTH
+
+
+Exits: North (Ů), Exit (ų)
+
+You have spent 4 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>NORTH
+
+
+Exits: North (Ů), East (Ű), Exit (ų)
+
+You have spent 5 moves to get to the end but it's still so far away.
+
+Restart by entering ENTER
+
+>EAST
+
+
+You arrived at the end! Congratulations!
+
+You did it in the shortest time possible! You saved Christmas!
+
+
+Before your eyes, you see all the pigeons dispatching the gifts before them. After a calm pause, they all start taking flight: in one instant, there are as many pigeons as stars in the sky; carrying their glittering gifts! All thanks to your optimized route!
+
+
+You are in front of a big Christmas tree, you see that Larry's friend Columbia safely delivered a lot of the presents.
+
+You see some kids, like Robin, happily screaming 'I can't wait to play Call Of Beauty!' With your help, the pigeons could deliver the gifts to all children.
+
+CONGRATULATIONS!
+
+YOU WON THE GAME!
+
+LARRY AND HIS TROOPS COULD DELIVER ALL PRESENTS!
+
+TO THANK THEM, YOU PROMISED TO COME BACK AND GIVE THEM VINTAGE 'THE NOTORIOUS GROUSE' DRINK, WITH SOME PANETTONE AND CASTELLA.
+
+THANKS TO YOU, ALL KIDS AROUND THE WORLD WILL BE HAPPY ON CHRISTMAS!
+
+<< START >>
+
+
+
+
+Type VERB NOUN with the keyboard to advance in the game.
+
+e.g. EXAMINE PIGEON to take a closer look at a PIGEON.
+
+GET BREAD to take BREAD and add it to your inventory.
+
+To travel, type NORTH, EAST, SOUTH, WEST (or N, E, S, W), ENTER, EXIT, UP, DOWN
+
+To check your inventory, type INVENTORY (or I, POCKETS)
+
+To stop music, type SOUND OFF (SOUND ON to enable music)
+
+You start in easy mode. If you are a text-adventure veteran, you can switch to HARD mode (less textual hints, harder puzzles). You can switch at any time by typing EASY or HARD.
+
+To see available commands at a location, type HELP
+
+
+This is Santa's cellar, where you can normally find different potions to stay cheerful and full of energy. You remember having told the reindeer of these drinks' benefits, so that's probably why they've been drinking a lot. However, they don't seem full of energy. You decide to leave the cellar to get fresh air.
+
+You see a map of the village.
+
+Exits: Exit (ų)
+
+Christmas is coming tonight, everyone cannot wait to open presents.
+
+With this setback, how will you find a way to send all presents in time for the big day?
+
+Let's find a way to save Christmas!
+
+Try some commands, e.g. EXAMINE REINDEER, GET POTION, TALK RUDOLPH. If you are stuck, type HELP.
+
+>TSTOP

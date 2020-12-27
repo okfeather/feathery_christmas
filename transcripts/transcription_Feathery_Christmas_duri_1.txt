@@ -1,0 +1,723 @@
+﻿
+OK
+
+
+You are in Nicobar Park.
+
+You see a pigeon and a book on the floor 'Pigeons love bread'.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>EXAINE PIGEON
+
+Unknown verb - "exaine".
+
+>EXAMINE PIGEON
+
+The pigeon looks happy and busy.  It is singing while carrying a Sappy Meal bag: ' lovers meet in Montauk Beach, lalala '.
+
+>EXAMINE MEAL BAG
+
+The pigeon is very high in the sky, and you cannot fly without a reindeer.
+
+>EXAMINE BREAD
+
+You see nothing special.
+
+>GET BREAD
+
+You can't find it.
+
+>TALK PIGEON
+
+The pigeon is very high in the sky, and you cannot fly without a reindeer.
+
+>SOUTH
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>TALK MAN
+
+
+"Have you visited the church? It is famous for its ellacombe apparatus, a mechanism that allows one person to ring all the bells. I see you don't have a ticket! Here, have one to visit.", says the man.
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>EXAMINE MAN
+
+He is smiling and admiring the scenery.
+
+>SOUTH
+
+The road to the church is currently covered in snow. Someone is clearing it from afar, but you cannot access it yet.
+
+>WEST
+
+
+You are in front of the book shop and see the owner outside. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>TALK OWNER
+
+"안녕하세요! ", says the bookshop owner. Maybe you will need to translate to English.
+
+>TRANSLATE
+
+
+"Oh you don't speak Korean? Dear me! Everyone needs a Korean-English dictionary in their life. You can get one by exchanging with another book."
+
+
+You are in front of the book shop and see the owner outside. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>I
+
+You are carrying: \
+\
+(*)  a ticket to visit the church\
+\
+(*)  a map of the village\
+
+
+>NORTH
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin.
+
+Exits: South (ů), East (Ű), Enter (Ų)
+
+>COOCOO
+
+Unknown verb - "coocoo".
+
+>CAFE
+
+Unknown verb - "cafe".
+
+>GO COOCOO
+
+Unknown verb - "go".
+
+>EXAMINE COOCOO
+
+The Coocoo Cafe is about to close, but there is so much left to do!
+
+>LOOK
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin.
+
+Exits: South (ů), East (Ű), Enter (Ų)
+
+>INVENTORY
+
+You are carrying: \
+\
+(*)  a ticket to visit the church\
+\
+(*)  a map of the village\
+
+
+>LOOK
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin.
+
+Exits: South (ů), East (Ű), Enter (Ų)
+
+>LOOK
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin.
+
+Exits: South (ů), East (Ű), Enter (Ų)
+
+>COOCOO BIN
+
+Unknown verb - "coocoo".
+
+>EXAMINE BIN
+
+There is sometimes a loaf of bread inside the bin but not currently.
+
+>EXAMINE PIGEON
+
+You see pigeons eating and flying with colorful doggy bags. It's like a very busy restaurant.
+
+>ENTER
+
+
+You are inside the Coocoo Cafe. There are no customers.
+
+You see a waitress from Coocoo Cafe. She looks very tired.
+
+Exits: Exit (ų)
+
+>EXAMINE WAITRESS
+
+"There is so much work!!!! Please help me", says the desperate waitress.
+
+>HELP
+
+- Type 'CLEAN objectname' to try to clean the object/person
+
+- Type 'ENTER' to try to enter a store or building
+
+- Type 'HARD' to get into hard mode (harder puzzles, less hints)
+
+- Type 'HELP objectname' to try to help the object/person
+
+- Type 'GIVE objectname' to give an object to someone
+
+- Type 'MAP' to display map (current location, accessible, inaccessible)
+
+- Type 'SOUND OFF', 'SOUND ON' to disable and enable sounds, 'SOUND LOWEST | LOW | NORMAL | HIGH | HIGHEST' for volume
+
+- Type 'TALK' to talk to a person or pigeon
+
+- Type 'LOOK' to refresh the screen.
+
+- Type N, S, E, W, UP, DOWN, etc to move.
+
+- Type 'I' to see what you are holding.
+
+- Type 'GET objectname' to pick up an item.
+
+- Type 'DROP objectname' to drop a held item.
+
+- Type 'LOOK objectname' to discover clues.
+
+- Type 'LOAD' or 'SAVE' to load or save a game.
+
+- Type 'QUIT' to restart the game.
+
+>HELP WAITRESS
+
+You are helping the Coocoo Cafe team.
+
+
+You are inside the Coocoo Cafe. There are no customers.
+
+You see The Coocoo Cafe team is grateful for your help. You got rid of all extra bread, cookies and croissants...  But where? The store is closing, you should go outside.
+
+Exits: Exit (ų)
+
+>GET COOKIES
+
+There is no cookies I can take here for free.
+
+>GET CROISSANTS
+
+There is no croissants I can take here for free.
+
+>EXIT
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin that seems too full.
+
+Exits: South (ů), East (Ű)
+
+The shop is closed! Where did the leftover bread and croissants go?
+
+>EAST
+
+
+You are in Nicobar Park.
+
+You see a pigeon and a book on the floor 'Pigeons love bread'.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>WEST
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin that seems too full.
+
+Exits: South (ů), East (Ű)
+
+The shop is closed! Where did the leftover bread and croissants go?
+
+>SOUTH
+
+
+You are in front of the book shop and see the owner outside. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>TALK OWNER
+
+"안녕하세요! ", says the bookshop owner. Maybe you will need to translate to English.
+
+>OH
+
+Unknown verb - "oh".
+
+>TRANSLATE
+
+
+"Oh you don't speak Korean? Dear me! Everyone needs a Korean-English dictionary in their life. You can get one by exchanging with another book."
+
+
+You are in front of the book shop and see the owner outside. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>I
+
+You are carrying: \
+\
+(*)  a ticket to visit the church\
+\
+(*)  a map of the village\
+
+
+>MAP
+
+
+____________Santa takeoff
+
+_____________⬆
+
+___Inside___--------------
+
+______⬆_____|Montauk Beach|
+
+--------------------------
+
+|Coocoo Cafe| Nicobar Park|
+
+--------------------------
+
+|_ Bookshop |_ South Park |
+
+--------------------------
+
+____________| __ Church __|
+
+____________--------------
+
+____________⬇
+
+____________Inside
+
+____________⬇
+
+____________Tower
+
+
+You are in front of the book shop and see the owner outside. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>EAST
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>NORTH
+
+
+You are in Nicobar Park.
+
+You see a pigeon and a book on the floor 'Pigeons love bread'.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>NORTH
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, the leader of the pack of pigeons.
+
+Exits: North (Ů), South (ů)
+
+Larry says, "I'm glad you met me in Montauk. I hope you've not come empty-handed.".
+
+>MONTAUK
+
+Unknown verb - "montauk".
+
+>EXAMINE MONTAUK
+
+The beach is quiet today.
+
+>TALK LARRY
+
+"Can't you see we are all hungry?", says Larry.
+
+>EXAMINE PIGEONS
+
+Pigeons pretend not to see you but are looking at you on the sly: could you be here to bring a feast?
+
+>SOUTH
+
+
+You are in Nicobar Park.
+
+You see a pigeon and a book on the floor 'Pigeons love bread'.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>WEST
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin that seems too full.
+
+Exits: South (ů), East (Ű)
+
+The shop is closed! Where did the leftover bread and croissants go?
+
+>EAST
+
+
+You are in Nicobar Park.
+
+You see a pigeon and a book on the floor 'Pigeons love bread'.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>SOUTH
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>SOUTH
+
+The road to the church is currently covered in snow. Someone is clearing it from afar, but you cannot access it yet.
+
+>NORTH
+
+
+You are in Nicobar Park.
+
+You see a pigeon and a book on the floor 'Pigeons love bread'.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>GET BOOK
+
+You take the book
+
+
+You are in Nicobar Park.
+
+You see a pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>TALK PIGEON
+
+The pigeon is very high in the sky, and you cannot fly without a reindeer.
+
+>WEST
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin that seems too full.
+
+Exits: South (ů), East (Ű)
+
+The shop is closed! Where did the leftover bread and croissants go?
+
+>SOUTH
+
+
+You are in front of the book shop and see the owner outside. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>EXCHANGE BOOK
+
+"Thank you! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. It will open a new world to you." You get a Korean-English dictionary.
+
+>I
+
+You are carrying: \
+\
+(*)  a ticket to visit the church\
+\
+(*)  a Korean-English dictionary\
+\
+(*)  a map of the village\
+
+
+>DICTONARY
+
+Unknown verb - "dictonary".
+
+>BOOK
+
+Unknown verb - "book".
+
+>USE 
+
+You can't do that.
+
+>USE BOOK
+
+There are so many books here.
+
+>USE DICTIONARY
+
+
+"안녕하세요! or Hello! Now that you have a dictionary, you are ready to handle korean conversations anywhere in the world, congratulations!"
+
+
+You are in front of the book shop and see the owner outside. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>EAST
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>SOUTH
+
+The road to the church is currently covered in snow. Someone is clearing it from afar, but you cannot access it yet.
+
+>WEST
+
+
+You are in front of the book shop and see the owner outside. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>NORTH
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin that seems too full.
+
+Exits: South (ů), East (Ű)
+
+The shop is closed! Where did the leftover bread and croissants go?
+
+>EXAMINE BIN
+
+There is a perfect loaf of bread inside. Maybe someone is hungry and you should get it?
+
+>TAKE
+
+You can't take it.
+
+>TAKE LOAF
+
+You take the loaf of bread and other delicacies from the bin.
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin.
+
+Exits: South (ů), East (Ű)
+
+>EAST
+
+
+You are in Nicobar Park.
+
+You see a pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>NORTH
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, the leader of the pack of pigeons.
+
+Exits: North (Ů), South (ů)
+
+Larry says, "I'm glad you met me in Montauk. I hope you've not come empty-handed.".
+
+>GIVE LOAF
+
+Larry takes the loaf of bread and says "Let's share the bread with all my friends!" 
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, the leader of the pack of pigeons.
+
+Exits: North (Ů), South (ů)
+
+Whomp! Coo! Coocoo! Coo! There is a fight about sharing the bread.
+
+One of the pigeons did not get any bread!! Two are liars!
+
+QUESTION -> {string_tmp}
+
+Who didn't get any bread?
+
+ANSWER -> 2
+
+You won, well done! Charlie is given the remaining bread and all pigeons are now well-fed!  (Andrew and Darla were lying)
+
+Larry said "We will need to go to the church tower, gather the troops there with a secret code." 
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry flying.
+
+Exits: North (Ů), South (ů)
+
+Before leaving, Larry said that he was going to the church tower to gather the troops with a secret code.
+
+>EXAMINE
+
+Montauk Beach is popular this season of the year for winter surfing, and is known as a romantic place.
+
+>NORTH
+
+We will only take that path once all pigeons are assembled and ready.
+
+>SOUTH
+
+
+You are in Nicobar Park.
+
+You see another pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+You are having more hope about saving Christmas.
+
+>SOUTH
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>SOUTH
+
+
+You are in front of the church. You can access the tower upstairs if you enter.
+
+You see the tour guide for the church and its tower.
+
+Exits: North (Ů), Enter (Ų)
+
+The guide says, "Do you have an entrance ticket? Only those with a ticket can access.".
+
+>TALK GUIDE
+
+
+"No ticket? No visit!", says the poetic tour guide. Can you give your ticket?
+
+
+You are in front of the church. You can access the tower upstairs if you enter.
+
+You see the tour guide for the church and its tower.
+
+Exits: North (Ů), Enter (Ų)
+
+The guide says, "Do you have an entrance ticket? Only those with a ticket can access.".
+
+>GIVE TICKET
+
+The tour guide gladly checks the ticket, gives it back to you and says "Great, let's visit the church! Please come in! And don't lose the ticket!" 
+
+
+You are in front of the church. You can access the tower upstairs if you enter.
+
+You see the tour guide for the church and its tower.
+
+Exits: North (Ů), Enter (Ų)
+
+>EXAMINE CHURCH
+
+A church in Norman style, the architecture is captivating. You can enter to visit.
+
+>ENTER
+
+
+You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons.
+
+You see a tourist.
+
+Exits: Up (Ų), Exit (ų)
+
+>TALK TOURIST
+
+"나는 비둘기를 위해 여기에 왔습니다! '비둘기 집에 음식을 두면 비둘기가 옵니다'", says the cheerful tourist. Maybe you will need to use another item to have a fruitful conversation.
+
+>TRANSLATE
+
+The tourist laughs "Oh you don't speak Korean? Dear me! You should have said so! I was meditating over this book. Oh, I have an English version as well. Please take it.". She gives you the book. 
+
+>HAPPY CHRISTMAS
+
+Unknown verb - "christmas".
+
+>THANKS KIND TOURIST
+
+Unknown verb - "thanks".
+
+>FOLLOW FLORA LIN ON SPOTIFY
+
+Unknown verb - "follow".
+
+>TSTOP

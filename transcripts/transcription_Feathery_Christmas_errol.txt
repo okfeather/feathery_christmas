@@ -1,0 +1,1225 @@
+﻿
+OK
+
+
+This is Santa's cellar, where you can normally find different potions to stay cheerful and full of energy. You remember having told the reindeer of these drinks' benefits, so that's probably why they've been drinking a lot. However, they don't seem full of energy. You decide to leave the cellar to get fresh air.
+
+Exits: Exit (ų)
+
+Christmas is coming tonight, everyone cannot wait to open presents.
+
+With this setback, how will you find a way to send all presents in time for the big day?
+
+Let's find a way to save Christmas!
+
+Try some commands, e.g. EXAMINE REINDEER, GET POTION, TALK RUDOLPH. If you are stuck, type HELP.
+
+>GET POTION
+
+These potions give strength for Christmas day. You already had a drink earlier today, so now you should focus on delivering the presents.
+
+>X REINDEER
+
+It seems that Santa's potions only work on Santa. The reindeer are all incapable of moving! At least they don't look too unhappy.
+
+>X SANTA
+
+Almost all of your precious drinks have been emptied. The Pourpon, the Vallentines... all gone.
+
+>I
+
+You are carrying: \
+\
+(*)  Nothing\
+
+
+>L
+
+
+This is Santa's cellar, where you can normally find different potions to stay cheerful and full of energy. You remember having told the reindeer of these drinks' benefits, so that's probably why they've been drinking a lot. However, they don't seem full of energy. You decide to leave the cellar to get fresh air.
+
+Exits: Exit (ų)
+
+Christmas is coming tonight, everyone cannot wait to open presents.
+
+With this setback, how will you find a way to send all presents in time for the big day?
+
+Let's find a way to save Christmas!
+
+Try some commands, e.g. EXAMINE REINDEER, GET POTION, TALK RUDOLPH. If you are stuck, type HELP.
+
+>TALK RUDOLPH
+
+All the reindeer are smiling with their eyes closed, not too responsive though. Even Rudolph, who usually is unstoppable.
+
+>L
+
+
+This is Santa's cellar, where you can normally find different potions to stay cheerful and full of energy. You remember having told the reindeer of these drinks' benefits, so that's probably why they've been drinking a lot. However, they don't seem full of energy. You decide to leave the cellar to get fresh air.
+
+Exits: Exit (ų)
+
+Christmas is coming tonight, everyone cannot wait to open presents.
+
+With this setback, how will you find a way to send all presents in time for the big day?
+
+Let's find a way to save Christmas!
+
+Try some commands, e.g. EXAMINE REINDEER, GET POTION, TALK RUDOLPH. If you are stuck, type HELP.
+
+>GET ALL
+
+You can't find it.
+
+>EXIT
+
+
+You are in Nicobar Park.
+
+You see yourself crying at the thought that all children will think they were bad this year and didn't deserve a present, a pigeon and a book on the floor 'Pigeons love bread'.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>X YOURSELF
+
+You are alone, there is nothing to do here and it's raining.
+
+>COMMENT - "DIDN'T DESERVER A PRESENT, A PIGEON, AND A BOOK ON THE FLOOR"?
+
+Unknown verb - "comment".
+
+Unknown verb - "a".
+
+Unknown verb - "and".
+
+>GET PRESENT
+
+You can't find it.
+
+>GET PIGEON
+
+The pigeon is very high in the sky, and you cannot fly without a reindeer.
+
+>GET BOOK
+
+
+You are in Nicobar Park.
+
+You see yourself crying at the thought that all children will think they were bad this year and didn't deserve a present and a pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>COMMENT - ALL CHILDREN DESERVE PIGEONS! :D
+
+Unknown verb - "comment".
+
+>X PIGEON
+
+The pigeon looks happy and busy.  It is singing while carrying a Sappy Meal bag: ' lovers meet in Montauk Beach, lalala '.
+
+>SING
+
+Unknown verb - "sing".
+
+>GET BAG
+
+You can't find it.
+
+>TALK PIGEON
+
+The pigeon is very high in the sky, and you cannot fly without a reindeer.
+
+>TALK
+
+You can't do that.
+
+>I
+
+You are carrying: \
+\
+(*)  a book on the floor 'Pigeons love bread'\
+
+
+>X BOOK
+
+Inside it says 'Pigeons love carrying heavy objects, but need energy to do so.'
+
+>COMMENT - BOOK IS NO LONGER ON FLOOR
+
+Unknown verb - "comment".
+
+>READ BOOK
+
+Inside it says 'Pigeons love carrying heavy objects, but need energy to do so.'
+
+>L
+
+
+You are in Nicobar Park.
+
+You see yourself crying at the thought that all children will think they were bad this year and didn't deserve a present and a pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>N
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, the leader of the pack of pigeons.
+
+Exits: South (ů)
+
+Larry says, "I'm glad you met me in Montauk. I hope you've not come empty-handed.".
+
+>X MONTAUK
+
+The beach is quiet today.
+
+>TALK
+
+"Can't you see we are all hungry?", says Larry.
+
+>X BEACH
+
+The beach is quiet today.
+
+>X LARRY
+
+"Can't you see we are all hungry?", says Larry.
+
+>TALK
+
+"Can't you see we are all hungry?", says Larry.
+
+>S
+
+
+You are in Nicobar Park.
+
+You see yourself crying at the thought that all children will think they were bad this year and didn't deserve a present and a pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>S
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), West (ű)
+
+>TALK
+
+
+"Have you visited the church? It is famous for its ellacombe apparatus, a mechanism that allows one person to ring all the bells. I see you don't have a ticket! Here, have one to visit.", says the man.
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), West (ű)
+
+>X TICKET
+
+A cheap ticket, but no cheap wonder!
+
+>X MAN
+
+He is smiling and admiring the scenery.
+
+>TALK
+
+"I know this church by heart!", says the man.
+
+>W
+
+
+You are at the book shop. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>TALK
+
+"안녕하세요! ", says the bookshop owner. Maybe you will need to translate to English.
+
+>TRANSLATE
+
+
+"Oh you don't speak Korean? Dear me! Everyone needs a Korean-English dictionary in their life. You can get one by exchanging with another book."
+
+
+You are at the book shop. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>GIVE BOOK
+
+"Thank you! 'Tis the season to be jolly and enlighten your spirits with this piece of literature. It will open a new world to you." You get a Korean-English dictionary.
+
+>X DICTIONARY
+
+
+"안녕하세요! or Hello! Now that you have a dictionary, you are ready to handle korean conversations anywhere in the world, congratulations!"
+
+
+You are at the book shop. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>TALK
+
+"안녕하세요! ", says the bookshop owner. Maybe you will need to translate to English.
+
+>TRANSLATE
+
+
+"안녕하세요! or Hello! Now that you have a dictionary, you are ready to handle korean conversations anywhere in the world, congratulations!"
+
+
+You are at the book shop. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>N
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin.
+
+Exits: South (ů), East (Ű)
+
+Enter inside!
+
+>X BIN
+
+There is sometimes a loaf of bread inside the bin but not currently.
+
+>X PIGEONS
+
+You see pigeons eating and flying with colorful doggy bags. It's like a very busy restaurant.
+
+>GET BOGS
+
+You can't find it.
+
+>N
+
+You can't go that way.
+
+>ENTER
+
+
+You are inside the Coocoo Cafe. There are no customers.
+
+You see a waitress from Coocoo Cafe. She looks very tired.
+
+Exits: Exit (ų)
+
+>TALK
+
+"There is so much work!!!! Please help me", says the desperate waitress.
+
+>HELP
+
+- Type 'CLEAN objectname' to try to clean the object/person
+
+- Type 'HELP objectname' to try to help the object/person
+
+- Type 'ENTER' to try to enter a store or building
+
+- Type 'GIVE objectname' to give an object to someone
+
+- Type 'SOUND OFF' to stop sounds and 'SOUND ON' to enable them
+
+- Type 'TALK' to talk to a person or pigeon
+
+- Type 'LOOK' to refresh the screen.
+
+- Type N, S, E, W, UP, DOWN, etc to move.
+
+- Type 'I' to see what you are holding.
+
+- Type 'GET objectname' to pick up an item.
+
+- Type 'DROP objectname' to drop a held item.
+
+- Type 'LOOK objectname' to discover clues.
+
+- Type 'LOAD' or 'SAVE' to load or save a game.
+
+- Type 'QUIT' to restart the game.
+
+>L
+
+
+You are inside the Coocoo Cafe. There are no customers.
+
+You see a waitress from Coocoo Cafe. She looks very tired.
+
+Exits: Exit (ų)
+
+>CLEAN
+
+You can't do that.
+
+>HELP WAITRESS
+
+You are helping the Coocoo Cafe team.
+
+
+You are inside the Coocoo Cafe. There are no customers.
+
+You see The Coocoo Cafe team is grateful for your help. You got rid of all extra bread, cookies and croissants...  But where? The store is closing, you should go outside.
+
+Exits: Exit (ų)
+
+>I
+
+You are carrying: \
+\
+(*)  a ticket to visit the church\
+\
+(*)  a Korean-English dictionary\
+
+
+>GET BREAD
+
+You can't find it.
+
+>GET COOKIES
+
+You can't find it.
+
+>TALK
+
+"Thank you so much for your help! Now I can spend the rest of the night planning next year's development of the Coocoo Cafe. A more efficient team, more entertainers, more customers, that's my goal!", says the ambitious waitress.
+
+>S
+
+You can't go that way.
+
+>EXIT
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin that seems too full.
+
+Exits: South (ů), East (Ű)
+
+The shop is closed! Where did the leftover bread and croissants go?
+
+>X BIN
+
+There is a perfect loaf of bread inside. Maybe someone is hungry and you should get it?
+
+>GET BREAD
+
+You take the loaf of bread and other delicacies from the bin.
+
+
+You are at the famous Coocoo Cafe, where there is always a variety of pigeons on the roof.
+
+You see a beautiful Art Deco bin.
+
+Exits: South (ů), East (Ű)
+
+>I
+
+You are carrying: \
+\
+(*)  a generous loaf of bread and other goodies\
+\
+(*)  a ticket to visit the church\
+\
+(*)  a Korean-English dictionary\
+
+
+>ENTER CAFE
+
+The restaurant is closed.
+
+>E
+
+
+You are in Nicobar Park.
+
+You see yourself crying at the thought that all children will think they were bad this year and didn't deserve a present and a pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>GET YOURSELF
+
+You can't find it.
+
+>S
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), West (ű)
+
+>N
+
+
+You are in Nicobar Park.
+
+You see yourself crying at the thought that all children will think they were bad this year and didn't deserve a present and a pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>S
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), West (ű)
+
+>ENTER CHURCH
+
+You can't go that way.
+
+>X CHURCH
+
+You need to go south to see the church closer.
+
+>S
+
+The road to the church is currently covered in snow. Someone is clearing it from afar, but you cannot access it yet.
+
+>L
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), West (ű)
+
+>I
+
+You are carrying: \
+\
+(*)  a generous loaf of bread and other goodies\
+\
+(*)  a ticket to visit the church\
+\
+(*)  a Korean-English dictionary\
+
+
+>DIG
+
+Unknown verb - "dig".
+
+>TALK
+
+"I know this church by heart!", says the man.
+
+>N
+
+
+You are in Nicobar Park.
+
+You see yourself crying at the thought that all children will think they were bad this year and didn't deserve a present and a pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>N
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, the leader of the pack of pigeons.
+
+Exits: South (ů)
+
+Larry says, "I'm glad you met me in Montauk. I hope you've not come empty-handed.".
+
+>I
+
+You are carrying: \
+\
+(*)  a generous loaf of bread and other goodies\
+\
+(*)  a ticket to visit the church\
+\
+(*)  a Korean-English dictionary\
+
+
+>SAVE
+
+QUESTION -> Save Game
+
+Save Game
+
+>?1
+
+ANSWER -> 1
+
+Saved Game In Slot 1
+
+>GIVE BREAD
+
+Larry takes the loaf of bread and says "Let's share the bread with all my friends!" 
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry, the leader of the pack of pigeons.
+
+Exits: South (ů)
+
+Whomp! Coo! Coocoo! Coo! *combat sounds*
+
+One of the pigeons did not get any bread!! Two are liars!
+
+QUESTION -> Who didn't get any bread? (number from 1 to 5)
+
+Who didn't get any bread? (number from 1 to 5)
+
+>?3
+
+ANSWER -> 2
+
+You won, well done! (Andrew and Darla were lying)
+
+Larry said "We will need to go to the church tower, gather the troops there with a secret code." 
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry flying.
+
+Exits: South (ů)
+
+Larry said "We will need to go to the church tower, gather the troops there with a secret code." 
+
+>L
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry flying.
+
+Exits: South (ů)
+
+Larry said "We will need to go to the church tower, gather the troops there with a secret code." 
+
+>X LARRY
+
+Larry has gone to organize everything.
+
+>X LARRY
+
+Larry has gone to organize everything.
+
+>S
+
+
+You are in Nicobar Park.
+
+You see yourself having more hope and another pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>S
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>S
+
+
+You are in front of the church. You can access the tower upstairs if you enter.
+
+You see the tour guide for the church and its tower.
+
+Exits: North (Ů)
+
+The guide says, "Do you have an entrance ticket? Only those with a ticket can access.".
+
+>TALK
+
+
+"No ticket? No visit!", says the poetic tour guide. Can you give your ticket?
+
+
+You are in front of the church. You can access the tower upstairs if you enter.
+
+You see the tour guide for the church and its tower.
+
+Exits: North (Ů)
+
+The guide says, "Do you have an entrance ticket? Only those with a ticket can access.".
+
+>GIVE TICKET
+
+The tour guide gladly checks the ticket, gives it back to you and says "Great, let's visit the church! Please come in! And don't lose the ticket!" 
+
+
+You are in front of the church. You can access the tower upstairs if you enter.
+
+You see the tour guide for the church and its tower.
+
+Exits: North (Ů)
+
+>TALK
+
+"Welcome! Come in!", says the happy tour guide.
+
+>X CHURCH
+
+A church in Norman style, the architecture is captivating. You can enter to visit.
+
+>X GUIDE
+
+"Welcome! Come in!", says the happy tour guide.
+
+>X TOWER
+
+You need to enter the church then go upstairs to access the tower.
+
+>ENTER
+
+
+You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons.
+
+You see a tourist.
+
+Exits: Up (Ų), Exit (ų)
+
+>X TOURIST
+
+"나는 비둘기를 위해 여기에 왔습니다! '비둘기 집에 음식을 두면 비둘기가 옵니다'", says the cheerful tourist. Maybe you will need to use another item to have a fruitful conversation.
+
+>TRANSLATE
+
+The tourist laughs "Oh you don't speak Korean? Dear me! You should have said so! I was meditating over this book. Oh, I have an English version as well. Please take it.". She gives you the book. 
+
+>GET BOOK
+
+You can't find it.
+
+>I
+
+You are carrying: \
+\
+(*)  a ticket to visit the church\
+\
+(*)  a Korean-English dictionary\
+\
+(*)  the real bible about pigeons 'Lovey Dovey Pigeons'\
+
+
+>X BIBLE
+
+Inside it says 'A pigeon can fly up to 143 kilometers per hour. Just ask for Caballero.'
+
+>CABALLERO
+
+Unknown verb - "caballero".
+
+>ASK FOR CABALLERO
+
+Unknown verb - "ask".
+
+>READ BOOK
+
+Inside it says 'A pigeon can fly up to 143 kilometers per hour. Just ask for Caballero.'
+
+>L
+
+
+You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons.
+
+You see a tourist.
+
+Exits: Up (Ų), Exit (ų)
+
+>X BELL
+
+You see nothing special.
+
+>X PIGEONS
+
+Roses are red, Violets are blue, Pigeons fly in the sky, And so should you.
+
+>U
+
+
+You are in the church's tower.
+
+You see no birds.
+
+Exits: Down (ų)
+
+>D
+
+
+You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons.
+
+You see a tourist.
+
+Exits: Up (Ų), Exit (ų)
+
+>N
+
+You can't go that way.
+
+>EXIT
+
+
+You are in front of the church. You can access the tower upstairs if you enter.
+
+You see the tour guide for the church and its tower.
+
+Exits: North (Ů)
+
+>N
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>W
+
+
+You are at the book shop. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>GIVE BIBLE
+
+You can't do that.
+
+>L
+
+
+You are at the book shop. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>TALK OWNER
+
+"안녕하세요! ", says the bookshop owner. Maybe you will need to translate to English.
+
+>TRANSLATE TO ENGLISH
+
+
+"안녕하세요! or Hello! Now that you have a dictionary, you are ready to handle korean conversations anywhere in the world, congratulations!"
+
+
+You are at the book shop. Talk to the owner if you need a book.
+
+You see the bookshop owner.
+
+Exits: North (Ů), East (Ű)
+
+>E
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>S
+
+
+You are in front of the church. You can access the tower upstairs if you enter.
+
+You see the tour guide for the church and its tower.
+
+Exits: North (Ů)
+
+>ENTER
+
+
+You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons.
+
+You see a tourist.
+
+Exits: Up (Ų), Exit (ų)
+
+>TALK
+
+"It doesn't matter what people call you unless they call you pigeon pie and eat you up.", says the happy tourist.
+
+>TALK 
+
+"It doesn't matter what people call you unless they call you pigeon pie and eat you up.", says the happy tourist.
+
+>TALK TOURIST
+
+"It doesn't matter what people call you unless they call you pigeon pie and eat you up.", says the happy tourist.
+
+>X TOURIST
+
+"It doesn't matter what people call you unless they call you pigeon pie and eat you up.", says the happy tourist.
+
+>L
+
+
+You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons.
+
+You see a tourist.
+
+Exits: Up (Ų), Exit (ų)
+
+>RING 1
+
+Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is recurring number in heavenly pigeon scriptures.
+
+>READ BOOK
+
+Inside it says 'A pigeon can fly up to 143 kilometers per hour. Just ask for Caballero.'
+
+>RING 143
+
+You hear lots of pigeon noises coming from upstairs. "Okay, everything should go well now. We're almost done. We will now continue from Montauk Beach", says Larry.
+
+>U
+
+
+You are in the church's tower.
+
+You see the biggest group of pigeons you've ever seen in your entire life is gathered here.
+
+Exits: Down (ų)
+
+>X PIGEONS
+
+The pigeons are getting ready for a big mission.
+
+>S
+
+You can't go that way.
+
+>D
+
+
+You are inside the church. You remember having heard that a secret bell combination would result in all nearby pigeons being reunited at the tower. Enter RING NUMBER (e.g. RING 0) to try calling pigeons.
+
+You see a tourist.
+
+Exits: Up (Ų), Exit (ų)
+
+>EXIT
+
+
+You are in front of the church. You can access the tower upstairs if you enter.
+
+You see the tour guide for the church and its tower.
+
+Exits: North (Ů)
+
+>N
+
+
+You are in the South of Nicobar Park.
+
+You see a man thinking by himself.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>N
+
+
+You are in Nicobar Park.
+
+You see yourself having more hope and another pigeon.
+
+Exits: North (Ů), South (ů), West (ű)
+
+>N
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry.
+
+Exits: North (Ů), South (ů)
+
+>TALK
+
+Are you ready to go north for the big delivery?
+
+>N
+
+
+Pigeons are going to give gifts to all children!
+
+They just need you to help organize the delivery.
+
+Find the shortest path to get there before Christmas! May the wind push you and make you save distance!
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+>SAVE
+
+QUESTION -> Save Game
+
+Save Game
+
+>?2
+
+ANSWER -> 2
+
+Saved Game In Slot 2
+
+>L
+
+
+Pigeons are going to give gifts to all children!
+
+They just need you to help organize the delivery.
+
+Find the shortest path to get there before Christmas! May the wind push you and make you save distance!
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+>N
+
+
+Exits: South (ů), Exit (ų)
+
+You have made your first move to get to the end, it's still so far away.
+
+Restart by entering START
+
+>START
+
+
+Pigeons are going to give gifts to all children!
+
+They just need you to help organize the delivery.
+
+Find the shortest path to get there before Christmas! May the wind push you and make you save distance!
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+>S
+
+
+Exits: East (Ű), Exit (ų)
+
+You have made your first move to get to the end, it's still so far away.
+
+Restart by entering START
+
+>E
+
+
+Exits: East (Ű), Exit (ų)
+
+You have spent 2 moves to get to the end but it's still so far away.
+
+Restart by entering START
+
+>E
+
+
+Hint: south slowed you like a sloth...
+
+Exits: North (Ů), Exit (ų)
+
+You have spent 3 moves to get to the end but it's still so far away.
+
+Restart by entering START
+
+>N
+
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+You have spent 4 moves to get to the end but it's still so far away.
+
+Restart by entering START
+
+>S
+
+
+Exits: North (Ů), Exit (ų)
+
+You have spent 5 moves to get to the end but it's still so far away.
+
+Restart by entering START
+
+>N
+
+
+Exits: North (Ů), East (Ű), Exit (ų)
+
+You have spent 6 moves to get to the end but it's still so far away.
+
+Restart by entering START
+
+>E
+
+
+You arrived at the end! Congratulations!
+
+Getting to the end was too long (7 moves), TRY AGAIN!
+
+(it was just a simulation so Christmas is still ON, YAY!)
+
+
+
+Retry it taking even less moves to save CHRISTMAS!
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry.
+
+Exits: North (Ů), South (ů)
+
+
+Montauk is the place where lovers like to meet.
+
+You see Larry.
+
+Exits: North (Ů), South (ů)
+
+>N
+
+
+Pigeons are going to give gifts to all children!
+
+They just need you to help organize the delivery.
+
+Find the shortest path to get there before Christmas! May the wind push you and make you save distance!
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+>N
+
+
+Exits: South (ů), Exit (ų)
+
+You have made your first move to get to the end, it's still so far away.
+
+Restart by entering START
+
+>S
+
+
+Exits: South (ů), East (Ű), Exit (ų)
+
+You have spent 2 moves to get to the end but it's still so far away.
+
+Restart by entering START
+
+>E
+
+
+Exits: North (Ů), South (ů), Exit (ų)
+
+You have spent 3 moves to get to the end but it's still so far away.
+
+Restart by entering START
+
+>S
+
+
+Exits: North (Ů), Exit (ų)
+
+You have spent 4 moves to get to the end but it's still so far away.
+
+Restart by entering START
+
+>N
+
+
+Exits: North (Ů), East (Ű), Exit (ų)
+
+You have spent 5 moves to get to the end but it's still so far away.
+
+Restart by entering START
+
+>E
+
+
+You arrived at the end! Congratulations!
+
+You did it in the shortest time possible, you saved Christmas!
+
+
+Before your eyes, you see all the pigeons dispatching the gifts before them. After a calm pause, they all start taking flight: in one instant, there are as many pigeons as stars in the sky; carrying their glittering gifts! All thanks to your optimized route!
+
+
+You are in front of a big Christmas tree, you see that Larry's friend Columbia safely delivered a lot of the presents.
+
+You see some kids, like Robin, are happily screaming 'I can't wait to play Call Of Beauty!' With your help, the pigeons could deliver the gifts to all children.
+
+CONGRATULATIONS!
+
+YOU WON THE GAME!
+
+LARRY AND HIS TROOPS COULD DELIVER ALL PRESENTS!
+
+TO THANK THEM, YOU PROMISED TO COME BACK AND GIVE THEM VINTAGE 'THE NOTORIOUS GROUSE' DRINK, WITH SOME PANETTONE AND CASTELLA.
+
+THANKS TO YOU, ALL KIDS AROUND THE WORLD WILL BE HAPPY ON CHRISTMAS!
+
+<< START >>
+
+
+
+
+Type VERB NOUN with the keyboard to advance in the game.
+
+e.g. EXAMINE PIGEON to take a closer look at a PIGEON.
+
+GET BREAD to take BREAD and add it to your inventory.
+
+To travel, type NORTH, EAST, SOUTH, WEST (or N, E, S, W), ENTER, EXIT, UP, DOWN
+
+To check your inventory, type INVENTORY (or I, POCKETS)
+
+To stop music, type SOUND OFF (SOUND ON to enable music)
+
+To see available commands at a location, type HELP
+
+
+This is Santa's cellar, where you can normally find different potions to stay cheerful and full of energy. You remember having told the reindeer of these drinks' benefits, so that's probably why they've been drinking a lot. However, they don't seem full of energy. You decide to leave the cellar to get fresh air.
+
+Exits: Exit (ų)
+
+Christmas is coming tonight, everyone cannot wait to open presents.
+
+With this setback, how will you find a way to send all presents in time for the big day?
+
+Let's find a way to save Christmas!
+
+Try some commands, e.g. EXAMINE REINDEER, GET POTION, TALK RUDOLPH. If you are stuck, type HELP.
+
+>TSTOP
