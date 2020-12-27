@@ -64,25 +64,27 @@ vocabulary {
    : noun      / aliases = [guide, tour, tourguide]
    : noun      / aliases = [owner, vendor]
    : noun      / aliases = [pigeon, bird, dove]
-   : noun      / aliases = [potion, beverage, drink, barrel, energy]
-   : noun      / aliases = [reindeer, rudolph]
+   : noun      / aliases = [potion, beverage, drink, barrel, energy, barel]
+   : noun      / aliases = [reindeer, rudolph, reinder, rendeer]
    : noun      / aliases = [tourist, visitor]
    : noun      / aliases = [yourself, santa, myself, me]
-   : noun      / aliases = [dictionary, dico, dic, dict]
+   : noun      / aliases = [dictionary, dico, dic, dict, dictionnary]
    : noun      / aliases = [bin, compost, trashcan, garbage, trash]
    : noun      / aliases = [bible, scripture]
    : noun      / aliases = [child, children, kid]
    : noun      / aliases = [montauk, beach]
-   : noun      / aliases = [ellacombe, apparatus]
+   : noun      / aliases = [ellacombe, apparatus, elacombe, aparatus]
    : noun      / aliases = [comment, note]
    : noun      / aliases = [bird, dove]
    : noun      / aliases = [christmas, hanukkah, kwanzaa, greetings, holidays, noel, noël, navidad, wishes, yuletide, 크리스마스]
    : noun      / aliases = [fight,combat,conflict]
    : noun      / aliases = [floor, ground, flooring]
-   : noun      / aliases = [etroeungt, etrœungt]
-   : noun      / aliases = [sibcullo,sibkullo]
+   : noun      / aliases = [caballero, caballaro, cabalero, cabalaro]
+   : noun      / aliases = [etroeungt, etrœungt, etrungt, etreungt, etreoung, etroungt]
+   : noun      / aliases = [sibcullo,sibkullo, sibculo, sibkulo]
    : noun      / aliases = [up,upstair]
 }
+
 ######################################
 #  Variables                         #
 ######################################
@@ -273,42 +275,6 @@ collections {
    }
    lying_character_order: list {
       items = [0, 1, 2, 3, 4]
-   }
-   common_mistakes : list {
-      items = [
-         "reindeer",
-         "reinder",
-         "reindeer",
-         "rendeer",
-         "reindeer",
-         "render",
-         "caballero",
-         "caballaro",
-         "caballero",
-         "cabalaro",
-         "caballero",
-         "cabalero",
-         "ellacombe",
-         "elacombe",
-         "apparatus",
-         "aparatus",
-         "etroeungt",
-         "etrungt",
-         "etroeungt",
-         "etreungt",
-         "etroeungt",
-         "etreoung",
-         "etroeungt",
-         "etroungt",
-         "sibcullo",
-         "sibculo",
-         "sibkullo",
-         "sibkulo",
-         "barrel",
-         "barel",
-         "dictionary",
-         "dictionnary"
-      ]
    }
 }
 
@@ -982,17 +948,6 @@ on_describe {
 ######################################
 
 on_command {
-   : if (!noun1_is "") {
-     : collection_iterate "common_mistakes" {
-        : if (index() % 2 == 0) {
-           : set_string var="string_correction" {(item())};
-        }
-        : else_if (item() == rationalized "noun1") {
-           : print "Did I mean <{string_correction}<#fee>>";
-        }
-     }
-     : return;
-   }
    : match "follow _;about _; credit _; credits _; readme _"  {
       : if ((verb_is "about" || verb_is "follow") && is_exists (s1())) {
          : set_sentence {("examine "+ rationalized "noun1")};
