@@ -1233,7 +1233,7 @@ on_command {
             : gosub "random_music";
             : gosub "random_music";
             : gosub "random_music";
-            #: gosub "play_music";
+            : gosub "play_music";
             : if (is_carried "pigeon_bookreal") {
                : print "Such a disgraceful melody could never attract any pigeon. It is said that the secret combination is a recurring number in heavenly pigeon <scriptures<#fee>>.";
             }
