@@ -1350,7 +1350,7 @@ on_command {
    : match "enter _; use pass; use card" {
       : mask {
          : if (is_at "coocoo_cafe" && has_lifetime_cafe_pass) {
-            : print "Your still have your lifetime pass to enter when the cafe is closed, but it doesn't open the locked door. It will be open again soon!";
+            : print "You still have your lifetime pass to enter when the cafe is closed, but it doesn't open the locked door. It will be open again soon!";
          }
       }
    }
