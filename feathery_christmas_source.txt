@@ -55,7 +55,7 @@ vocabulary {
    : verb / aliases = [enter, inside, in]
    : verb / aliases = [ring,strike]
    : verb / aliases = [thank, thanks]
-   : verb / aliases = [merry, happy, feliz, joyous, feathery, great, joyeux, enjoy, warmest, jolly, cheerful, 행복한]
+   : verb / aliases = [merry, happy, feliz, joyous, feathery, great, joyeux, enjoy, warmest, jolly, cheerful, 행복한, 메리, meli]
    : verb / aliases = [kill,threaten,menace,intimidate,browbeat,bully,scare,frighten,terrorize,murder,assassinate,beat,fight,combat,hurt,kick,harm,injure,insult]
    : verb / aliases = ["cry", ":(","=(", "='(", ":'("]
    : verb / aliases = ["smile", "grin", "laugh", ":)","=)",":D","=D"]
@@ -76,7 +76,7 @@ vocabulary {
    : noun      / aliases = [ellacombe, apparatus, elacombe, aparatus]
    : noun      / aliases = [comment, note]
    : noun      / aliases = [bird, dove]
-   : noun      / aliases = [christmas, hanukkah, kwanzaa, greetings, holidays, noel, noël, navidad, wishes, yuletide, 크리스마스]
+   : noun      / aliases = [christmas, hanukkah, kwanzaa, greetings, holidays, noel, noël, navidad, wishes, yuletide, 크리스마스, keuliseumaseu]
    : noun      / aliases = [fight,combat,conflict]
    : noun      / aliases = [floor, ground, flooring]
    : noun      / aliases = [caballero, caballaro, cabalero, cabalaro]
@@ -1281,20 +1281,23 @@ on_command {
    }
 
    : match "examine book; read book; use book; examine bible; read bible; use bible"  {
-      : if (is_at "nicobar_park" && !is_exists "pigeon_booklove") {
-         : print "Some <books<#fee>> are more important than food. Like this <book<#fee>>, maybe." ;
-      }
-      : if (is_at "nicobar_park" && is_carried "pigeon_booklove") {
-         : print "Inside it says \'<Pigeons<#fee>> love carrying heavy objects, but need energy to do so.\'" ;
-      }
       : if (is_carried "pigeon_bookreal") {
          : print "Inside it says \'A <pigeon<#fee>> can fly up to {hard_mode ? `one hundred forty-three` : `<143<#fee>>`} kilometers per hour. Just like Caballero.\'" ;
       }
-      : if (is_at "bookshop" && !is_carried "pigeon_booklove") {
+      : else_if (is_at "nicobar_park" && !is_exists "pigeon_booklove") {
+         : print "Some <books<#fee>> are more important than food. Like this <book<#fee>>, maybe." ;
+      }
+      : else_if (is_at "bookshop" && !is_carried "pigeon_booklove") {
          : print "There are so many <books<#fee>> here." ;
       }
-      : if (is_at "bookshop" && is_carried "pigeon_booklove") {
+      : else_if (is_at "bookshop" && is_carried "pigeon_booklove") {
          : print "Who would want to read such a tiny <book<#fee>> anyway?" ;
+      }
+      : else_if (is_carried "dictionary") {
+         : set_sentence "read dictionary";
+      }
+      : else_if (is_carried "pigeon_booklove") {
+         : print "Inside it says \'<Pigeons<#fee>> love carrying heavy objects, but need energy to do so.\'" ;
       }
    }
 
@@ -1437,6 +1440,19 @@ on_command {
       }
    }
 
+   : match "examine tourist; talk tourist; talk -; wave tourist"  {
+      : if (is_present "tourist") {
+         : if (is_carried "dictionary" && (rationalized "noun2" == "book" || rationalized "noun2" == "dictionary")) {
+            : set_sentence "read dictionary";
+         }
+         : else {
+            : print "\"나는 비둘기를 위해 여기에 왔습니다! '비둘기 집에 음식을 두면 비둘기가 옵니다'\", says the cheerful <tourist<#fee>>. Maybe you will need to use another item to have a fruitful conversation." ;
+         }
+      }
+      : if (is_present "happy_tourist") {
+         : print "\"It doesn't matter what people call you unless they call you <pigeon<#fee>> pie and eat you up.\", says the happy <tourist<#fee>>." ;
+      }
+   }
 
    : match "use dictionary; read dictionary; translate _; examine dictionary"  {
       : if (is_present "tourist") {
@@ -1449,6 +1465,9 @@ on_command {
          : else {
            : print "I need to learn Korean or find a way to <translate<#fee>> Korean before I can <talk<#fee>> to the <tourist<#fee>>.";
          }
+      }
+      : else_if (is_carried "dictionary") {
+         : print "This Korean-English <dictionary<#fee>> contains so many useful words, for example:\n\n 메리 (meli) 크리스마스 (keuliseumaseu) means \"Merry Christmas\"\n 안녕하세요 (annyeong haseyo) means \"Good Morning\"";
       }
    }
 
@@ -1599,7 +1618,7 @@ on_command {
       }
    }
 
-   : match "talk 안녕하세요; say 안녕하세요; talk korean"  {
+   : match "talk 안녕하세요; talk korean; talk annyeong"  {
       : if (is_present "bookshop_owner") {
          : print "\"공공외교가 단기적으로 눈금을 움직이는 능력으로 평가받는 세상에서는 인적 교류와 같은 장기적인 프로젝트는 효과가 별로 없고단기적인 옹호 노력만이 타당하게 보일 수 있다.\" That's fascinating.";
       }
@@ -1631,12 +1650,6 @@ on_command {
    : match "give dictionary; exchange dictionary"  {
          : if (is_present "bookshop_owner" && is_carried "dictionary") {
             : print "\"We do not accept returns.\" " ;
-      }
-   }
-
-   : match "examine dictionary"  {
-         : if (is_exists "dictionary") {
-            : print "\"A Korean-English <dictionary<#fee>>.\" " ;
       }
    }
 
@@ -1751,7 +1764,7 @@ on_command {
       }
    }
 
-   : match "examine potion; get potion; examine cellar"  {
+   : match "examine potion; get potion; drink potion; examine cellar"  {
       : if (is_at "santa_cellar") {
          : print "These <potions<#fee>> give strength for Christmas day. You already had a drink earlier today, so now you should focus on delivering the <presents<#fee>>." ;
       }
@@ -1857,14 +1870,6 @@ on_command {
       }
    }
 
-   : match "examine tourist; talk tourist; talk -; wave tourist"  {
-      : if (is_present "tourist") {
-         : print "\"나는 비둘기를 위해 여기에 왔습니다! '비둘기 집에 음식을 두면 비둘기가 옵니다'\", says the cheerful <tourist<#fee>>. Maybe you will need to use another item to have a fruitful conversation." ;
-      }
-      : if (is_present "happy_tourist") {
-         : print "\"It doesn't matter what people call you unless they call you <pigeon<#fee>> pie and eat you up.\", says the happy <tourist<#fee>>." ;
-      }
-   }
    : match "thank tourist; thank -"  {
       : if (is_present "happy_tourist") {
          : print "\"아니에요! You are welcome!\", say the joyous <tourist<#fee>>." ;
